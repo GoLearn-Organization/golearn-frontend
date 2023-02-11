@@ -62,7 +62,7 @@ const Head = ({ landingCourses }) => {
         "personal development courses": personalDevelopmentCourses,
         iTCourses: iTCourses,
       });
-      
+
       if (!data1 && !data2) {
         setData1(
           personalDevelopmentCourses[
@@ -110,11 +110,17 @@ const Head = ({ landingCourses }) => {
   return (
     <div className="head">
       <div className="head-text">
-        <h1>Nigeria's foremost Learning and Earning Platform</h1>
-        <p>
+        <h1>Your journey to financial freedom starts from here!</h1>
+        {/* <p>
           At Go-Learn we believe that flexible and easy to access learning
           opportunities can bring a significant change in how individuals prefer
           to learn. Therefore, we offer you the beauty of eLearning.
+        </p> */}
+        <p>
+          At Go-Learn, we help people learn the skills they need to improve
+          their financial well-being. Whether you're looking to start a new
+          career, increase your income, or simply gain financial literacy, we
+          have everything you need to succeed.
         </p>
         {tokenAvailability ? (
           <Link to="/courses">
