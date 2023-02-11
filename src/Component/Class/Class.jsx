@@ -22,6 +22,8 @@ const Class = () => {
       return;
     }
 
+    localStorage.removeItem(MemoryKeys.SelectedCourseContent);
+
     let result = await fetch(
       `https://golearn.up.railway.app/api/v1/course/${selectedCourseId}`,
       {
@@ -58,6 +60,7 @@ const Class = () => {
       courseContent.length < 1
     ) {
       setCourseContent(parsedRetrievedCourseContent);
+      localStorage.removeItem(MemoryKeys.SelectedCourseContent);
       // console.log('retrievedCourseContent: ', retrievedCourseContent);
       // console.log('courseContent: ', courseContent);
       return;
@@ -100,18 +103,28 @@ const Class = () => {
     videoElement = <video src={currentVideo} controls />;
   } else {
     videoElement = (
+      // <iframe
+      //   src={currentVideo}
+      //   title="YouTube video player"
+      //   // frameborder="0"
+      //   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      //   allowFullScreen
+      //   style={{ border: "none" }}
+      // />
       <iframe
         src={currentVideo}
         title="YouTube video player"
-        // frameborder="0"
+        frameborder="0"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        allowFullScreen
-        style={{ border: "none" }}
+        allowfullscreen
       />
     );
   }
 
   const handleNext = () => {
+    if (currentVideo === undefined) {
+      setCurrentVideoIndex(currentVideoIndex + 1);
+    }
     setCurrentVideoIndex((prevIndex) => (prevIndex + 1) % videoData.length);
   };
 
