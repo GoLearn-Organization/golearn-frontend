@@ -1,0 +1,22 @@
+.Online-bori{
+    background-color: #ffffff;
+    margin-top: 50px;
+    padding: 0 64px;
+    padding-bottom: 20px;
+    width: auto;
+}
+.sub-Online-bori{
+    flex-direction: row-reverse;
+    width: 100%;
+}
+
+.sub-Online-bori .OnlineBlog-content h2 {
+    font-weight: 800;
+}
+
+
+@media screen and (max-width: 992px){
+    .OnlineBlog .sub-OnlineBlog .OnlineBlog-content h2{
+        font-size: 28px;
+    }
+}

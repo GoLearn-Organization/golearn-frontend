@@ -1,0 +1,73 @@
+.registerbody{
+    display: flex;
+    justify-content: center;
+}
+.registerbody .sub-registerbody{
+    width: 95%;
+    /* background-color: brown; */
+    padding-top: 50px;
+    display: flex;
+    justify-content: center;
+
+}
+.registerbody .sub-registerbody form{
+    width: 550px;
+    max-width: 85%;
+    background-color: #FFFFFF;
+    padding: 30px 30px 30px 30px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 5px;
+
+}
+.registerbody .sub-registerbody form input{
+    height: 50px;
+
+    width: 100%;
+    display: block;
+    border: 1px solid #dcdfe5;
+    box-shadow: none;
+    margin-bottom: 20px;
+    border-radius: 4px;
+    background: #ffffff;
+    line-height: 48px;
+    padding: 0;
+    text-indent: 15px;
+    -webkit-transition: 300ms;
+    transition: 300ms;
+    font-size: 16px;
+}
+.registerbody .sub-registerbody form input:focus{
+    outline: 1px solid #027dff;
+}
+.registerbody .sub-registerbody form label{
+    display: block;
+    margin-bottom: 5px;
+    margin-top: -2px;
+    font-size: 12px;
+    margin-left: 2px;
+}
+.registerbody .sub-registerbody form .submit{
+    border-color: #027dff;
+    background-color: #027dff;
+    color: #FFFFFF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 400;
+    line-height: 1.4;
+    text-decoration: none;
+    vertical-align: middle;
+    user-select: none;
+    padding: 8px 20px;
+    font-size: 16px;
+    border-radius: 6px;
+    box-sizing: border-box;
+    cursor: pointer;
+    width: fit-content;
+    text-indent: 0px;
+}
+.registerbody .sub-registerbody form #message{
+    text-transform: lowercase;
+    font-size: 13px;
+}

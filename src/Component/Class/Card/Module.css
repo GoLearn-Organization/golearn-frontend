@@ -1,0 +1,57 @@
+.tutor-according-item{
+    background-color: #fff;
+    border: 1px solid #E0E2EA;
+    border-top: none;
+    /* border-radius: 6px; */
+    /* margin-bottom: 20px; */
+    overflow: hidden;
+}
+.tutor-according-item .tutor-according-head{
+    position: relative;
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 1.4;
+    padding: 16px 20px 16px 20px;
+    margin: 0 !important;
+    color: #027dff;
+    background-color: #eff1f6;
+    display: flex;
+    align-items: center;
+    user-select: none;
+    transition: 500ms ease-in;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.tutor-according-item .tutor-according-head h4{
+    margin-block-end: 0;
+    color: #41454F;
+    font-size: 16px;
+    font-weight: 500;
+}
+.tutor-according-item .tutor-according-body{
+    background-color: #ffffff;
+    display: none;
+    /* flex-direction: row-reverse; */
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 16px;
+    transition: 500ms ease-in;
+    border-top: 1px solid #E0E2EA;
+    cursor: pointer;
+}
+.tutor-according-item .tutor-according-body:hover{
+    background-color: #eff1f6a1;
+}
+.tutor-according-item .tutor-according-body h5{
+    margin-block-end: 0;
+    line-height: 1.6;
+    font-weight: 500;
+    font-size: .875rem;
+    color: #027dff;
+}
+.tutor-according-item:hover .tutor-according-body{
+    display: flex;
+    transition: 300ms ease-in;
+}

@@ -1,0 +1,66 @@
+.forget{
+    display: flex;
+    justify-content: center;
+
+}
+.forget .sub-forget{
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.forget .sub-forget form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 350px;
+    max-width: 80%;
+}
+.forget .sub-forget form label{
+    margin-bottom: 10px;
+    text-align: left;
+    width: 100%;
+    margin-left: 5%;
+    color: #606060;
+}
+.forget .sub-forget form input{
+    margin-bottom: 10px;
+    display: block;
+    width: 340px;
+    outline: none;
+    border-radius: 6px;
+    background-color: #fff;
+    box-sizing: border-box;
+    color: var(--tutor-color-black);
+    padding: 8px 16px;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.4;
+    height: auto;
+    border: 1px solid #cdcfd5;
+    box-shadow: none;
+    transition: color 200ms ease-in-out, background-color 200ms ease-in-out, border-color 200ms ease-in-out;
+}
+.forget .sub-forget form .sub{
+    background-color: #007bff;
+    border: none;
+    color: #ffffff;
+    cursor: pointer;
+    margin-top: 20px;
+}
+.forget .sub-forget form .alert{
+    width: fit-content;
+    height: fit-content;
+    padding: 5px 5px;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    background-color: #a0f7a0;
+    border-radius: 5px;
+}
+.forget .sub-forget form span{
+    font-style: normal;
+    text-transform: lowercase;
+    /* color: #FFFFFF; */
+    
+}

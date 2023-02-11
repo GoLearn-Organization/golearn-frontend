@@ -1,0 +1,170 @@
+[
+    {
+        "id": "001",
+        "title": "Graphics Design: The Simplicities of Visual Communication",
+        "requirement": "Anyone with a basic understanding of cryptocurrencies can take this course.",
+        "details": {
+            "duration": " 2h",
+            "members": "106",
+            "experience": "DECENTRALIZED FINANCE INSTRUCTOR"
+        },
+        "star": "⭐⭐⭐⭐⭐",
+        "author": {
+            "name": "Ezekiel Idemhi,",
+            "job1": "Graphics Design,",
+            "job2": "UI/UX"
+        },
+        "materials": {
+            "mate-1": "2.5 hours on-demand video",
+            "mate-2": "5 downloadable resources",
+            "mate-3": "Full lifetime access",
+            "mate-4": "Certificate of completion (upon request)"
+        },
+        "tags": {
+            "tag1": "Bitcoin",
+            "tag2": "Crypto",
+            "tag3": "DeFi"
+        }
+    },
+    {
+        "id": "002",
+        "title": "MakeUp Artist Course: From Basics to Master",
+        "details": {
+            "duration": "3h",
+            "members": "33"
+        },
+        "star": "⭐⭐⭐⭐⭐",
+        "author": {
+            "name": "Peace Sorinolu,",
+            "job1": "Beauty"
+        }
+    },
+    {
+        "id": "003",
+        "title": "Sell at scale…Turning your skills to daily income",
+        "details": {
+            "duration": "1h 30m",
+            "members": "249"
+        },
+        "star": "⭐⭐⭐⭐⭐",
+        "author": {
+            "name": "Gbenga Omosebi,",
+            "job1": "Freemium Course,",
+            "job2": "Sales"
+        }
+    },
+    {
+        "id": "004",
+        "title": "Advanced Stock Trading Course",
+        "details": {
+            "duration": "04h",
+            "members": "56"
+        },
+        "star": "⭐⭐⭐⭐⭐",
+        "author": {
+            "name": "TraderHack,",
+            "job1": "Business,",
+            "job2": "Financial Trading,",
+            "job3": "Stock Market"
+        }
+    },
+    {
+        "id": "005",
+        "title": "FOREX Trading Course",
+        "details": {
+            "duration": " 3h 30m",
+            "members": "381"
+        },
+        "star": "⭐⭐⭐⭐⭐",
+        "author": {
+            "name": "ABOKI,",
+            "job1": "Financial Trading,",
+            "job2": "FOREX"
+        }
+    },
+    {
+        "id": "006",
+        "title": "Decentralized Finance (DeFi) Course",
+        "requirement": "Anyone with a basic understanding of cryptocurrencies can take this course.",
+        "details": {
+            "duration": " 2h 30m",
+            "members": "139",
+            "experience": "DECENTRALIZED FINANCE INSTRUCTOR"
+        },
+        "star": "(Ratings 4) 2.75 ⭐⭐⭐⭐⭐",
+        "author": {
+            "name": "Marvelous Macaulay,",
+            "job1": "Cryptocurrency,",
+            "job2": "Decentralized Finance (DeFi),",
+            "job3": "Financial Trading"
+        },
+        "materials": {
+            "mate_1": "2.5 hours on-demand video",
+            "mate_2": "5 downloadable resources",
+            "mate_3": "Full lifetime access",
+            "mate_4": "Certificate of completion (upon request)"
+        },
+        "tags": {
+            "tag1": "Bitcoin",
+            "tag2": "Crypto",
+            "tag3": "DeFi"
+        },
+        "link": "/DecFinance",
+        "about": {
+            "description": "This course is designed to help you understand decentralised finance and how to navigate and benefit from protocols built for DeFI on the blockchain.",
+            "knowledge": {
+                "first": "Anyone with a basic understanding of cryptocurrencies can take this course.",
+                "second": "Interested students also need to possess familiarity with cryptocurrency wallets and cyber security best practices"
+            }
+        },
+        "gain": {
+            "learn": {
+                "first": "At the end of this course you will have been taught the following:",
+                "second": "What DeFi is at a fundamental level",
+                "third": "What DeFi is at a fundamental level",
+                "forth": "How to set up a Binance wallet",
+                "fifth": "How to use the safest and most popular DeFi tools and services for earning profit in this exciting new space!"
+            }
+        },
+        "content": {
+            "module1": {
+                "head": "Module 1: What is DEFI",
+                "body": "What is DeFi"
+            },
+            "module2": {
+                "head": "Module 2: Bitcoin as a DEFI",
+                "body": "Bitcoin as DeFi"
+            },
+            "module3": {
+                "head": "Module 3: Liquidity Mining",
+                "body": "Liquidity Mining"
+            },
+            "module4": {
+                "head": "Module 4: DAPPS and DEXES",
+                "body": "Decentralized Exchanges"
+            },
+            "module5": {
+                "head": "Module 5: Liquidity Mining and Yield Farming",
+                "body": "DeFi Impermament Loss"
+            },
+            "module6": {
+                "head": "Join the Go-Learn DeFi Community",
+                "body": "Join Community"
+            }
+        }
+    },
+    {
+        "id": "007",
+        "title": "Web Design: Mastering WordPress",
+        "details": {
+            "duration": " 4h",
+            "members": "75"
+        },
+        "star": "⭐⭐⭐⭐⭐",
+        "author": {
+            "name": "Stephen Chukwuma,",
+            "job1": "Development,",
+            "job2": "Web Development"
+        }
+    }
+]

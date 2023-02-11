@@ -1,0 +1,112 @@
+.OnlineBlog{
+    display: flex;
+    justify-content: center;
+    /* background-color: brown; */
+    width: 100%;
+    padding-top: 50px;
+}
+.OnlineBlog .sub-OnlineBlog{
+    width: 95%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.OnlineBlog .sub-OnlineBlog .OnlineBlog-img-div{
+    width: 50%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.OnlineBlog .sub-OnlineBlog .OnlineBlog-img-div img{
+    position: relative;
+    width: 80%;
+    border-radius: 10px;
+}
+.OnlineBlog .sub-OnlineBlog .OnlineBlog-content{
+    width: 50%;
+    position: relative;
+    text-align: left;
+}
+.OnlineBlog .sub-OnlineBlog .OnlineBlog-content h2{
+    margin-bottom: 15px;
+}
+.OnlineBlog .sub-OnlineBlog .OnlineBlog-content .online-props{
+    padding-left: 0;
+    list-style-type: none;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    margin-bottom: 0;
+    margin-top: -5px;
+    margin-left: -8px;
+    margin-right: -8px;
+}
+.OnlineBlog .sub-OnlineBlog .OnlineBlog-content .online-props ul{
+    padding-inline-start: 6px;
+    margin-top: 0px;
+}
+.OnlineBlog .sub-OnlineBlog .OnlineBlog-content .online-props ul li{
+    list-style: none;
+    padding-left: 0;
+    padding-right: 40px;
+    display: block;
+    position: relative;
+    font-weight: 700;
+    margin-top: 10px;
+    color: #7A7A7A;
+}
+.OnlineBlog .sub-OnlineBlog .OnlineBlog-content a{
+    /* padding: 20px 5px 22px 5px; */
+    border-radius: 29px;
+    border: 2px dashed #027dff;
+    width: fit-content;
+    height: fit-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 35px;
+}
+.OnlineBlog .sub-OnlineBlog .OnlineBlog-content a button{
+    border: none;
+    position: relative;
+    display: inline-block;
+    text-align: center;
+    overflow: hidden;
+    z-index: 1;
+    color: #ffffff;
+    background-color: #027dff;
+    border-radius: 30px;
+    font-weight: 700;
+    font-size: 16px;
+    padding-left: 35px;
+    padding-right: 35px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    cursor: pointer;
+    margin: 5px 5px 5px 5px;
+}
+.OnlineBlog .sub-OnlineBlog .OnlineBlog-content a:hover{
+    background-color: #027dff;
+}
+
+
+
+@media screen and (max-width: 992px){
+    .OnlineBlog .sub-OnlineBlog{
+        flex-direction: column;
+    }
+    .OnlineBlog .sub-OnlineBlog .OnlineBlog-img-div{
+        width: 100%;
+    }
+    .OnlineBlog .sub-OnlineBlog .OnlineBlog-content{
+        width: 90%;
+        margin-top: 50px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+}

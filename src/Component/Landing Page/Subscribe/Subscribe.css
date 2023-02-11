@@ -1,0 +1,78 @@
+.subscribe{
+    padding-top: 100px;
+    padding-bottom: 100px;
+}
+.sub-subscribe{
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+.sub-subscribe .content{
+    text-align: center;
+    max-width: 720px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.sub-subscribe .content h2{
+    max-width: 615px;
+    margin-bottom: 0;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 36px;
+    font-weight: 800;
+}
+.sub-subscribe .content form{
+    position: relative;
+    max-width: 650px;
+    margin-top: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+}
+.sub-subscribe .content form input{
+    display: block;
+    width: 100%;
+    border: none;
+    background-color: #eaeaea;
+    color: #221638;
+    height: 50px;
+    padding-left: 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: 400;
+}
+.sub-subscribe .content form input::placeholder {
+    /* color: #221638; */
+    opacity: 0.3;
+}
+.sub-subscribe .content form input:focus{
+    outline: none;
+}
+.sub-subscribe .content form button{
+    border: none;
+    display: inline-block;
+    text-align: center;
+    overflow: hidden;
+    z-index: 1;
+    color: #ffffff;
+    border-radius: 5px;
+    font-weight: 700;
+    font-size: 16px;
+    padding: 11px 25px 11px 25px;
+    background-color: #027dff;
+    position: absolute;
+    right: 0;
+    left: auto;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    height: 50px;
+}
+
+@media screen and (max-width: 992px){
+    .subscribe .sub-subscribe .content h2{
+        font-size: 28px;
+    }
+}

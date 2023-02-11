@@ -1,0 +1,191 @@
+/* .instructorProfile {
+} */
+
+.instructorProfile__profileArea {
+  padding: 0 64px;
+  padding-top: 100px;
+}
+
+.instructorProfile__profileArea .coverArea {
+  height: 352px;
+  background-image: url("https://go-learn.online/wp-content/plugins/tutor/assets/images/cover-photo.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  border-radius: 8px;
+  border: 1px solid #000;
+}
+
+.instructorProfile__profileArea .coverArea__instructorImg img {
+  width: 235px;
+  height: 275px;
+  object-fit: cover;
+  position: absolute;
+  top: 50%;
+  left: 4.6%;
+  border: 8px solid white;
+  border-radius: 10px;
+}
+
+.instructorProfile__profileArea .coverArea__instructorInfo {
+  display: flex;
+  justify-content: space-between;
+  margin-left: 30%;
+  width: 100%;
+  height: fit-content;
+  padding-right: 32px;
+  padding-bottom: 32px;
+  /* position: absolute;
+    width: 70%;
+    bottom: 0;
+    right: 0;
+  border: 1px solid #fff; */
+}
+
+.instructorProfile__profileArea .coverArea__instructorInfo .left h3,
+.instructorProfile__profileArea .coverArea__instructorInfo .left span {
+  margin: 0;
+  color: #ffffff;
+}
+
+.instructorProfile__profileArea .coverArea__instructorInfo .left h3 {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 40px;
+  line-height: 48px;
+  color: #ffffff;
+}
+
+.instructorProfile__profileArea .coverArea__instructorInfo .left span {
+  text-transform: none;
+  /* border: 1px solid; */
+  font-size: 16px;
+  font-weight: 200;
+}
+
+.instructorProfile__profileArea
+  .coverArea__instructorInfo
+  .left
+  .instructorStats {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.instructorProfile__profileArea .coverArea__instructorInfo .right {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.instructorProfile__profileArea .coverArea__instructorInfo .right .rating {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  color: #ffffff;
+}
+
+.instructorProfile__profileArea .coverArea__instructorInfo .right .rating span {
+  color: #a7a7a7;
+}
+
+.instructorProfile__profileArea .coverArea__instructorInfo .right span {
+  margin: 0;
+}
+.instructorProfile__profileArea .bodyArea {
+  margin: 40px 0px 120px;
+  width: 70%;
+  margin-left: auto;
+}
+
+.bodyArea__biography h2,
+.bodyArea__courses h2 {
+  font-style: normal;
+  font-weight: normal !important;
+  font-size: 24px;
+  line-height: 34px;
+  margin: 0;
+}
+
+.bodyArea__biography p {
+  margin-top: 8px;
+}
+
+.bodyArea__courses .coursesList {
+  display: flex;
+  gap: 24px;
+}
+
+@media screen and (max-width: 580px) {
+  .instructorProfile__profileArea {
+    padding: 0 24px;
+    padding-top: 100px;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .instructorProfile__profileArea .coverArea {
+    height: 220px;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .instructorProfile__profileArea .coverArea__instructorImg img {
+    width: 140px;
+    height: 160px;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .instructorProfile__profileArea .coverArea__instructorInfo {
+    margin-left: 0%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    top: 165%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: fit-content;
+    height: fit-content;
+    padding: 0;
+  }
+  .instructorProfile__profileArea .coverArea__instructorInfo .left {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .instructorProfile__profileArea .coverArea__instructorInfo .left span {
+    width: fit-content;
+    color: #606060;
+  }
+  .instructorProfile__profileArea .coverArea__instructorInfo .left h3,
+  .instructorProfile__profileArea .coverArea__instructorInfo .left span {
+    color: #606060;
+  }
+
+  .instructorProfile__profileArea .coverArea__instructorInfo .left h3 {
+    color: #606060;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .instructorProfile__profileArea .bodyArea {
+    width: 100%;
+    margin-top: 220px;
+  }
+}
+
+@media screen and (max-width: 680px) {
+  .bodyArea__courses .coursesList {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+}
