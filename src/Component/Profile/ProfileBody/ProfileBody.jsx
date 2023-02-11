@@ -181,9 +181,13 @@ const ProfileBody = ({ setLoginStatus }) => {
 
   useEffect(() => {
     let userDetails = localStorage.getItem(MemoryKeys.UserCredentials);
-    if (userDetails && userDetails !== null && userDetails !== undefined) {
-      console.log("Parsed: ", JSON.parse(userDetails));
-      effunc(JSON.parse(userDetails));
+    if (userDetails) {
+      if (userDetails === null || userDetails === undefined) {
+        console.log("Parsed: ", JSON.parse(userDetails));
+        effunc(JSON.parse(userDetails));
+        return;
+      }
+      handleLogin();
       return;
     }
 
@@ -519,8 +523,7 @@ const ProfileBody = ({ setLoginStatus }) => {
           "green";
 
         i + 1 === courseContent.length
-          ? setCourseContentResponseMessage(
-              `All course contents uploaded!.`)
+          ? setCourseContentResponseMessage(`All course contents uploaded!.`)
           : setCourseContentResponseMessage(
               `Course content ${i + 1} uploaded!`
             );
