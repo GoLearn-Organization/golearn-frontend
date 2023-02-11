@@ -36,7 +36,7 @@ const Course = () => {
     result = await result.json();
     console.log("Course info: ", result);
     setCourseData(result.data);
-    localStorage.setItem(MemoryKeys.SelectedCourseId, id);
+    // localStorage.setItem(MemoryKeys.SelectedCourseId, id);
   }, [courseData, id]);
 
   /**

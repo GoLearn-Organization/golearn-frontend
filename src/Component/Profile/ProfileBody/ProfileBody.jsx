@@ -325,16 +325,19 @@ const ProfileBody = ({ setLoginStatus }) => {
 
   let [courseContentValues, cofunc] = React.useState([]);
   let [titleValue, titleValuefunc] = React.useState([]);
+  let [youtubeValue, youtubeValuefunc] = React.useState([]);
 
   const whatToLearn = Object.values(whatToLearnValues);
   const requirement = Object.values(requirementValues);
   const audience = Object.values(audienceValues);
   const materials = Object.values(materialsValues);
   const title = Object.values(titleValue);
+  const youtube = Object.values(youtubeValue);
   const coursecontent = Object.values(courseContentValues);
   const tags = Object.values(tag);
   const courseContent = title.map((title, index) => ({
     title,
+    youtube: youtube[index],
     coursecontent: coursecontent[index],
   }));
 
@@ -447,44 +450,86 @@ const ProfileBody = ({ setLoginStatus }) => {
   };
 
   const handleUploadCourseContent = async (courseId) => {
-    console.log("courseContentup: ", courseContent);
-
-    const courseContentData = new FormData();
-    courseContent.forEach((content) => {
-      if (!content) {
-        console.error("The contents for courseContent is undefined");
-        return;
-      }
-      courseContentData.append("title", content.title);
-      courseContentData.append("youtube", content.coursecontent);
+    console.log({
+      "title: ": titleValue,
+      "courseContent: ": courseContentValues,
+      "youtube: ": youtubeValue,
     });
-    console.log(courseContentData);
 
-    let result = await fetch(
-      `https://golearn.up.railway.app/api/v1/course/uploadcontent/${courseId}`,
-      {
-        method: "post",
-        credencials: "include",
-        body: courseContentData,
-        headers: {
-          Authorization: "Bearer " + localStorage.getItem(MemoryKeys.UserToken),
-        },
-      }
+    document.getElementById("courseContentResponseMessage").style.color =
+      "#007bff";
+    setCourseContentResponseMessage(
+      "Uploading course contents. Please hold on..."
     );
-    result = await result.json();
-    console.warn(result);
-    console.log(result);
-    if (result.successful) {
+
+    for (let i = 0; i < courseContent.length; i++) {
+      const courseContentData = new FormData();
+      courseContentData.append(`title`, titleValue[i]);
+      courseContentValues[i] !== undefined &&
+        courseContentData.append(`coursecontent`, courseContentValues[i]);
+      youtubeValue[i] !== undefined &&
+        courseContentData.append(`youtube`, youtubeValue[i]);
+
+      // for (let i = 0; i < courseContent.length; i++) {
+      //   courseContentData.append(`title`, titleValue[i]);
+      //   if (courseContent[i].coursecontent) {
+      //     courseContentData.append(`coursecontent`, courseContentValues[i]);
+      //   }
+      //   courseContentData.append(`youtube`, youtubeValue[i]);
+      // };
+      console.log(courseContentData);
+
+      // courseContent.forEach((content) => {
+      //   if (!content) {
+      //     console.error("The contents for courseContent is undefined");
+      //     return;
+      //   }
+      //   courseContentData.append("title", content.title);
+      //   courseContentData.append("coursecontent", content.coursecontent);
+      // });
+      // console.log(courseContentData);
+
       document.getElementById("courseContentResponseMessage").style.color =
-        "green";
-      setCourseContentResponseMessage(
-        "Course content was uploaded successfully"
+        "#007bff";
+      i + 1 === courseContent.length - 1
+        ? setCourseContentResponseMessage(
+            `Uploading course content ${i + 1} now... We're almost done.`
+          )
+        : setCourseContentResponseMessage(
+            `Uploading course content ${i + 1} now... This shouldn't take long.`
+          );
+
+      let result = await fetch(
+        `https://golearn.up.railway.app/api/v1/course/uploadcontent/${courseId}`,
+        {
+          method: "post",
+          credencials: "include",
+          body: courseContentData,
+          headers: {
+            Authorization:
+              "Bearer " + localStorage.getItem(MemoryKeys.UserToken),
+          },
+        }
       );
-    } else {
-      document.getElementById("courseContentResponseMessage").style.color =
-        "red";
-      setCourseContentResponseMessage("Course content upload failed");
-      return false;
+      result = await result.json();
+      console.warn(result);
+      console.log(result);
+      if (result.success) {
+        document.getElementById("courseContentResponseMessage").style.color =
+          "green";
+
+        i + 1 === courseContent.length
+          ? setCourseContentResponseMessage(
+              `All course contents uploaded!.`)
+          : setCourseContentResponseMessage(
+              `Course content ${i + 1} uploaded!`
+            );
+      } else {
+        document.getElementById("courseContentResponseMessage").style.color =
+          "red";
+        setCourseContentResponseMessage("Course content upload failed");
+        return false;
+      }
     }
   };
 
@@ -588,9 +633,10 @@ const ProfileBody = ({ setLoginStatus }) => {
     const latestTitle = titleValue[courseContentValuesInput.length - 1];
     const latestVideo =
       courseContentValues[courseContentValuesInput.length - 1];
+    const latestYoutube = youtubeValue[courseContentValuesInput.length - 1];
 
     // If the title and video do not have a value
-    if (!latestTitle && !latestVideo) {
+    if (!latestTitle && (!latestVideo || !latestYoutube)) {
       setCourseContentInputError(
         "Fill in complete course content before adding a new one."
       );
@@ -598,6 +644,7 @@ const ProfileBody = ({ setLoginStatus }) => {
     }
 
     setCourseContentInputError("");
+
     // Else, add new visibility status to show next field
     setCourseContentInput([
       ...courseContentValuesInput,
@@ -611,6 +658,7 @@ const ProfileBody = ({ setLoginStatus }) => {
     console.log([
       {
         "Title: ": titleValue,
+        "youtube: ": youtubeValue,
         "Video: ": courseContentValues,
       },
     ]);
@@ -661,6 +709,7 @@ const ProfileBody = ({ setLoginStatus }) => {
       // _courseContentValues.push(e.target.files[0]);
 
       cofunc([...courseContentValues, e.target.files[0]]);
+      youtubeValuefunc([...youtubeValue, undefined]);
       console.log("courseContentValues: ", courseContentValues);
 
       // const videoURL = URL.createObjectURL(e.target.files[0]);
@@ -671,7 +720,8 @@ const ProfileBody = ({ setLoginStatus }) => {
       return;
     }
     if (!isVideoCourseContentUploadType) {
-      cofunc([...courseContentValues, e.target.value]);
+      youtubeValuefunc([...youtubeValue, e.target.value]);
+      cofunc([...courseContentValues, undefined]);
 
       return;
     }
@@ -1210,12 +1260,15 @@ const ProfileBody = ({ setLoginStatus }) => {
                           {courseContentValuesInput[index].visibility && (
                             <div key={index} className="content-upload-area">
                               {eachContent.visibility &&
-                              courseContentValues[index] ? (
+                              (courseContentValues[index] ||
+                                youtubeValue[index]) ? (
                                 // <p>{courseContentValues[index]} uploaded</p>
                                 <p>
                                   <p className="uploadedContent">
-                                    {courseContentValues[index].name ??
-                                      courseContentValues[index]}
+                                    {youtubeValue[index] ??
+                                      courseContentValues[index].name}
+                                    {/* {courseContentValues[index].name ??
+                                      courseContentValues[index]} */}
                                   </p>
                                   uploaded
                                 </p>
