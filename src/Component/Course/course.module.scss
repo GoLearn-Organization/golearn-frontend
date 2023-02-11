@@ -1,0 +1,54 @@
+.title{
+    display: flex;
+    justify-content: center;
+}
+.title .subtitle{
+    width: 90%;
+    /* background-color: blueviolet; */
+    display: flex;
+    padding-top: 80px;
+}
+.title .subtitle .detail{
+    width: 50%;
+}
+.title .subtitle .detail h3{
+    margin-block-end: 10px;
+}
+.title .subtitle .detail p{
+    display: flex;
+    align-items: center;
+    margin-block-start: 0px;
+}
+.title .subtitle .detail p span{
+    margin-bottom: 0px;
+    margin-left: 5px;
+}
+.title .subtitle .shear-save{
+    width: 50%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    border: 1px solid;
+    gap: 8px;
+}
+.title .subtitle .shear-save input{
+    border: none;
+    outline: none;
+    padding: 4px 8px;
+    border-radius: 4px;
+    background-color: #f2f2f2;
+}
+.title .subtitle .shear-save span{
+    margin: 0;
+    display: inline-flex;
+    cursor: pointer;
+}
+/* .title .subtitle .shear-save a{
+    margin-left: 15px;
+} */
+@media screen and (max-width: 600px){
+    .title .subtitle .detail{
+        width: 100%;
+        margin-bottom: 20px;
+    }
+}

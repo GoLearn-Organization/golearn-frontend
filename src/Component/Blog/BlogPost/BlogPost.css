@@ -1,0 +1,55 @@
+.blogpost{
+    display: flex;
+    justify-content: center;
+}
+.sub-blogpost{
+    width: 95%;
+    display: flex;
+    justify-content: space-around;
+
+    flex-wrap: wrap;
+    position: relative;
+    z-index: 1;
+    padding-top: 100px;
+    padding-bottom: 100px;
+}
+.blogpost .sub-blogpost .card{
+    position: relative;
+    width: 100%;
+    height: fit-content;
+    max-width: 350px;
+    margin-bottom: 50px;
+    position: relative;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    overflow: hidden;
+    box-shadow: 0 20px 50px rgb(0 0 0 / 5%);
+}
+.blogpost .sub-blogpost .card .img-div{
+    margin: 0;
+}
+.blogpost .sub-blogpost .card .img-div img{
+    position: relative;
+    width: 100%;
+}
+.blogpost .sub-blogpost .card .content{
+    margin: 0;
+    padding: 15px 25px 15px 25px;
+}
+.blogpost .sub-blogpost .card .content a h3:hover{
+    color: #007bff;
+}
+.blogpost .sub-blogpost .card .content ul{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    padding-inline-start: 0;
+    list-style: none;
+}
+.blogpost .sub-blogpost .card .content ul li{
+    display: flex;
+    align-items: center;
+}
+.blogpost .sub-blogpost .card .content ul li svg{
+    margin-bottom: -3px;
+}

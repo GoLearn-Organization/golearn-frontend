@@ -1,0 +1,756 @@
+.profilebody {
+  display: flex;
+  justify-content: center;
+  padding-top: 0px;
+  background-color: #f8f9f8;
+}
+.profilebody .sub-profilebody {
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* background-color: blanchedalmond; */
+}
+.profilebody .sub-profilebody .top {
+  width: 100%;
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: center;
+  margin-bottom: 30px;
+  /* background-color: blueviolet; */
+}
+.profilebody .sub-profilebody .top .alert {
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+.profilebody .sub-profilebody .top .alert span {
+  color: #7a7a7a;
+  font-size: 15px;
+}
+.profilebody .sub-profilebody .top .profileDetails {
+  width: 50%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-top: 0;
+}
+.profilebody .sub-profilebody .top .profileDetails .img-div {
+  /* background-color: aqua; */
+  position: relative;
+  margin-right: 10px;
+  border-radius: 50%;
+  background-color: #027dff;
+  /* overflow: hidden; */
+  width: 100px;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 5px solid #027dff;
+}
+.profilebody .sub-profilebody .top .profileDetails .img-div span {
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+  display: grid;
+  place-items: center;
+  border-radius: 100%;
+  width: 24px;
+  height: 24px;
+  background-color: #007bff;
+  cursor: pointer;
+}
+.profilebody .sub-profilebody .top .profileDetails .img-div img {
+  border-radius: 50%;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.profilebody .sub-profilebody .top .profileDetails .text-div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.profilebody .sub-profilebody .top .profileDetails .text-div h5 {
+  margin-block-start: 0;
+  margin-block-end: 3px;
+  line-height: 1.6;
+  color: #606060;
+}
+.profilebody .sub-profilebody .top .profileDetails .text-div h3 {
+  margin-block-start: 3px;
+  margin-block-end: 0;
+  line-height: 1.6;
+  color: #606060;
+}
+
+.profilebody .sub-profilebody .dashboard {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  height: min-content;
+}
+.profilebody .sub-profilebody .dashboard .dashboard-nav {
+  width: 20%;
+  display: flex;
+  justify-content: center;
+  /* background-color: blue; */
+}
+.profilebody .sub-profilebody .dashboard .dashboard-nav ul {
+  width: 400px;
+  max-width: 90%;
+  position: relative;
+  list-style: none;
+  margin: 0px 0 20px;
+  padding: 25px 0;
+  margin-right: 15px;
+  border-right: 1px solid #cdcfd5;
+}
+.profilebody .sub-profilebody .dashboard .dashboard-nav ul li {
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  border-radius: 4px 0px 0px 4px;
+  font-size: 16px;
+  font-weight: 400;
+  cursor: pointer;
+  /* margin-bottom: 10px; */
+  /* background-color: aqua; */
+}
+
+.profilebody .sub-profilebody .dashboard .dashboard-nav ul li:nth-child(6) {
+  margin-top: 20px;
+  border-top: 1px solid #cdcfd5;
+}
+.profilebody .sub-profilebody .dashboard .dashboard-nav ul li span {
+  color: #606060;
+  margin-bottom: 0;
+}
+.profilebody
+  .sub-profilebody
+  .dashboard
+  .dashboard-nav
+  ul
+  li:is(:active, :focus, :hover) {
+  background-color: #007bff;
+}
+.profilebody
+  .sub-profilebody
+  .dashboard
+  .dashboard-nav
+  ul
+  li:is(:active, :focus, :hover)
+  .span {
+  color: #ffffff;
+}
+.profilebody .sub-profilebody .dashboard .dashboard-nav ul #sixth {
+  display: block;
+}
+/* .profilebody .sub-profilebody .dashboard .dashboard-nav ul li:first-child .span{
+    color: #ffffff;
+} */
+
+.profilebody .sub-profilebody .dashboard .dashboard-main {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+}
+.profilebody .sub-profilebody .dashboard .dashboard-main .upload {
+  background: #fff;
+  color: #41454f;
+  border: 1px solid rgba(2, 125, 255, 0.7);
+  width: 96.5%;
+  font-size: 16px;
+  border-radius: 6px;
+  margin-bottom: 16px;
+  display: flex;
+  padding: 16px;
+  /* height: 60px; */
+  justify-content: space-between;
+}
+.profilebody .sub-profilebody .dashboard .dashboard-main .upload .alert {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.profilebody
+  .sub-profilebody
+  .dashboard
+  .dashboard-main
+  .upload
+  .alert__selectedImage {
+  width: 86px;
+  height: 86px;
+  border-radius: 100%;
+  display: inline-flex;
+  overflow: hidden;
+}
+.profilebody
+  .sub-profilebody
+  .dashboard
+  .dashboard-main
+  .upload
+  .alert__selectedImage
+  img {
+  object-fit: fill;
+}
+.profilebody .sub-profilebody .dashboard .dashboard-main .upload .alert span {
+  margin-bottom: 0;
+  color: #41454f;
+  margin-right: 8px;
+}
+.profilebody .sub-profilebody .dashboard .dashboard-main .upload button {
+  padding: 7.5px 13px;
+  color: #027dff;
+  background: rgba(2, 125, 255, 0.15);
+  border: 1px solid rgba(2, 125, 255, 0.3);
+  border-radius: 6px;
+  cursor: pointer;
+  /* margin: 10px 0; */
+  position: relative;
+  height: fit-content;
+}
+.profilebody .sub-profilebody .dashboard .dashboard-main .upload button input {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.profilebody .sub-profilebody .dashboard .dashboard-main h4 {
+  color: #606060;
+  line-height: 1.6;
+  font-weight: 500;
+  font-size: 1.25rem;
+  margin-bottom: 24px;
+}
+
+.profilebody .sub-profilebody .dashboard .dashboard-main .properties {
+  display: flex;
+  /* background-color: blueviolet; */
+  justify-content: space-around;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+.profilebody .sub-profilebody .dashboard .dashboard-main .properties .box {
+  background-color: #ffffff;
+  border: 1px solid #cdcfd5;
+  position: relative;
+  border-radius: 6px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  word-wrap: break-word;
+  text-align: center;
+  width: 300px;
+  /* max-width: 30%; */
+  height: 200px;
+  margin-top: 10px;
+}
+.profilebody
+  .sub-profilebody
+  .dashboard
+  .dashboard-main
+  .properties
+  .box
+  .text-div
+  h1 {
+  margin-bottom: 0;
+  font-weight: 700;
+  color: #606060;
+}
+.profilebody
+  .sub-profilebody
+  .dashboard
+  .dashboard-main
+  .properties
+  .box
+  .text-div
+  p {
+  margin-block-start: 0;
+  margin-block-end: 0;
+  color: #606060;
+}
+.profilebody
+  .sub-profilebody
+  .dashboard
+  .dashboard-main
+  .properties
+  .box
+  .img-div {
+  display: flex;
+  justify-content: center;
+}
+.profilebody
+  .sub-profilebody
+  .dashboard
+  .dashboard-main
+  .properties
+  .box
+  .img-div
+  img {
+  width: 70%;
+}
+.profilebody .sub-profilebody .dashboard .dashboard-main .course-progress{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.profilebody .sub-profilebody .dashboard .profile {
+  /* background-color: #007bff; */
+  display: none;
+  width: 100%;
+}
+.profilebody .sub-profilebody .dashboard .profile .data {
+  margin-top: 10px;
+}
+.profilebody .sub-profilebody .dashboard .profile .data h2 {
+  margin-bottom: 0;
+  font-weight: 700;
+  color: #606060;
+  font-size: 1.5rem;
+}
+.profilebody .sub-profilebody .dashboard .profile .data ul {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  /* background-color: crimson; */
+  padding-inline-start: 0;
+  margin: 30px 0;
+}
+.profilebody .sub-profilebody .dashboard .profile .data ul li {
+  list-style: none;
+  font-size: 18px;
+  color: #606060;
+}
+.profilebody .sub-profilebody .dashboard .profile .data ul li:first-child {
+  width: 30%;
+  /* background-color: #027dff; */
+}
+.profilebody .sub-profilebody .dashboard .profile .data ul li:last-child {
+  text-align: left;
+  width: 70%;
+}
+
+.profilebody .sub-profilebody .dashboard .cart {
+  /* background-color: #027dff; */
+  width: 100%;
+  padding: 10px 20px;
+  display: none;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: space-between;
+}
+.profilebody
+  .sub-profilebody
+  .dashboard
+  .cart
+  .cardContainer
+  .cardContainer__details
+  .tutorInfo {
+  display: none;
+}
+.profilebody .sub-profilebody .dashboard .cart .cardContainer .bottom {
+  display: none;
+}
+.profilebody .sub-profilebody .dashboard .create-course {
+  /* background-color: #027dff; */
+  width: 100%;
+  padding: 10px 20px;
+  display: none;
+}
+.profilebody .sub-profilebody .dashboard .create-course h2 {
+  margin-bottom: 0;
+  font-weight: 700;
+  color: #606060;
+  font-size: 1.5rem;
+  margin-bottom: 30px;
+}
+.profilebody .sub-profilebody .dashboard .create-course form {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+.profilebody .sub-profilebody .dashboard .create-course form label {
+  display: block;
+  margin-bottom: 5px;
+  margin-top: -2px;
+  font-size: 12px;
+  margin-left: 2px;
+}
+.profilebody .sub-profilebody .dashboard .create-course form input {
+  height: 40px;
+  width: 100%;
+  display: block;
+  border: 1px solid #dcdfe5;
+  box-shadow: none;
+  margin-bottom: 20px;
+  border-radius: 4px;
+  background: #ffffff;
+  padding: 0;
+  text-indent: 15px;
+  -webkit-transition: 300ms;
+  transition: 300ms;
+  font-size: 16px;
+}
+.profilebody .sub-profilebody .dashboard .create-course form input:focus {
+  outline: 1px solid #007bff;
+}
+.profilebody .sub-profilebody .dashboard .create-course form select{
+  height: 40px;
+  width: 100%;
+  display: block;
+  border: 1px solid #dcdfe5;
+  box-shadow: none;
+  margin-bottom: 20px;
+  border-radius: 4px;
+  background: #ffffff;
+  padding: 0;
+  text-indent: 15px;
+  -webkit-transition: 300ms;
+  transition: 300ms;
+  font-size: 16px;
+}
+
+.profilebody .sub-profilebody .dashboard .create-course form select:focus {
+  outline: 1px solid #007bff;
+}
+.profilebody .sub-profilebody .dashboard .create-course form .submit {
+  width: fit-content;
+  background-color: #007bff;
+  color: #ffffff;
+  text-indent: 0;
+  padding: 5px 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.profilebody .sub-profilebody .dashboard .create-course form .array-input {
+  display: flex;
+  width: 100%;
+  gap: 20px;
+  /* border: 1px solid; */
+}
+.profilebody .sub-profilebody .dashboard .create-course form .linksPasteInfo {
+  font-size: 14px;
+  text-transform: none;
+}
+.profilebody .sub-profilebody .dashboard .create-course form .linksPasteInfo span {
+  color: #007bff;
+  display: inline-flex;
+  text-transform: none;
+}
+.profilebody .sub-profilebody .dashboard .create-course form .double-array-input {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+  /* border: 1px solid; */
+}
+.profilebody .sub-profilebody .dashboard .create-course form .double-array-input span {
+  width: fit-content;
+  height: 29px;
+  background-color: #007bff;
+  border-radius: 4px;
+  border: 1px solid #007bff;
+  color: #ffffff;
+  text-indent: 0;
+  padding: 5px 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* margin-left: 20px; */
+
+  text-transform: none;
+  margin-top: auto;
+  margin-bottom: 24px;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+}
+.profilebody .sub-profilebody .dashboard .create-course form .double-array-input .each {
+  /* display: flex; */
+  width: 100%;
+}
+.profilebody .sub-profilebody .dashboard .create-course form .double-array-input .each .array-input-course-content {
+  /* display: flex; */
+  width: 100%;
+}
+.profilebody
+  .sub-profilebody
+  .dashboard
+  .create-course
+  form
+  .array-input
+  input, .content-upload-area {
+  width: 100%;
+  height: 40px;
+  display: flex;
+  border: 1px solid #dcdfe5;
+  box-shadow: none;
+  margin-bottom: 20px;
+  border-radius: 4px;
+  background: #ffffff;
+  padding: 0px 12px;
+  text-indent: 15px;
+  -webkit-transition: 300ms;
+  transition: 300ms;
+  font-size: 16px;
+  position: relative;
+}
+.content-upload-area {
+  width: auto;
+  height: auto;
+  max-height: 120px;
+  padding: 9.5px;
+  display: flex;
+  gap: 12px;
+  /* align-items: center; */
+}
+
+.content-upload-area .uploadedContent{
+  max-width: 240px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.content-upload-area .selectedImg {
+  height: 120px;
+  width: 100%;
+  max-width: 240px;
+  display: flex;
+  border-radius: 6px;
+  overflow: hidden;
+  cursor: pointer;
+}
+.content-upload-area .selectedImg:hover img {
+  scale: 0.8;  
+}
+.content-upload-area img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  transition: all 300ms;
+}
+.content-upload-area .changeImg {
+  background-color: #007bff;
+  height: fit-content;
+  border: none;
+  outline: none;
+  color: #fff;
+  padding: 12px;
+  border-radius: 8px;
+  margin: auto 0px;
+  cursor: pointer;
+  position: relative;
+}
+.content-upload-area .changeImg button input {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  cursor: pointer;
+}
+.content-upload-area p {
+  font-size: 12px;
+  margin: 0;
+  display: flex;
+  align-items: center;
+}
+.content-upload-area p :hover {
+  color: #007bff;
+}
+
+.content-upload-area input {
+  opacity: 0;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  cursor: pointer;
+}
+
+.content-upload-area .tapArea {
+  /* border: 1px solid; */
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+.content-upload-area .tapArea input {
+  opacity: 0;
+  position: absolute;
+  width: auto;
+  height: fit-content;
+  /* height: 100%; */
+  /* top: 0;
+  left: 0; */
+  cursor: pointer;
+  /* border: 1px solid; */
+}
+
+.content-upload-area input[type='text'] {
+  opacity: 100;
+  position: relative;
+  width: 100%;
+  max-height: 22px; 
+  margin: 0 !important;
+  /* width: auto; */
+  cursor: auto;
+  border: 1px solid 000;
+}
+.content-upload-area .uploadOptions {
+  white-space: nowrap;
+  margin-left: auto;
+  height: fit-content;
+}
+
+.profilebody .sub-profilebody .dashboard .create-course form .array-input span {
+  width: fit-content;
+  height: 29px;
+  background-color: #007bff;
+  border-radius: 4px;
+  border: 1px solid #007bff;
+  color: #ffffff;
+  text-indent: 0;
+  padding: 5px 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 20px;
+
+  text-transform: none;
+  margin-bottom: 0px;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.profilebody .sub-profilebody .dashboard .pup-up {
+  position: fixed;
+  background-color: #22303fe8;
+  width: 100%;
+  height: 100%;
+  top: 0%;
+  left: 0%;
+  /* display: flex; */
+  justify-content: center;
+  align-items: center;
+  z-index: 5;
+}
+.profilebody .sub-profilebody .dashboard .pup-up .pup-box {
+  width: 80%;
+  height: 200px;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+
+  padding: 20px;
+  text-align: center;
+}
+.profilebody .sub-profilebody .dashboard .pup-up .pup-box .button {
+  display: flex;
+  background-color: #ffffff;
+  padding: 5px;
+}
+.profilebody .sub-profilebody .dashboard .pup-up .pup-box .button button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  margin: 0 10px;
+  cursor: pointer;
+}
+
+.array-input-course-content {
+  display: flex;
+  flex-direction: column;
+  width: 75%;
+  width: 100%;
+}
+.array-input-course-content input {
+  width: 100% !important;
+}
+
+@media screen and (max-width: 1132px) {
+  .profilebody .sub-profilebody .dashboard .dashboard-main {
+    width: 70%;
+  }
+  .profilebody .sub-profilebody .dashboard .dashboard-nav {
+    width: 30%;
+  }
+}
+
+@media screen and (max-width: 994px) {
+  .profilebody .sub-profilebody .dashboard .dashboard-main .properties .box {
+    width: 100%;
+  }
+
+  .profilebody .sub-profilebody .dashboard .dashboard-main .course {
+    flex-direction: column;
+  }
+  .profilebody .sub-profilebody .dashboard .dashboard-main .course .img-div {
+    width: 100%;
+  }
+  .profilebody .sub-profilebody .dashboard .dashboard-main .upload {
+    width: 90%;
+  }
+}
+
+@media screen and (max-width: 756px) {
+  .profilebody .sub-profilebody .dashboard {
+    flex-direction: column;
+    align-items: center;
+  }
+  .profilebody .sub-profilebody .dashboard .dashboard-main {
+    width: 100%;
+  }
+  .profilebody .sub-profilebody .dashboard .dashboard-nav {
+    width: 100%;
+    justify-content: flex-start;
+  }
+  .profilebody .sub-profilebody .dashboard .dashboard-nav ul {
+    border: 1px solid #cdcfd5;
+    min-width: 100%;
+  }
+  .profilebody .sub-profilebody .dashboard .dashboard-nav ul li {
+    border-radius: 0;
+  }
+
+  .profilebody .sub-profilebody .top {
+    width: 100%;
+    flex-direction: column-reverse;
+  }
+  .profilebody .sub-profilebody .top .alert {
+    width: 100%;
+    margin-top: 20px;
+  }
+  .profilebody .sub-profilebody .top .profileDetails {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 502px) {
+  .profilebody .sub-profilebody .dashboard .dashboard-nav {
+    width: 100%;
+    justify-content: space-around;
+    padding: 0;
+  }
+  .profilebody .sub-profilebody .dashboard .dashboard-nav ul {
+    /* width: ; */
+    margin-right: 0px;
+  }
+}

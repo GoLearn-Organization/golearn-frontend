@@ -1,0 +1,19 @@
+.Online{
+    margin-bottom: 20px;
+    width: 95%;
+    padding: 0px 0px;
+}
+.sub-Online{
+    flex-direction: row-reverse;
+    background-color: #ffffff;
+    width: 100%;
+}
+.sub-Online .Sub-Online-img{
+    justify-content: flex-end;
+}
+
+@media screen and (max-width: 992px){
+    .OnlineBlog .sub-OnlineBlog .OnlineBlog-content h2{
+        font-size: 28px;
+    }
+}

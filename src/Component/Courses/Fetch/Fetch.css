@@ -1,0 +1,42 @@
+.fetch{
+    display: flex;
+    justify-content: center;
+}
+.fetch .sub-fetch{
+    width: 95%;
+    /* background-color: blueviolet; */
+    display: flex;
+    justify-content: flex-end;
+    padding: 50px 0;
+}
+.fetch .sub-fetch .sort{
+    margin-right: 2%;
+}
+.fetch .sub-fetch .sort select{
+    -webkit-tap-highlight-color: transparent;
+    background-color: #fff;
+    border-radius: 5px;
+    border: solid 1px rgb(155, 154, 154);
+    color: rgb(155, 154, 154);
+    box-sizing: border-box;
+    clear: both;
+    cursor: pointer;
+    display: block;
+    font-size: 14px;
+    font-weight: 400;
+    height: 42px;
+    line-height: 40px;
+    outline: none;
+    padding-left: 30px;
+    padding-right: 30px;
+    position: relative;
+    text-align: left!important;
+    -webkit-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    white-space: nowrap;
+    width: auto;
+}

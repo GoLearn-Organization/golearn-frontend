@@ -1,0 +1,217 @@
+.contactbody{
+    display: flex;
+    justify-content: center;
+}
+.contactbody .sub-contactbody{
+    width: 95%;
+    display: flex;
+    justify-content: space-around;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+.contactbody .sub-contactbody .content-area{
+    width: 45%;
+    /* background-color: burlywood; */
+}
+.contactbody .sub-contactbody .content-area h2{
+    margin-bottom: 12px;
+    font-size: 36px;
+    font-weight: 800;
+}
+.contactbody .sub-contactbody .content-area p{
+    color: #202020;
+}
+.contactbody .sub-contactbody ul{
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    padding-inline-start: 0;
+}
+.contactbody .sub-contactbody .content-area ul li{
+    /* background-color: darkolivegreen; */
+    list-style: none;
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+}
+.contactbody .sub-contactbody .content-area ul li .icon{
+    margin-right: 20px;
+    width: 75px;
+    height: 85px;
+    background-color: #f8f9f8;
+    border-radius: 3px;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.contactbody .sub-contactbody .content-area ul li .icon:hover{
+    background-color: #027dff;
+}
+.contactbody .sub-contactbody .content-area ul li .icon svg{
+    position: relative;
+    font-size: 50px;
+    /* color: #ffffff; */
+}
+.contactbody .sub-contactbody .content-area ul li .text{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.contactbody .sub-contactbody .content-area ul li .text h3{
+    margin-bottom: 8px;
+    font-size: 24px;
+    font-weight: 800;
+}
+.contactbody .sub-contactbody .content-area ul li .text p{
+    font-weight: 600;
+    max-width: 300px;
+    margin-bottom: 0;
+    margin-top: 2px;
+    color: #202020;
+}
+.contactbody .sub-contactbody .content-area ul li:hover .icon{
+    background-color: #027dff;
+}
+
+
+
+
+
+
+
+.contactbody .sub-contactbody .form{
+    max-width: 45%;
+    background-color: #027dff;
+    margin-left: 0;
+    margin-right: 20px;
+    overflow: hidden;
+    padding: 35px;
+    border-radius: 5px;
+    /* background-image: url(../../assets/img/register-shape.jpg); */
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 450px;
+    padding-bottom: 50px;
+}
+.contactbody .sub-contactbody .form h2{
+    margin-bottom: 0;
+    color: #ffffff;
+    font-size: 33px;
+    font-weight: 800;
+}
+.contactbody .sub-contactbody .form p{
+    color: #EAF4FF;
+    margin-top: 10px;
+    margin-bottom: 0;
+}
+.contactbody .sub-contactbody .form form{
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    margin-top: 25px;
+    justify-content: space-around;
+    align-items: center;
+}
+.contactbody .sub-contactbody .form form input{
+    display: block;
+    width: 100%;
+    border: none;
+    color: #6d6c6c;
+    background-color: #EAF4FF;
+    height: 50px;
+    padding-left: 15px;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+.contactbody .sub-contactbody .form form input:focus{
+    outline: none;
+}
+.contactbody .sub-contactbody .form form textarea{
+    display: block;
+    width: 100%;
+    border: none;
+    color: #6d6c6c !important;
+    background-color: #EAF4FF !important;
+    padding-left: 15px;
+    padding-top: 15px;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: 600;
+    resize: none;
+}
+.contactbody .sub-contactbody .form form textarea:focus{
+    outline: none;
+}
+.contactbody .sub-contactbody .form form small{
+    width: 100%;
+    text-align: left;
+    color: #ffffff;
+    display: flex;
+    margin-top: 10px;
+    word-spacing: 2px;
+}
+.contactbody .sub-contactbody .form form small a{
+    color: #ffffff;
+    text-decoration: underline;
+    margin: 0 3px;
+}
+.contactbody .sub-contactbody .form form small input{
+    width: 15px;
+    height: 15px;
+}
+.contactbody .sub-contactbody .form form .submit{
+    margin-top: 5px;
+    padding: 12px 30px;
+    width: fit-content;
+    border: none;
+    position: relative;
+    display: inline-block;
+    text-align: center;
+    overflow: hidden;
+    z-index: 1;
+    color: #ffffff;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+    border-radius: 5px;
+    font-weight: 700;
+    font-size: 16px;
+    background-color: #221638;
+    cursor: pointer;
+}
+
+
+
+
+
+@media screen and (max-width: 992px){
+    .contactbody .sub-contactbody{
+        flex-direction: column;
+        align-items: center;
+    }
+    .contactbody .sub-contactbody .content-area{
+        width: 90%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: left;
+        text-align: center;
+    }
+    .contactbody .sub-contactbody .form{
+        width: 400px;
+        max-width: 90%;
+        margin-right: 0;
+    }
+    .contactbody .sub-contactbody .content-area ul li{
+        flex-direction: column;
+        align-items: center;
+    }
+    .contactbody .sub-contactbody .content-area ul li .icon{
+        margin-right: 0;
+        margin-bottom: 20px;
+    }
+}

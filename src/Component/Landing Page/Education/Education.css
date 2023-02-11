@@ -1,0 +1,107 @@
+.education{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 70px;
+}
+.education .sub-education{
+    width: 95%;
+    /* background-color: brown; */
+}
+.education .sub-education .education-text{
+    text-align: center;
+    max-width: 720px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 55px;
+}
+.education .sub-education .education-text h2{
+    max-width: 700px;
+    margin-bottom: 0;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 36px;
+    font-weight: 800;
+}
+.education .sub-education .education-text p{
+    max-width: 615px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 12px;
+}
+.education .sub-education .education-cards{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    
+
+    /* position: relative;
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px; */
+}
+.education .sub-education .education-cards .box{
+    text-align: center;
+    margin-bottom: 30px;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    padding: 30px 31px;
+    --e-column-margin-right: 0px;
+    --e-column-margin-left: 0px;
+    max-width: 200px;
+    position: relative;
+    width: 100%;
+    padding-right: 30px;
+    padding-left: 30px;
+    margin-right: 15px;
+    margin-left: 15px;
+    /* border: 1px solid; */
+    transition: all 300ms ease-in;
+}
+.education .sub-education .education-cards .box:hover{
+    transform: translateY(-20px);
+}
+.education .sub-education .education-cards .box .icons{
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+}
+.education .sub-education .education-cards .box .icons img{
+    position: relative;
+    width: 50%;
+}
+.education .sub-education .education-cards .box h3{
+    margin-bottom: 15px;
+    font-size: 22px;
+    font-weight: 800;
+}
+.education .sub-education .education-cards .box p{
+    margin-bottom: 12px;
+
+    color: #606060;
+    margin-bottom: 15px;
+    line-height: 1.7;
+    font-size: 16px;
+}
+.education .sub-education .education-cards .box span{
+    cursor: pointer;
+}
+
+
+@media screen and (max-width: 1221px){
+    .education .sub-education .education-cards .box{
+        max-width: 250px;
+    }
+}
+
+@media screen and (max-width: 1073px){
+    .education .sub-education .education-cards .box{
+        max-width: 300px;
+    }
+}
+
+@media screen and (max-width: 992px){
+    .education .sub-education .education-text h2{
+        font-size: 28px;
+    }
+}

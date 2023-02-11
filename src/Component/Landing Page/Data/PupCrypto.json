@@ -1,0 +1,33 @@
+[
+    {
+        "title": "Advanced Stock Trading Course",
+        "content": "This course is built for persons in search of literacy whilst making consistent profit from the stock market. It is for individuals with a long term perspective with any level of risk appetite.",
+        "author": "TraderHack",
+        "img": "",
+        "details":{
+            "lesson": 6,
+            "students": 55
+        }
+    },
+    {
+        "title": "Decentralized Finance (DeFi) Course",
+        "content": "This course is designed to help you understand decentralised finance and how to navigate and benefit from protocols built for DeFI on the blockchain. ",
+        "author": "Marvelous Macaulay",
+        "img": "",
+        "details":{
+            "lesson": 6,
+            "students": 139
+        },
+        "link": "/DecFinance"
+    },
+    {
+        "title": "FOREX Trading Course",
+        "content": "In this course you will learn everything you need to know to start Trading the Forex Market right now! This is not just a theoretical course, you also get to learn how to use the information to Trade Live in Real Time.",
+        "author": "ABOKI",
+        "img": "",
+        "details":{
+            "lesson": 11,
+            "students": 380
+        }
+    }
+]

@@ -1,0 +1,54 @@
+.title{
+    display: flex;
+    justify-content: center;
+}
+.title .sub-title{
+    width: 90%;
+    /* background-color: blueviolet; */
+    display: flex;
+    padding-top: 80px;
+}
+.title .sub-title .detail{
+    width: 50%;
+}
+.title .sub-title .detail h3{
+    margin-block-end: 10px;
+}
+.title .sub-title .detail p{
+    display: flex;
+    align-items: center;
+    margin-block-start: 0px;
+}
+.title .sub-title .detail p span{
+    margin-bottom: 0px;
+    margin-left: 5px;
+}
+.title .sub-title .shear-save{
+    width: 50%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    border: 1px solid;
+    gap: 8px;
+}
+.title .sub-title .shear-save input{
+    border: none;
+    outline: none;
+    padding: 4px 8px;
+    border-radius: 4px;
+    background-color: #f2f2f2;
+}
+.title .sub-title .shear-save span{
+    margin: 0;
+    display: inline-flex;
+    cursor: pointer;
+}
+/* .title .sub-title .shear-save a{
+    margin-left: 15px;
+} */
+@media screen and (max-width: 600px){
+    .title .sub-title .detail{
+        width: 100%;
+        margin-bottom: 20px;
+    }
+}

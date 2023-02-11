@@ -1,0 +1,164 @@
+.OnlineBlog{
+    display: flex;
+    justify-content: center;
+    /* background-color: brown; */
+    width: 100%;
+    padding-top: 100px;
+}
+.OnlineBlog .sub-OnlineBlog{
+    width: 95%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.OnlineBlog .sub-OnlineBlog .OnlineBlog-content h2 {
+    font-weight: 800 !important;
+}
+.OnlineBlog .sub-OnlineBlog .OnlineBlog-img-div{
+    width: 50%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.OnlineBlog .sub-OnlineBlog .OnlineBlog-img-div img{
+    position: relative;
+    width: 100%;
+
+}
+.OnlineBlog .sub-OnlineBlog .OnlineBlog-content{
+    width: 50%;
+    position: relative;
+    text-align: left;
+}
+.OnlineBlog .sub-OnlineBlog .OnlineBlog-content h2{
+    margin-bottom: 15px;
+}
+.OnlineBlog .sub-OnlineBlog .OnlineBlog-content .online-props{
+    padding-left: 0;
+    list-style-type: none;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    margin-bottom: 0;
+    margin-top: -5px;
+    margin-left: -8px;
+    margin-right: -8px;
+}
+.OnlineBlog .sub-OnlineBlog .OnlineBlog-content .online-props ul{
+    padding-inline-start: 6px;
+    margin-top: 0px;
+}
+.OnlineBlog .sub-OnlineBlog .OnlineBlog-content .online-props ul li{
+    list-style: none;
+    padding-left: 0;
+    padding-right: 40px;
+    display: block;
+    position: relative;
+    font-weight: 600 !important;
+    margin-top: 10px;
+    color: #221638;
+    display: flex !important;
+    gap: 8px;
+}
+
+.OnlineBlog .sub-OnlineBlog .OnlineBlog-content .online-props ul li:hover span {
+    background-color: #fff;
+    border: 2px solid #a3c5bb;
+}
+.OnlineBlog .sub-OnlineBlog .OnlineBlog-content .online-props ul li:hover span svg {
+    color: #a3c5bb;
+}
+
+.OnlineBlog .sub-OnlineBlog .OnlineBlog-content .online-props ul li span {
+    width: 24px;
+    height: 24px;
+    border-radius: 100%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #a3c5bb;
+    border: 2px solid #fff;
+    margin: 0;
+    transition: all 300ms ease;
+}
+.OnlineBlog .sub-OnlineBlog .OnlineBlog-content .online-props ul li span svg {
+    color: #fff;
+}
+/* .OnlineBlog .sub-OnlineBlog .OnlineBlog-content .online-props ul li span svg {
+    stroke: #ffffff !important;
+} */
+/* .OnlineBlog .sub-OnlineBlog .OnlineBlog-content .online-props ul li svg{
+    color: #7A7A7A;
+} */
+.OnlineBlog .sub-OnlineBlog .OnlineBlog-content a{
+    /* padding: 20px 5px 22px 5px; */
+    border-radius: 29px;
+    border: 2px dashed #027dff;
+    width: fit-content;
+    height: fit-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 35px;
+}
+.OnlineBlog .sub-OnlineBlog .OnlineBlog-content a button{
+    border: none;
+    position: relative;
+    display: flex;
+    gap: 5px;
+    text-align: center;
+    overflow: hidden;
+    z-index: 1;
+    color: #ffffff;
+    background-color: #027dff;
+    border-radius: 30px;
+    font-weight: 700;
+    font-size: 16px;
+    padding-left: 35px;
+    padding-right: 35px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    cursor: pointer;
+    margin: 5px 5px 5px 5px;
+    align-items: flex-end;
+}
+.OnlineBlog .sub-OnlineBlog .OnlineBlog-content a button svg{
+    margin-bottom: -3px;
+}
+.OnlineBlog .sub-OnlineBlog .OnlineBlog-content a:hover{
+    background-color: #027dff;
+}
+
+
+
+@media screen and (max-width: 992px){
+    .OnlineBlog{
+        width: 90%;
+        padding: 0;
+    }
+    .OnlineBlog .sub-OnlineBlog{
+        flex-direction: column;
+    }
+    .OnlineBlog .sub-OnlineBlog .OnlineBlog-img-div{
+        width: 100%;
+    }
+    .OnlineBlog .sub-OnlineBlog .OnlineBlog-content{
+        width: 100%;
+        margin-top: 50px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    .OnlineBlog .sub-OnlineBlog .OnlineBlog-content h2{
+        font-size: 28px;
+    }
+}
+@media screen and (max-width: 580PX){
+    .OnlineBlog .sub-OnlineBlog .OnlineBlog-content h2{
+        font-size: 28px;
+    }
+}
