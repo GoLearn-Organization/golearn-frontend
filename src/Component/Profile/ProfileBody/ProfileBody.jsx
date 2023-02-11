@@ -196,8 +196,6 @@ const ProfileBody = ({ setLoginStatus }) => {
     //   det.role === "publisher" && handleinstructorCourse();
     // }
     if (det) {
-      // det.role === "user" && handlecart();
-      // det.role === "publisher" && handleinstructorCourse();
       if (det.role === "user") {
         handlecart();
         return;
