@@ -340,7 +340,8 @@ const Course = () => {
                       time={eachReview.createdAt}
                       review={eachReview.review}
                       star={eachReview.rating}
-                      img={userData.displayPicture}
+                      img={"/avatar.png"}
+                      // img={userData.displayPicture}
                     />
                   ))}
                 </div>
@@ -385,7 +386,8 @@ const Course = () => {
                 <div className="profile">
                   <div className="profileImg">
                     <img
-                      src={userData?.displayPicture ?? "/avatar.png"}
+                      // src={userData?.displayPicture ?? "/avatar.png"}
+                      src={"/avatar.png"}
                       alt=""
                     />
                   </div>
