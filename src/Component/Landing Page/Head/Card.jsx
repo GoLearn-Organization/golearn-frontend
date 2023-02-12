@@ -10,6 +10,15 @@ const Card = ({courseData, hideBottomVisibility}) => {
   let token = localStorage.getItem(MemoryKeys.UserToken);
   // console.log('token: ', token);
 
+  // const[publisherImg, setPublisherImg] = useState();
+
+  // console.log('courseData.publisher: ', courseData.publisher);
+  // useEffect(() => {
+  //   if(courseData && courseData.publisher && !publisherImg) {
+      
+  //   }
+  // }, []);
+
   return (
     <div className="card">
       <div className="card-img">
@@ -20,7 +29,9 @@ const Card = ({courseData, hideBottomVisibility}) => {
       </div>
       <div className="cont">
         <div className="card-prof">
-          <img src={prof} alt="" />
+          <img src={prof} 
+          // src={`${courseData?.courseImage ?? '/logo.png'}`}
+          alt="" />
           <span>
             <Link to="/instructor">{courseData?.publisherName}</Link>
           </span>
