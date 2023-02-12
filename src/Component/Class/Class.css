@@ -1,259 +1,312 @@
-.class{
-    display: flex;
-    justify-content: center;
+.class {
+  display: flex;
+  justify-content: center;
 }
-.class .sub-class{
-    width: 100%;
-    display: flex;
-    justify-content: space-around;
+.class .sub-class {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
 }
-.class .sub-class .content{
-    width: 30%;
-    /* background-color: burlywood; */
-    display: flex;
-    flex-direction: column;
-    background-color: #eff1f6;
-    border-right: 1px solid #E0E2EA;
+.class .sub-class .content {
+  width: 30%;
+  /* background-color: burlywood; */
+  display: flex;
+  flex-direction: column;
+  background-color: #eff1f6;
+  border-right: 1px solid #e0e2ea;
 }
-.class .sub-class .content .content-head{
-    display: flex;
-    align-items: center;
-    padding: 8px 16px;
-    height: 60px;
-    background-color: #fff;
-    border-bottom: 1px solid #E0E2EA;
-    justify-content: space-between !important;
+.class .sub-class .content .content-head {
+  display: flex;
+  align-items: center;
+  padding: 8px 16px;
+  height: 60px;
+  background-color: #fff;
+  border-bottom: 1px solid #e0e2ea;
+  justify-content: space-between !important;
 }
-.class .sub-class .content .content-head span{
-    margin-bottom: 0;
+.class .sub-class .content .course-content-loader-container {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  /* flex-direction: column; */
+  align-items: center;
+  justify-content: center;
 }
-.class .sub-class .video{
-    width: 70%;
-}
-.class .sub-class .video video{
-    width: 100%;
-    height: 380px;
-}
-.class .sub-class .video .video-head{
-    display: flex;
-    flex-shrink: 0;
-    align-items: center;
-    padding: 8px 16px;
-    min-height: 60px;
-    position: relative;
-    background: #027dff;
-    color: #fff;
-}
-.class .sub-class .video .video-head .first p{
-    line-height: 1.6;
-    margin-left: 24px;
-    font-size: 1rem;
-    color: #fff;
-    cursor: default;
-}
-.class .sub-class .video .video-head .second{
-    display: flex !important;
-    margin-left: auto;
-    align-items: center !important;
-    justify-content: flex-end;
-    flex-wrap: wrap;
-}
-.class .sub-class .video .video-head .second span{
-    line-height: 1.6;
-    font-size: .875rem;
-    color: #fff;
-    margin-bottom: 0;
-    cursor: default;
-}
-.class .sub-class .video .video-head .second button{
-    color: #fff;
-    background-color: #fff;
-    margin-left: 20px;
-    display: inline-flex;
-    align-items: center;
-    font-weight: 400;
-    line-height: 1.4;
-    text-align: center;
-    text-decoration: none;
-    vertical-align: middle;
-    user-select: none;
-    background-color: transparent;
-    border: 1px solid #fff;
-    padding: 8px 16px;
-    font-size: 16px;
-    border-radius: 6px;
-    box-sizing: border-box;
-    cursor: pointer;
-    transition: color 200ms ease-in-out, background-color 200ms ease-in-out, border-color 200ms ease-in-out;
-}
-.class .sub-class .video .video-head .second button:hover{
-    color: #027dff;
-    background-color: #fff;
-}
-.class .sub-class .video iframe{
-    width: 100%;
-    min-height: 380px;
-    position: relative;
-}
-.class .sub-class .video .course-details ul{
-    border-bottom: 1px solid #CDCFD5;
-    padding-left: 1em;
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center !important;
-    overflow-wrap: break-word;
-    background-color: #fff;
-}
-.class .sub-class .video .course-details ul li{
-    line-height: 1.6;
-    position: relative;
-    margin: 0;
-    padding: 0;
-    border-bottom: 2px solid transparent;
-    margin-bottom: -1px;
-    font-size: 16px;
-    font-weight: 400;
-    padding: 8px 10px;
-    display: flex;
-    align-items: center;
-    color: #41454f;
-    cursor: pointer;
-}
-.class .sub-class .video .course-details ul li:hover{
-    color: #027dff;
-    border-bottom: 2px solid #027dff;
-}
-.class .sub-class .video .course-details .course-content{
-    margin-block-end: 0;
-    background-color: #fff;
-}
-.class .sub-class .video .course-details .course-content .overview{
-    /* background-color: brown; */
-    padding: 20px 30px;
+.class .sub-class .content .course-content-loader-container .course-content-loader {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-}
-.class .sub-class .video .course-details .course-content .file, .class .sub-class .video .course-details .course-content .review{
-    /* background-color: rgb(45, 138, 138); */
-    padding: 20px 30px;
-    display: none;
-    flex-direction: column;
-    align-items: flex-start;
-}
-.class .sub-class .video .course-details .course-content .overview h2, .class .sub-class .video .course-details .course-content .file h2, .class .sub-class .video .course-details .course-content .review h2{
-    margin-block-end: 0;
-    line-height: 1.6;
-    font-weight: 500;
-    font-size: 1.25rem;
-    color: #606060;
-}
-.class .sub-class .video .course-details .course-content .control{
-    display: flex;
-    flex-shrink: 0;
-    flex-wrap: wrap;
     align-items: center;
-    justify-content: center;
-    gap: 16px;
-    border-bottom: 1px solid rgba(2, 125, 255, 0.15);
-    background-color: rgba(2, 125, 255, 0.1);
-    padding-top: 12px;
-    padding-bottom: 12px;
-    padding-right: 32px;
-    padding-left: 32px;
-    margin-top: auto;
+    transform: translateY(-100px);
+    /* border: 2px solid; */
+    width: fit-content;
 }
-.class .sub-class .video .course-details .course-content .control button{
-    border-color: rgba(2, 125, 255, 0.1);
-    background-color: rgba(2, 125, 255, 0.1);
-    color: #027dff;
-    font-size: 14px;
-    padding: 5px 12px;
+.class .sub-class .content .course-content-loader p {
+  margin: 0;
+  /* transform: translateY(-100px); */
+}
+.class .sub-class .content .course-content-loader svg {
+    animation: loader infinite linear 800ms;  
+}
+@keyframes loader {
+    from{
+        transform: rotateZ(0deg);
+    }
+    to{
+        transform: rotateZ(360deg);
+    }
+}
+.class .sub-class .content .content-head span {
+  margin-bottom: 0;
+}
+.class .sub-class .video {
+  width: 70%;
+}
+.class .sub-class .video video {
+  width: 100%;
+  height: 380px;
+}
+.class .sub-class .video .video-head {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  padding: 8px 16px;
+  min-height: 60px;
+  position: relative;
+  background: #027dff;
+  color: #fff;
+}
+.class .sub-class .video .video-head .first p {
+  line-height: 1.6;
+  margin-left: 24px;
+  font-size: 1rem;
+  color: #fff;
+  cursor: default;
+}
+.class .sub-class .video .video-head .second {
+  display: flex !important;
+  margin-left: auto;
+  align-items: center !important;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+}
+.class .sub-class .video .video-head .second span {
+  line-height: 1.6;
+  font-size: 0.875rem;
+  color: #fff;
+  margin-bottom: 0;
+  cursor: default;
+}
+.class .sub-class .video .video-head .second button {
+  color: #fff;
+  background-color: #fff;
+  margin-left: 20px;
+  display: inline-flex;
+  align-items: center;
+  font-weight: 400;
+  line-height: 1.4;
+  text-align: center;
+  text-decoration: none;
+  vertical-align: middle;
+  user-select: none;
+  background-color: transparent;
+  border: 1px solid #fff;
+  padding: 8px 16px;
+  font-size: 16px;
+  border-radius: 6px;
+  box-sizing: border-box;
+  cursor: pointer;
+  transition: color 200ms ease-in-out, background-color 200ms ease-in-out,
+    border-color 200ms ease-in-out;
+}
+.class .sub-class .video .video-head .second button:hover {
+  color: #027dff;
+  background-color: #fff;
+}
+.class .sub-class .video iframe {
+  width: 100%;
+  min-height: 380px;
+  position: relative;
+}
+.class .sub-class .video .course-details ul {
+  border-bottom: 1px solid #cdcfd5;
+  padding-left: 1em;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center !important;
+  overflow-wrap: break-word;
+  background-color: #fff;
+}
+.class .sub-class .video .course-details ul li {
+  line-height: 1.6;
+  position: relative;
+  margin: 0;
+  padding: 0;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+  font-size: 16px;
+  font-weight: 400;
+  padding: 8px 10px;
+  display: flex;
+  align-items: center;
+  color: #41454f;
+  cursor: pointer;
+}
+.class .sub-class .video .course-details ul li:hover {
+  color: #027dff;
+  border-bottom: 2px solid #027dff;
+}
+.class .sub-class .video .course-details .course-content {
+  margin-block-end: 0;
+  background-color: #fff;
+}
+.class .sub-class .video .course-details .course-content .overview {
+  /* background-color: brown; */
+  padding: 20px 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.class .sub-class .video .course-details .course-content .file,
+.class .sub-class .video .course-details .course-content .review {
+  /* background-color: rgb(45, 138, 138); */
+  padding: 20px 30px;
+  display: none;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.class .sub-class .video .course-details .course-content .overview h2,
+.class .sub-class .video .course-details .course-content .file h2,
+.class .sub-class .video .course-details .course-content .review h2 {
+  margin-block-end: 0;
+  line-height: 1.6;
+  font-weight: 500;
+  font-size: 1.25rem;
+  color: #606060;
+}
+.class .sub-class .video .course-details .course-content .control {
+  display: flex;
+  flex-shrink: 0;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  border-bottom: 1px solid rgba(2, 125, 255, 0.15);
+  background-color: rgba(2, 125, 255, 0.1);
+  padding-top: 12px;
+  padding-bottom: 12px;
+  padding-right: 32px;
+  padding-left: 32px;
+  margin-top: auto;
+}
+.class .sub-class .video .course-details .course-content .control button {
+  border-color: rgba(2, 125, 255, 0.1);
+  background-color: rgba(2, 125, 255, 0.1);
+  color: #027dff;
+  font-size: 14px;
+  padding: 5px 12px;
 
-    display: inline-flex;
-    align-items: center;
-    font-weight: 400;
-    line-height: 1.4;
-    text-align: center;
-    user-select: none;
-    padding: 3px 16px;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: color 200ms ease-in-out, background-color 200ms ease-in-out, border-color 200ms ease-in-out;
+  display: inline-flex;
+  align-items: center;
+  font-weight: 400;
+  line-height: 1.4;
+  text-align: center;
+  user-select: none;
+  padding: 3px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: color 200ms ease-in-out, background-color 200ms ease-in-out,
+    border-color 200ms ease-in-out;
 }
-.class .sub-class .video .course-details .course-content .control button:hover{
-    background-color: #221638;
-    border: 1px solid #221638;
-    color: #fff;
+.class .sub-class .video .course-details .course-content .control button:hover {
+  background-color: #221638;
+  border: 1px solid #221638;
+  color: #fff;
 }
-.class .sub-class .video .course-details .course-content .review form{
-    width: 100%;
-    border-bottom: 1px solid #CDCFD5;
-    padding-bottom: 20px;
-    color: rgb(226, 194, 12);
+.class .sub-class .video .course-details .course-content .review form {
+  width: 100%;
+  border-bottom: 1px solid #cdcfd5;
+  padding-bottom: 20px;
+  color: rgb(226, 194, 12);
 }
-.class .sub-class .video .course-details .course-content .review form textarea{
-    width: 97.5%;
-    height: 50px;
-    resize: none;
-    border: 1px solid #CDCFD5;
-    padding: 10px 10px;
-    border-radius: 3px;
-    position: relative;
+.class .sub-class .video .course-details .course-content .review form textarea {
+  width: 97.5%;
+  height: 50px;
+  resize: none;
+  border: 1px solid #cdcfd5;
+  padding: 10px 10px;
+  border-radius: 3px;
+  position: relative;
 }
-.class .sub-class .video .course-details .course-content .review form textarea:focus{
-    outline: 1px solid #027dff;
+.class
+  .sub-class
+  .video
+  .course-details
+  .course-content
+  .review
+  form
+  textarea:focus {
+  outline: 1px solid #027dff;
 }
-.class .sub-class .video .course-details .course-content .review form input{
-    background-color: #027dff;
-    border: 1px solid #027dff;
-    border-radius: 5px;
-    padding: 10px 20px;
-    color: #fff;
-    cursor: pointer;
-    font-size: 1rem;
-    margin-top: 10px;
-    float: right;
+.class .sub-class .video .course-details .course-content .review form input {
+  background-color: #027dff;
+  border: 1px solid #027dff;
+  border-radius: 5px;
+  padding: 10px 20px;
+  color: #fff;
+  cursor: pointer;
+  font-size: 1rem;
+  margin-top: 10px;
+  float: right;
 }
-.class .sub-class .video .course-details .course-content .review form #star{
-    width: 82px;
-    background-color: transparent;
-    border: 1px solid #CDCFD5;
-    float: left;
-    color: #41454f;
+.class .sub-class .video .course-details .course-content .review form #star {
+  width: 82px;
+  background-color: transparent;
+  border: 1px solid #cdcfd5;
+  float: left;
+  color: #41454f;
 }
-.class .sub-class .video .course-details .course-content .review form #star:focus{
-    outline: 1px solid #027dff;
+.class
+  .sub-class
+  .video
+  .course-details
+  .course-content
+  .review
+  form
+  #star:focus {
+  outline: 1px solid #027dff;
 }
-.class .sub-class .video .course-details .course-content .review .comments{
-    display: flex;
-    flex-direction: column-reverse;
-    align-items: center;
-    width: 100%;
+.class .sub-class .video .course-details .course-content .review .comments {
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  width: 100%;
 }
-.class .sub-class .video .course-details .course-content .review .comments .studentrev:nth-last-child(odd){
-    background-color: #F4F6F9;
+.class
+  .sub-class
+  .video
+  .course-details
+  .course-content
+  .review
+  .comments
+  .studentrev:nth-last-child(odd) {
+  background-color: #f4f6f9;
 }
-
-
-
-
 
 @media screen and (max-width: 980px) {
-.class .sub-class{
+  .class .sub-class {
     flex-direction: column;
-}
-.class .sub-class .content{
+  }
+  .class .sub-class .content {
     width: 100%;
-}
-.class .sub-class .video{
+  }
+  .class .sub-class .video {
     width: 100%;
-}
-.class .sub-class .video .video-head .first p{
+  }
+  .class .sub-class .video .video-head .first p {
     margin-left: 0px;
-    font-size: .7rem;
-}
+    font-size: 0.7rem;
+  }
 }

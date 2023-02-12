@@ -241,6 +241,23 @@
     justify-content: center;
     /* border: 1px solid #000; */
 }
+.DecFinanceDetails .sub-DecFinanceDetails .main-detail .img-div .img-div-loader{
+    width: 100%;
+    height: 100%;
+    display: grid;
+    place-items: center;
+}
+.DecFinanceDetails .sub-DecFinanceDetails .main-detail .img-div .img-div-loader svg{
+    animation: loader infinite linear 800ms;  
+}
+@keyframes loader {
+    from{
+        transform: rotateZ(0deg);
+    }
+    to{
+        transform: rotateZ(360deg);
+    }
+}
 .DecFinanceDetails .sub-DecFinanceDetails .main-detail .img-div img{
     position: relative;
     width: 100%;

@@ -364,7 +364,9 @@ const ProfileBody = ({ setLoginStatus }) => {
   const handleCreateCourse = async (e) => {
     e.preventDefault();
     setCourseContentResponseMessage("");
-    setResponseMessage("");
+
+    document.getElementById("message").style.color = "#007bff";
+    setResponseMessage(`${courseTitle} course creation in progress.`);
 
     // console.log("Form inputs: ", {
     //   courseTitle,
@@ -432,13 +434,13 @@ const ProfileBody = ({ setLoginStatus }) => {
 
       localStorage.removeItem(MemoryKeys.Courses);
 
+      document.getElementById("message").style.color = "green";
       setResponseMessage(
         `You have successfully created ${courseTitle} course.`
       );
       // document.getElementById(
       //   "message"
       // ).innerHTML = `You have successfully created ${courseTitle} course.`;
-      document.getElementById("message").style.color = "green";
     } else if (result.success === false) {
       setResponseMessage(
         "An error occured, please fill in all fields, and try again."
@@ -723,8 +725,25 @@ const ProfileBody = ({ setLoginStatus }) => {
       return;
     }
     if (!isVideoCourseContentUploadType) {
-      youtubeValuefunc([...youtubeValue, e.target.value]);
+      /**
+       * 
+       * @param {*} youtubeLink is the sender of the youtube link value
+       * @returns the replaced youtube link
+       */
+      function convertToEmbedLink(youtubeLink) {
+        return youtubeLink.replace("youtu.be", "www.youtube.com/embed");
+      }
+
+      // Assign the converted link to a variable
+      let convertedLink = convertToEmbedLink(e.target.value);
+
+      // Updated the state to save youtube value 
+      youtubeValuefunc([...youtubeValue, convertedLink]);
+
+      // Set the course content value of that index to undefined 
       cofunc([...courseContentValues, undefined]);
+
+      // console.log(youtubeValue);
 
       return;
     }
