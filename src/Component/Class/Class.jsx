@@ -331,9 +331,11 @@ const Class = () => {
           {/* {mode} */}
           {courseContent.map((each, index) => (
             <Module
-              module={1}
+              module={`Module ${'0' + (index + 1)}`}
               title={each.title}
               time={each.time}
+              setCurrentVideoIndex={setCurrentVideoIndex}
+              index={index}
               key={index}
             />
           ))}
