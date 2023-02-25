@@ -1,44 +1,64 @@
-import React from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { BiBookAlt } from "react-icons/bi";
 import { HiUserGroup } from "react-icons/hi";
-import prof from "./img/Group 1.png";
 import MemoryKeys from "../../models/MemoryKeys";
 
-const Card = ({courseData, hideBottomVisibility}) => {
+const Card = ({ courseData, hideBottomVisibility }) => {
   // console.log('CARD PROPS: ', {courseData, hideBottomVisibility});
   let token = localStorage.getItem(MemoryKeys.UserToken);
   // console.log('token: ', token);
 
-  // const[publisherImg, setPublisherImg] = useState();
+  const [publisherImg, setPublisherImg] = useState();
 
-  // console.log('courseData.publisher: ', courseData.publisher);
-  // useEffect(() => {
-  //   if(courseData && courseData.publisher && !publisherImg) {
-      
-  //   }
-  // }, []);
+  courseData && console.log("courseData.publisher: ", courseData.publisher);
+
+  /**
+   * Function to get a publisher
+   */
+  const handleFetchPublisher = useCallback(async (courseId) => {
+    let result = await fetch(
+      `${process.env.REACT_APP_SERVER_URL}/api/v1/user/publishers/${courseId}`,
+      {
+        method: "get",
+      }
+    );
+    result = await result.json();
+    console.log(result);
+    setPublisherImg(result.data.displayPicture);
+  }, []);
+
+  useEffect(() => {
+    if (courseData && courseData.publisher && !publisherImg) {
+      handleFetchPublisher(courseData.publisher);
+    }
+  }, [courseData, handleFetchPublisher, publisherImg]);
 
   return (
     <div className="card">
       <div className="card-img">
-        <img 
-        // src={forex} 
-        src={`${courseData?.courseImage ?? '/logo.png'}`}
-        alt="" />
+        <img
+          // src={forex}
+          src={`${courseData?.courseImage ?? "/logo.png"}`}
+          alt=""
+        />
       </div>
       <div className="cont">
         <div className="card-prof">
-          <img src={prof} 
-          // src={`${courseData?.courseImage ?? '/logo.png'}`}
-          alt="" />
+          <div className="img-area">
+            <img
+              // src={prof}
+              src={`${publisherImg ?? "/logo.png"}`}
+              alt=""
+            />
+          </div>
           <span>
             <Link to="/instructor">{courseData?.publisherName}</Link>
           </span>
         </div>
         <div className="card-content">
           <h1>
-            <Link to={token ? `/course/${courseData?._id}` : '/login'}>
+            <Link to={token ? `/course/${courseData?._id}` : "/login"}>
               {courseData?.courseTitle}
             </Link>
           </h1>

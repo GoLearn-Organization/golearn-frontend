@@ -39,7 +39,7 @@ function LandingPage() {
         return;
       }
 
-      let result = await fetch("https://golearn.up.railway.app/api/v1/course", {
+      let result = await fetch(`${process.env.REACT_APP_SERVER_URL}/api/v1/course`, {
         method: "get",
         credencials: "include",
       });

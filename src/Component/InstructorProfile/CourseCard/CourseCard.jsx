@@ -24,7 +24,7 @@ const CourseCard = (props) => {
       },
     };
     let result = await fetch(
-      `https://golearn.up.railway.app/api/v1/course/${props.id}`,
+      `${process.env.REACT_APP_SERVER_URL}/api/v1/course/${props.id}`,
       config,
       {
         credentials: "include",

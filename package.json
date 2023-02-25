@@ -2,6 +2,7 @@
   "name": "forged",
   "version": "0.1.0",
   "private": true,
+  "proxy": "https://golearn.up.railway.app",
   "dependencies": {
     "@emailjs/browser": "^3.10.0",
     "@testing-library/jest-dom": "^5.16.4",

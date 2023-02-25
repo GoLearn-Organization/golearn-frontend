@@ -23,7 +23,8 @@ import Course from "./Course/[id]";
 import MemoryKeys from "./models/MemoryKeys";
 
 function Component() {
-  const API = "https://golearn.up.railway.app/api/v1/auth/";
+  // const API = "https://golearn.up.railway.app/api/v1/auth/";
+  console.log('process.env.REACT_APP_SERVER_URL: ', process.env.REACT_APP_SERVER_URL);
 
   const [loginStatus, setLoginStatus] = useState(false);
 
@@ -34,7 +35,7 @@ function Component() {
       return;
     }
 
-    let result = await fetch("https://golearn.up.railway.app/api/v1/course", {
+    let result = await fetch(`${process.env.REACT_APP_SERVER_URL}/api/v1/course`, {
       method: "get",
       credencials: "include",
     });
@@ -112,7 +113,7 @@ function Component() {
             <Route path="/forget" element={<Forget />} />
             <Route path="class/:id" element={<Class />} />
             <Route path="/publisher" element={<PublisherReg />} />
-            <Route path={`${API}resetpassword/:token`} element={<Reset />} />
+            <Route path={`${process.env.REACT_APP_SERVER_URL}resetpassword/:token`} element={<Reset />} />
             <Route path="*" element={<Error />} />
           </Route>
         </Routes>

@@ -44,7 +44,7 @@ const ProfileCard = (props) => {
 
     async function fetchCourse() {
       let result = await fetch(
-        `https://golearn.up.railway.app/api/v1/course/${data.courseId}`,
+        `${process.env.REACT_APP_SERVER_URL}/api/v1/course/${data.courseId}`,
         {
           method: "get",
         }

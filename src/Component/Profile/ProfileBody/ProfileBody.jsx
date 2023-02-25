@@ -20,11 +20,14 @@ const ProfileBody = ({ setLoginStatus }) => {
   const [editProfilePicture, setEditProfilePicture] = useState(false);
 
   const fetchCourses = async () => {
-    let result = await fetch("https://golearn.up.railway.app/api/v1/course", {
-      method: "get",
-      mode: "cors",
-      credencials: "include",
-    });
+    let result = await fetch(
+      `${process.env.REACT_APP_SERVER_URL}/api/v1/course`,
+      {
+        method: "get",
+        mode: "cors",
+        credencials: "include",
+      }
+    );
     result = await result.json();
 
     const data = result.data;
@@ -57,7 +60,7 @@ const ProfileBody = ({ setLoginStatus }) => {
       },
     };
     let result = await fetch(
-      "https://golearn.up.railway.app/api/v1/auth",
+      `${process.env.REACT_APP_SERVER_URL}/api/v1/auth`,
       config,
       {
         method: "get",
@@ -86,7 +89,7 @@ const ProfileBody = ({ setLoginStatus }) => {
     };
 
     let result = await fetch(
-      "https://golearn.up.railway.app/api/v1/cart",
+      `${process.env.REACT_APP_SERVER_URL}/api/v1/cart`,
       config,
       {
         method: "get",
@@ -146,7 +149,7 @@ const ProfileBody = ({ setLoginStatus }) => {
     }
 
     let result = await fetch(
-      `https://golearn.up.railway.app/api/v1/course/publisher/${userId}`,
+      `${process.env.REACT_APP_SERVER_URL}/api/v1/course/publisher/${userId}`,
       {
         method: "get",
         headers: {
@@ -362,6 +365,8 @@ const ProfileBody = ({ setLoginStatus }) => {
     useState();
 
   const handleCreateCourse = async (e) => {
+    localStorage.removeItem(MemoryKeys.Courses);
+
     e.preventDefault();
     setCourseContentResponseMessage("");
 
@@ -401,25 +406,28 @@ const ProfileBody = ({ setLoginStatus }) => {
 
     // return;
 
-    let result = await fetch("https://golearn.up.railway.app/api/v1/course", {
-      method: "post",
-      credencials: "include",
-      body: JSON.stringify({
-        courseTitle,
-        courseDescription,
-        courseDuration,
-        category,
-        whatToLearn,
-        requirement,
-        audience,
-        materials,
-        tags,
-      }),
-      headers: {
-        "content-Type": "application/json",
-        Authorization: "Bearer " + localStorage.getItem(MemoryKeys.UserToken),
-      },
-    });
+    let result = await fetch(
+      `${process.env.REACT_APP_SERVER_URL}/api/v1/course`,
+      {
+        method: "post",
+        credencials: "include",
+        body: JSON.stringify({
+          courseTitle,
+          courseDescription,
+          courseDuration,
+          category,
+          whatToLearn,
+          requirement,
+          audience,
+          materials,
+          tags,
+        }),
+        headers: {
+          "content-Type": "application/json",
+          Authorization: "Bearer " + localStorage.getItem(MemoryKeys.UserToken),
+        },
+      }
+    );
 
     result = await result.json();
     console.warn(result);
@@ -506,7 +514,7 @@ const ProfileBody = ({ setLoginStatus }) => {
           );
 
       let result = await fetch(
-        `https://golearn.up.railway.app/api/v1/course/uploadcontent/${courseId}`,
+        `${process.env.REACT_APP_SERVER_URL}/api/v1/course/uploadcontent/${courseId}`,
         {
           method: "post",
           credencials: "include",
@@ -529,6 +537,7 @@ const ProfileBody = ({ setLoginStatus }) => {
           : setCourseContentResponseMessage(
               `Course content ${i + 1} uploaded!`
             );
+        fetchCourses();
       } else {
         document.getElementById("courseContentResponseMessage").style.color =
           "red";
@@ -550,7 +559,7 @@ const ProfileBody = ({ setLoginStatus }) => {
     console.log("data: ", data);
 
     let result = await fetch(
-      `https://golearn.up.railway.app/api/v1/course/uploadcourseimage/${courseId}`,
+      `${process.env.REACT_APP_SERVER_URL}/api/v1/course/uploadcourseimage/${courseId}`,
       {
         method: "post",
         credencials: "include",
@@ -726,7 +735,7 @@ const ProfileBody = ({ setLoginStatus }) => {
     }
     if (!isVideoCourseContentUploadType) {
       /**
-       * 
+       *
        * @param {*} youtubeLink is the sender of the youtube link value
        * @returns the replaced youtube link
        */
@@ -737,10 +746,10 @@ const ProfileBody = ({ setLoginStatus }) => {
       // Assign the converted link to a variable
       let convertedLink = convertToEmbedLink(e.target.value);
 
-      // Updated the state to save youtube value 
+      // Updated the state to save youtube value
       youtubeValuefunc([...youtubeValue, convertedLink]);
 
-      // Set the course content value of that index to undefined 
+      // Set the course content value of that index to undefined
       cofunc([...courseContentValues, undefined]);
 
       // console.log(youtubeValue);
@@ -762,7 +771,7 @@ const ProfileBody = ({ setLoginStatus }) => {
     console.log("data: ", data);
 
     let result = await fetch(
-      "https://golearn.up.railway.app/api/v1/auth/uploaddisplaypicture",
+      `${process.env.REACT_APP_SERVER_URL}/api/v1/auth/uploaddisplaypicture`,
       {
         method: "post",
         credencials: "include",

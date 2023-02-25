@@ -9,7 +9,7 @@ const Instructors = () => {
     const [instruct, instructFunc] = useState([]);
     const handleinstructor = async () => {
         let result = await fetch(
-          'https://golearn.up.railway.app/api/v1/user/publishers',
+          `${process.env.REACT_APP_SERVER_URL}/api/v1/user/publishers`,
           {
             method: "get",
             credencials: "include",

@@ -7,18 +7,22 @@ import { useState } from "react";
 import MemoryKeys from "../../models/MemoryKeys";
 
 const PupCourse = ({ landingCourses }) => {
-  const [course, setCourse] = useState();
+  // const [course, setCourse] = useState();
+  let course;
 
   const fetchCourses = useCallback(async () => {
     if (course) {
       return;
     }
 
-    let result = await fetch("https://golearn.up.railway.app/api/v1/course", {
+    let result = await fetch(`${process.env.REACT_APP_SERVER_URL}/api/v1/course`, {
       method: "get",
       credencials: "include",
     });
     result = await result.json();
+
+    course = result.data;
+    // setCourse(result.data);
 
     const data = result.data;
 
@@ -26,13 +30,17 @@ const PupCourse = ({ landingCourses }) => {
 
     localStorage.setItem(MemoryKeys.Courses, JSON.stringify(data));
 
-    setCourse(data);
+    
+    course = result.data;
+    // setCourse(data);
   }, [course]);
 
   useEffect(() => {
     if (!course) {
       fetchCourses();
     }
+    console.log('COURSE DATA: ', course);
+
   }, [course, fetchCourses]);
 
   return (

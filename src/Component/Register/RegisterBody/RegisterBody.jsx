@@ -9,7 +9,7 @@ const RegisterBody = ({ userRegistration, setUserRegistration }) => {
   const [userName, ufunc] = React.useState("");
   const [email, efunc] = React.useState("");
   const [password, pfunc] = React.useState("");
-  const [role, selRole] = React.useState("");
+  const [role, selRole] = React.useState("publisher");
   const [confirm, cfunc] = React.useState("");
 
   const navigate = useNavigate();
@@ -21,7 +21,7 @@ const RegisterBody = ({ userRegistration, setUserRegistration }) => {
   const handleUserRegistration = async (e) => {
     e.preventDefault();
 
-    let result = await fetch("https://golearn.up.railway.app/api/v1/auth", {
+    let result = await fetch(`${process.env.REACT_APP_SERVER_URL}/api/v1/auth`, {
       method: "post",
       credencials: "include",
       body: JSON.stringify({ firstName, lastName, userName, email, password }),
@@ -69,7 +69,7 @@ const RegisterBody = ({ userRegistration, setUserRegistration }) => {
 
     e.preventDefault();
 
-    let result = await fetch("https://golearn.up.railway.app/api/v1/auth", {
+    let result = await fetch(`${process.env.REACT_APP_SERVER_URL}/api/v1/auth`, {
       method: "post",
       credencials: "include",
       body: JSON.stringify({
@@ -222,7 +222,8 @@ const RegisterBody = ({ userRegistration, setUserRegistration }) => {
             <input
               type="text"
               placeholder="Role"
-              onChange={(e) => selRole(e.target.value)}
+              value='Publisher'
+              // onChange={(e) => selRole(e.target.value)}
               required
             />
 
