@@ -28,7 +28,7 @@ const Course = () => {
     }
 
     let result = await fetch(
-      `${process.env.REACT_APP_SERVER_URL}/api/v1/course/${id}`,
+      `https://golearn.up.railway.app/api/v1/course/${id}`,
       {
         method: "get",
       }
@@ -48,7 +48,7 @@ const Course = () => {
     }
 
     let result = await fetch(
-      `${process.env.REACT_APP_SERVER_URL}/api/v1/course/${id}/reviews`,
+      `https://golearn.up.railway.app/api/v1/course/${id}/reviews`,
       {
         method: "get",
       }
@@ -121,7 +121,7 @@ const Course = () => {
       },
     };
     let result = await fetch(
-      `${process.env.REACT_APP_SERVER_URL}/api/v1/auth`,
+      "https://golearn.up.railway.app/api/v1/auth",
       config,
       {
         method: "get",
