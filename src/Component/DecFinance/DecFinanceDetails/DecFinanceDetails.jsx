@@ -117,7 +117,7 @@ const DecFinanceDetails = (props) => {
   let [revew, refunc] = useState([]);
   const handlereview = async () => {
     let result = await fetch(
-      `https://golearn.up.railway.app/api/v1/course/${data._id}/reviews`,
+      `${process.env.REACT_APP_SERVER_URL}/api/v1/course/${data._id}/reviews`,
       {
         method: "get",
       }

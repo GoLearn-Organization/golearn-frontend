@@ -9,7 +9,7 @@ const Reset = () => {
 
     let [password, pfunc] = React.useState('')
     let [confirm, cfunc] = React.useState('')
-    let URL = 'https://golearn.up.railway.app/api/v1/auth/resetpassword/'
+    let URL = `${process.env.REACT_APP_SERVER_URL}/api/v1/auth/resetpassword/`
     let message = document.getElementById("message")
 
     const handleForget = async (e) =>{

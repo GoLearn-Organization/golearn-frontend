@@ -26,7 +26,7 @@ const Class = () => {
     localStorage.removeItem(MemoryKeys.SelectedCourseContent);
 
     let result = await fetch(
-      `https://golearn.up.railway.app/api/v1/course/${selectedCourseId}`,
+      `${process.env.REACT_APP_SERVER_URL}/api/v1/course/${selectedCourseId}`,
       {
         method: "get",
       }
@@ -219,7 +219,7 @@ const Class = () => {
       return;
     }
     let result = await fetch(
-      `https://golearn.up.railway.app/api/v1/course/${selectedCourseId}/reviews`,
+      `${process.env.REACT_APP_SERVER_URL}/api/v1/course/${selectedCourseId}/reviews`,
       {
         method: "get",
       }
@@ -237,7 +237,7 @@ const Class = () => {
   const handlereview = async (e) => {
     e.preventDefault();
     let result2 = await fetch(
-      `https://golearn.up.railway.app/api/v1/course/${selectedCourseId}/reviews`,
+      `${process.env.REACT_APP_SERVER_URL}/api/v1/course/${selectedCourseId}/reviews`,
       {
         method: "post",
         body: JSON.stringify({ review, rating }),

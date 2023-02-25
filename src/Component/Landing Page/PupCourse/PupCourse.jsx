@@ -14,25 +14,31 @@ const PupCourse = ({ landingCourses }) => {
       return;
     }
 
-    let result = await fetch("https://golearn.up.railway.app/api/v1/course", {
-      method: "get",
-      credencials: "include",
-    });
+    let result = await fetch(
+      `${process.env.REACT_APP_SERVER_URL}/api/v1/course`,
+      {
+        method: "get",
+        credencials: "include",
+      }
+    );
     result = await result.json();
-
+    
     const data = result.data;
+    
+    setCourse(data);
 
     // console.log("RESULT: ", data);
 
     localStorage.setItem(MemoryKeys.Courses, JSON.stringify(data));
 
-    setCourse(data);
+    data && setCourse(data);
   }, [course]);
 
   useEffect(() => {
     if (!course) {
       fetchCourses();
     }
+    console.log("COURSE DATA: ", course);
   }, [course, fetchCourses]);
 
   return (

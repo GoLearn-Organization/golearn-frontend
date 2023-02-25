@@ -18,7 +18,7 @@ const Login = ({ setLoginStatus }) => {
     loadfun(true);
     e.preventDefault();
     let result = await fetch(
-      "https://golearn.up.railway.app/api/v1/auth/login",
+      `${process.env.REACT_APP_SERVER_URL}/api/v1/auth/login`,
       {
         method: "post",
         credencials: "include",

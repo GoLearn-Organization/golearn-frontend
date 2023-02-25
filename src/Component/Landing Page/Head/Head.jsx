@@ -18,7 +18,7 @@ const Head = ({ landingCourses }) => {
   const [data2, setData2] = useState();
 
   const fetchCourses = useCallback(async () => {
-    let result = await fetch("https://golearn.up.railway.app/api/v1/course", {
+    let result = await fetch(`${process.env.REACT_APP_SERVER_URL}/api/v1/course`, {
       method: "get",
       credencials: "include",
     });
@@ -30,19 +30,23 @@ const Head = ({ landingCourses }) => {
 
     localStorage.setItem(MemoryKeys.Courses, JSON.stringify(data));
 
-    let personalDevelopmentCourses = data.filter(
-      (word) => word.category === "Personal Development"
+    let affliateMarketingCourses = data.filter(
+      (word) => word.category === "Affiliate Marketing"
     );
+    // let personalDevelopmentCourses = data.filter(
+    //   (word) => word.category === "Personal Development"
+    // );
     let iTCourses = data.filter((word) => word.category === "Design and IT");
 
     console.log("filtered courses: ", {
-      "personal development courses": personalDevelopmentCourses,
+      // "personal development courses": personalDevelopmentCourses,
+      "Affiliate Marketing courses": affliateMarketingCourses,
       iTCourses: iTCourses,
     });
 
     setData1(
-      personalDevelopmentCourses[
-        Math.floor(Math.random() * personalDevelopmentCourses.length)
+      affliateMarketingCourses[
+        Math.floor(Math.random() * affliateMarketingCourses.length)
       ]
     );
     setData2(iTCourses[Math.floor(Math.random() * iTCourses.length)]);
@@ -51,22 +55,25 @@ const Head = ({ landingCourses }) => {
   useEffect(() => {
     if (course) {
       // const marketingCourses = course.filter(word => word.category === "Marketing");
-      let personalDevelopmentCourses = course.filter(
-        (word) => word.category === "Personal Development"
+      // let personalDevelopmentCourses = course.filter(
+      //   (word) => word.category === "Personal Development"
+      // );
+      let affliateMarketingCourses = course.filter(
+        (word) => word.category === "Affiliate Marketing"
       );
       let iTCourses = course.filter(
         (word) => word.category === "Design and IT"
       );
 
       console.log("filtered courses: ", {
-        "personal development courses": personalDevelopmentCourses,
+        "Affiliate Marketing courses": affliateMarketingCourses,
         iTCourses: iTCourses,
       });
 
       if (!data1 && !data2) {
         setData1(
-          personalDevelopmentCourses[
-            Math.floor(Math.random() * personalDevelopmentCourses.length)
+          affliateMarketingCourses[
+            Math.floor(Math.random() * affliateMarketingCourses.length)
           ]
         );
 
@@ -77,8 +84,8 @@ const Head = ({ landingCourses }) => {
 
       if (!data1) {
         setData1(
-          personalDevelopmentCourses[
-            Math.floor(Math.random() * personalDevelopmentCourses.length)
+          affliateMarketingCourses[
+            Math.floor(Math.random() * affliateMarketingCourses.length)
           ]
         );
 
