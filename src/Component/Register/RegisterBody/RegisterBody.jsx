@@ -9,7 +9,8 @@ const RegisterBody = ({ userRegistration, setUserRegistration }) => {
   const [userName, ufunc] = React.useState("");
   const [email, efunc] = React.useState("");
   const [password, pfunc] = React.useState("");
-  const [role, selRole] = React.useState("publisher");
+  // const [role, selRole] = React.useState("publisher");
+  const role = "publisher";
   const [confirm, cfunc] = React.useState("");
 
   const navigate = useNavigate();

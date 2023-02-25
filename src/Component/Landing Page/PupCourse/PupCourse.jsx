@@ -3,7 +3,7 @@ import "./PupCourse.css";
 import Card from "./Card.jsx";
 // import ClassesData from '../../Courses/Data/ClassesData'
 import { Link } from "react-router-dom";
-import { useState } from "react";
+// import { useState } from "react";
 import MemoryKeys from "../../models/MemoryKeys";
 
 const PupCourse = ({ landingCourses }) => {
