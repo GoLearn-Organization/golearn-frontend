@@ -13,13 +13,9 @@ const RegisterTop = ({ userRegistration, setUserRegistration }) => {
               : "Publisher Registration"}
           </h1>
           {userRegistration ? (
-            <p onClick={() => setUserRegistration(false)}>
-              Register as a publisher
-            </p>
+            <p onClick={() => setUserRegistration(false)}>Register as a publisher</p>
           ) : (
-            <p onClick={() => setUserRegistration(true)}>
-              Register as a student
-            </p>
+            <p onClick={() => setUserRegistration(true)}>Register as a student</p>
           )}
           <span>
             <a href="/">Home</a> /
@@ -27,9 +23,6 @@ const RegisterTop = ({ userRegistration, setUserRegistration }) => {
               <Link to="/register"> Registration</Link>
             </a>
           </span>
-          <p className="homeRedirect">
-            <Link to="/">Back to homepage</Link>
-          </p>
         </div>
       </div>
     </div>

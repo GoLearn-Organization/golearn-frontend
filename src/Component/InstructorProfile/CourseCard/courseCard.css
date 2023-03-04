@@ -99,16 +99,6 @@
     margin-top: 6px;
 }
 
-.cardContainer__details .courseInfo__tag {
-    margin: 0;
-    font-size: 10px;
-    background-color: #027dff;
-    width: fit-content;
-    color: #fff;
-    padding: 2px 8px;
-    border-radius: 12px;
-}
-
 .cardContainer__details .courseInfo__details span {
     display: flex;
     align-items: center;

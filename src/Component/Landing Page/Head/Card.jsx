@@ -2,8 +2,12 @@ import React, { useCallback, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { BiBookAlt } from "react-icons/bi";
 import { HiUserGroup } from "react-icons/hi";
+import MemoryKeys from "../../models/MemoryKeys";
 
 const Card = ({ courseData, hideBottomVisibility }) => {
+  // console.log('CARD PROPS: ', {courseData, hideBottomVisibility});
+  let token = localStorage.getItem(MemoryKeys.UserToken);
+  // console.log('token: ', token);
 
   const [publisherImg, setPublisherImg] = useState();
 
@@ -54,8 +58,7 @@ const Card = ({ courseData, hideBottomVisibility }) => {
         </div>
         <div className="card-content">
           <h1>
-            {/* <Link to={token ? `/course/${courseData?._id}` : "/login"}> */}
-            <Link to={`/course/${courseData?._id}`}>
+            <Link to={token ? `/course/${courseData?._id}` : "/login"}>
               {courseData?.courseTitle}
             </Link>
           </h1>

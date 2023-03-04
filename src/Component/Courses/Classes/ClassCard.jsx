@@ -7,9 +7,7 @@ import { useState } from "react";
 
 const ClassCard = (props) => {
 
-  // Change this section so it checks the account role and conditionally sets the image 
   const[publisherImg, setPublisherImg] = useState();
-  console.log('props: ', props);
   
   /**
    * Function to get a publisher
@@ -64,7 +62,7 @@ const ClassCard = (props) => {
       <div className="enrol-div">
         {/* <Link to="/DecFinance" state={{ id: props.data }}> */}
         <Link to={`/course/${props.data._id}`}>
-          <button>View Course</button>
+          <button>Enroll Course</button>
         </Link>
       </div>
     </div>

@@ -175,7 +175,6 @@ const ProfileBody = ({ setLoginStatus }) => {
         publisher={item.publisherName}
         duration={item.courseDuration}
         icon={<SlOptionsVertical />}
-        handleinstructorCourse={handleinstructorCourse}
         data={item}
         del={pupF}
         key={index}
@@ -208,7 +207,7 @@ const ProfileBody = ({ setLoginStatus }) => {
         handlecart();
         return;
       }
-      if (det.role === "publisher" || "admin") {
+      if (det.role === "publisher") {
         handleinstructorCourse();
         return;
       }
@@ -321,7 +320,6 @@ const ProfileBody = ({ setLoginStatus }) => {
   const [isVideoCourseContentUploadType, setIsVideoCourseContentUploadType] =
     useState(true);
 
-  let [publisherName, setPublisherName] = React.useState("");
   let [courseTitle, ctfunc] = React.useState("");
   let [courseDescription, codfunc] = React.useState("");
   let [courseDuration, cdfunc] = React.useState("");
@@ -350,9 +348,17 @@ const ProfileBody = ({ setLoginStatus }) => {
     coursecontent: coursecontent[index],
   }));
 
+  // console.log("courseContent data: ", data);
+
+  // console.log({ tag, tags });
   console.log("updated coursecontent: ", courseContent);
 
   const [courseImage, courseImageFunc] = React.useState(null);
+  // const [courseImageFile, setcourseImageFile] = React.useState(null);
+
+  // function update() {
+  // createCou? handleUploadCourseContent() : alert("don't call")
+  // }
 
   const [responseMessage, setResponseMessage] = useState();
   const [courseContentResponseMessage, setCourseContentResponseMessage] =
@@ -385,7 +391,6 @@ const ProfileBody = ({ setLoginStatus }) => {
     // });
 
     console.log("Form inputs: ", {
-      publisherName,
       courseTitle,
       courseDescription,
       courseDuration,
@@ -407,7 +412,6 @@ const ProfileBody = ({ setLoginStatus }) => {
         method: "post",
         credencials: "include",
         body: JSON.stringify({
-          publisherName,
           courseTitle,
           courseDescription,
           courseDuration,
@@ -480,7 +484,24 @@ const ProfileBody = ({ setLoginStatus }) => {
       youtubeValue[i] !== undefined &&
         courseContentData.append(`youtube`, youtubeValue[i]);
 
+      // for (let i = 0; i < courseContent.length; i++) {
+      //   courseContentData.append(`title`, titleValue[i]);
+      //   if (courseContent[i].coursecontent) {
+      //     courseContentData.append(`coursecontent`, courseContentValues[i]);
+      //   }
+      //   courseContentData.append(`youtube`, youtubeValue[i]);
+      // };
       console.log(courseContentData);
+
+      // courseContent.forEach((content) => {
+      //   if (!content) {
+      //     console.error("The contents for courseContent is undefined");
+      //     return;
+      //   }
+      //   courseContentData.append("title", content.title);
+      //   courseContentData.append("coursecontent", content.coursecontent);
+      // });
+      // console.log(courseContentData);
 
       document.getElementById("courseContentResponseMessage").style.color =
         "#007bff";
@@ -517,7 +538,6 @@ const ProfileBody = ({ setLoginStatus }) => {
               `Course content ${i + 1} uploaded!`
             );
         fetchCourses();
-        course();
       } else {
         document.getElementById("courseContentResponseMessage").style.color =
           "red";
@@ -590,9 +610,7 @@ const ProfileBody = ({ setLoginStatus }) => {
     document.getElementById("create").style.display = "none";
     document.getElementById("cart").style.display = "flex";
 
-    det.role === "publisher" || "admin"
-      ? handleinstructorCourse()
-      : handlecart();
+    det.role === "publisher" ? handleinstructorCourse() : handlecart();
   }
 
   /**
@@ -776,6 +794,37 @@ const ProfileBody = ({ setLoginStatus }) => {
     // console.log(displaypicture);
   };
 
+  //   const handleFileUpload = async (e) => {
+  //     const file = e.target.files[0];
+  //     if (file.size > 1000000) {
+  //         // toast.warning("Photo upload size must not exceed 1MB");
+  //         console.log(" too large")
+  //         return;
+  //     }
+  //     setLoadingImage(true);
+  //     try {
+  //         const data = new FormData();
+  //         data.append("displaypicture", file);
+  //         const res = await axios.post(
+  //             "https://api.coverly.hng.tech/api/v1/auth/dashboard/update-icon",
+  //             data,
+  //             { headers: { Authorization: `Bearer ${user.token}` } }
+  //         );
+  //         const userObj = {
+  //             ...user,
+  //             ...(res?.data?.data ? res.data.data : {}),
+  //         };
+  //         setUser(userObj);
+  //         addUserToLocalStorage(userObj);
+  //     } catch (error) {
+  //         toast.error("Server error. please try again later");
+  //     }
+  //     setTimeout(() => {
+  //         setLoadingImage(false)
+  //     }, 1000);
+  //     // setLoadingImage(false)
+  // };
+
   return (
     <div className="profilebody">
       <div className="sub-profilebody">
@@ -813,7 +862,7 @@ const ProfileBody = ({ setLoginStatus }) => {
               </li>
               <li onClick={course}>
                 <span className="span">
-                  {det.role === "publisher" || "admin"
+                  {det.role === "publisher"
                     ? "Course Created"
                     : "Enrolled Courses"}
                 </span>
@@ -823,10 +872,7 @@ const ProfileBody = ({ setLoginStatus }) => {
               </li> */}
               <li
                 onClick={create}
-                style={{
-                  display:
-                    det.role === "publisher" || "admin" ? "block" : "none",
-                }}
+                style={{ display: det.role === "publisher" ? "block" : "none" }}
               >
                 <span className="span">Create Course</span>
               </li>
@@ -881,13 +927,13 @@ const ProfileBody = ({ setLoginStatus }) => {
                 </div>
                 <div className="text-div">
                   <h1>
-                    {det.role === "publisher" || "admin"
+                    {det.role === "publisher"
                       ? instructCourse.length
                       : cart.length}
                   </h1>
                   <p>
                     {" "}
-                    {det.role === "publisher" || "admin"
+                    {det.role === "publisher"
                       ? "Course Created "
                       : "Enrolled Courses"}{" "}
                   </p>
@@ -901,7 +947,7 @@ const ProfileBody = ({ setLoginStatus }) => {
                   <h1>{cart.length}</h1>
                   <p>
                     {" "}
-                    {det.role === "publisher" || "admin"
+                    {det.role === "publisher"
                       ? "Created Blogs"
                       : "Active Courses"}
                   </p>
@@ -970,20 +1016,6 @@ const ProfileBody = ({ setLoginStatus }) => {
           <div className="create-course" id="create">
             <h2>Create Course</h2>
             <form onSubmit={handleCreateCourse} action="">
-              { det.role !== "publisher" &&
-                <>
-                  <label>
-                    Publisher's name{" "}
-                    <span>(First name comes before surname)</span>
-                  </label>
-                  <input
-                    type="text"
-                    value={publisherName}
-                    onChange={(e) => setPublisherName(e.target.value)}
-                  />
-                </>
-              }
-
               <label>Course Cover image</label>
               <div className="content-upload-area">
                 {coverImage ? (
@@ -1356,7 +1388,7 @@ const ProfileBody = ({ setLoginStatus }) => {
               alignItems: instructorError ? "center" : "flex-start",
             }}
           >
-            {det.role === "publisher" || "admin" ? courseCreatedCard : carts}
+            {det.role === "publisher" ? courseCreatedCard : carts}
             {det.role === "user" && carts && carts.length < 1
               ? "No enrolled courses yet"
               : carts}

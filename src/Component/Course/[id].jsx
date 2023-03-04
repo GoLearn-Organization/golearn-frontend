@@ -18,8 +18,6 @@ const Course = () => {
   const [coureReviewFetched, setCoureReviewFetched] = useState(false);
   const [isReviewVisible, setIsReviewVisible] = useState(false);
   const [userData, setUserData] = useState();
-  
-  let token = localStorage.getItem(MemoryKeys.UserToken);
 
   /**
    * Function to get course data
@@ -401,8 +399,9 @@ const Course = () => {
             <div className="free">
               <div className="free-head">
                 <span>Free</span>
-                <Link to={token ? `/class/${courseData?._id}` : "/login"}>
-                  {/* <Link to={`/class/${courseData?._id}`}> */}
+                {/* <Link to="/class" state={{ id: data }}> */}
+                {/* <Link to="/class"> */}
+                <Link to={`/class/${courseData?._id}`}>
                   <button>Enroll Now</button>
                 </Link>
                 <p>You have free access to this course</p>
