@@ -385,6 +385,13 @@
   font-size: 12px;
   margin-left: 2px;
 }
+.profilebody .sub-profilebody .dashboard .create-course form label span {
+  color: #007bff;
+  text-transform: none;
+  font-size: 12px;
+  display: inline-flex;
+  /* font-style: italic; */
+}
 .profilebody .sub-profilebody .dashboard .create-course form input {
   height: 40px;
   width: 100%;
