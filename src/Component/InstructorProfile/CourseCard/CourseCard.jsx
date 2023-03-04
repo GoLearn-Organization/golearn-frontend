@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback, useEffect, useState } from "react";
 // import { Link } from 'react-router-dom';
 import "./courseCard.css";
 // import { FiBookmark } from "react-icons/fi";
@@ -8,40 +8,64 @@ import MemoryKeys from "../../models/MemoryKeys";
 // import axios from "axios";
 
 const CourseCard = (props) => {
-
-  let [pup, pupfunc] = React.useState(true);
-
-  function pupF() {
-    pupfunc(!pup);
-  }
-  
+  // console.log('PROPS: ', props);
+  let [deleteCourseModalVisibility, setDeleteCourseModalVisibility] = React.useState(false);
+  const [accountRole, setAccountRole] = useState();
 
   let deleteCourse = async () => {
     const config = {
-      headers: {        
+      headers: {
         "Content-Type": "application/json",
         Authorization: "Bearer " + localStorage.getItem(MemoryKeys.UserToken),
       },
     };
     let result = await fetch(
       `${process.env.REACT_APP_SERVER_URL}/api/v1/course/${props.id}`,
-      config,
       {
-        credentials: "include",
-        method: 'DELETE',
+        ...config,
+        method: "DELETE",
       }
     );
     result = await result.json();
     console.warn(result);
     console.log(result);
+    setDeleteCourseModalVisibility(false);
+    props.handleinstructorCourse();
   };
+
+  console.log('props: ', props);
+
+  props && console.log("props.publisherID: ", props.id);
+
+  /**
+   * Function to get an account role
+   */
+  const handleFetchAccountRole = useCallback(async (accountId) => {
+    let result = await fetch(
+      `${process.env.REACT_APP_SERVER_URL}/api/v1/user/publishers/${accountId}`,
+      {
+        method: "get",
+      }
+    );
+    result = await result.json();
+    console.log(result);
+    // setAccountRole(result.data.displayPicture);
+  }, []);
+
+  useEffect(() => {
+    if (props && props.id && !accountRole) {
+      handleFetchAccountRole(props.data.publisher);
+    }
+  }, [props, handleFetchAccountRole, accountRole]);
 
   return (
     <div className="cardContainer">
       <div className="cardContainer__topArea">
         <div className="thumbnail">
           <img
-            src={`${props.data.courseImage ? `${props.data.courseImage}` : '/logo.png'}`}
+            src={`${
+              props.data.courseImage ? `${props.data.courseImage}` : "/logo.png"
+            }`}
             alt="course_image"
           />
         </div>
@@ -49,7 +73,7 @@ const CourseCard = (props) => {
           {/* <FiBookmark /> */}
           {props.icon}
           <ul>
-            <li onClick={deleteCourse}>Delete</li>
+            <li onClick={() => setDeleteCourseModalVisibility(true)}>Delete</li>
             <li>Update</li>
           </ul>
         </div>
@@ -62,6 +86,7 @@ const CourseCard = (props) => {
         </div>
         <div className="courseInfo">
           <h2>{props.courseTitle}</h2>
+          <p className="courseInfo__tag">Uploaded by {props.publisher}</p>
           <div className="courseInfo__details">
             {/* <span className="users">
               <HiOutlineUser /> 223
@@ -73,7 +98,10 @@ const CourseCard = (props) => {
         </div>
         <div className="tutorInfo">
           <div className="tutorInfo__image">
-            <img src="https://go-learn.online/wp-content/uploads/2021/05/golearn-walter-150x150.jpg" alt="" />
+            <img
+              src="https://go-learn.online/wp-content/uploads/2021/05/golearn-walter-150x150.jpg"
+              alt=""
+            />
           </div>
           <span>By {props.publisher}</span>
         </div>
@@ -84,21 +112,20 @@ const CourseCard = (props) => {
         </Link>
       </div>
 
-
       {/* -- pup up box -- */}
       <div
         className="pup-up"
         id="pupUp"
-        style={{ display: pup ? "none" : "flex" }}
+        style={{ display: deleteCourseModalVisibility ? "flex" : "none" }}
       >
         <div className="pup-box">
           <h4>
-            You're about to delete the following course click CONFIRM to
-            delete and CANCEL to abort.
+            You're about to delete the following course click CONFIRM to delete
+            and CANCEL to abort.
           </h4>
           <div className="button">
             <button onClick={deleteCourse}>Confirm</button>
-            <button onClick={pupF}>Cancel</button>
+            <button onClick={() => setDeleteCourseModalVisibility(false)}>Cancel</button>
           </div>
         </div>
       </div>

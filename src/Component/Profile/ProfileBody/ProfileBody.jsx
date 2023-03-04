@@ -970,14 +970,19 @@ const ProfileBody = ({ setLoginStatus }) => {
           <div className="create-course" id="create">
             <h2>Create Course</h2>
             <form onSubmit={handleCreateCourse} action="">
-              <label>
-                Publisher's name <span>(First name comes before surname)</span>
-              </label>
-              <input
-                type="text"
-                value={publisherName}
-                onChange={(e) => setPublisherName(e.target.value)}
-              />
+              { det.role !== "publisher" &&
+                <>
+                  <label>
+                    Publisher's name{" "}
+                    <span>(First name comes before surname)</span>
+                  </label>
+                  <input
+                    type="text"
+                    value={publisherName}
+                    onChange={(e) => setPublisherName(e.target.value)}
+                  />
+                </>
+              }
 
               <label>Course Cover image</label>
               <div className="content-upload-area">
