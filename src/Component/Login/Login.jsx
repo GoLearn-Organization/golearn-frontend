@@ -77,10 +77,10 @@ const Login = ({ setLoginStatus }) => {
         <div className="detail">
           <div className="signin">
             <input type="checkbox" />
-            <p>keep me signin</p>
+            <p>Keep me signed in</p>
           </div>
           <Link to="/forget">
-            <p>Forgot?</p>
+            <p>Forgot password?</p>
           </Link>
         </div>
 
@@ -177,13 +177,16 @@ const Login = ({ setLoginStatus }) => {
           )}
         </button>
 
-        <p>
+        <p className="bottomArea">
           Don't have an account?{" "}
           <Link to="/register">
             <span>Register Now</span>
           </Link>
         </p>
         <small id="error"> </small>
+        <p className="homeRedirect">
+          <Link to="/">Back to homepage</Link>
+        </p>
       </form>
     </div>
   );

@@ -9,8 +9,8 @@ const RegisterBody = ({ userRegistration, setUserRegistration }) => {
   const [userName, ufunc] = React.useState("");
   const [email, efunc] = React.useState("");
   const [password, pfunc] = React.useState("");
-  // const [role, selRole] = React.useState("publisher");
-  const role = "publisher";
+  const [role, setRole] = React.useState(""); 
+  // const role = "publisher";
   const [confirm, cfunc] = React.useState("");
 
   const navigate = useNavigate();
@@ -19,7 +19,7 @@ const RegisterBody = ({ userRegistration, setUserRegistration }) => {
    * Function to handle user registration of a user (student)
    * @param {*} e is the sender of the event
    */
-  const handleUserRegistration = async (e) => {
+  async function handleUserRegistration(e) {
     e.preventDefault();
 
     let result = await fetch(`${process.env.REACT_APP_SERVER_URL}/api/v1/auth`, {
@@ -66,8 +66,6 @@ const RegisterBody = ({ userRegistration, setUserRegistration }) => {
    * @param {*} e is the sender of the event
    */
   async function handlePublisherRegistration(e) {
-    e.preventDefault();
-
     e.preventDefault();
 
     let result = await fetch(`${process.env.REACT_APP_SERVER_URL}/api/v1/auth`, {
@@ -223,8 +221,8 @@ const RegisterBody = ({ userRegistration, setUserRegistration }) => {
             <input
               type="text"
               placeholder="Role"
-              value='Publisher'
-              // onChange={(e) => selRole(e.target.value)}
+              // value='Publisher'
+              onChange={(e) => setRole(e.target.value)}
               required
             />
 
