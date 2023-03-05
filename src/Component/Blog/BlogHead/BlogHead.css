@@ -1,32 +1,37 @@
-.bloghead{
-    display: flex;
-    justify-content: center;
-    background-color: #f8f9f8;
+.bloghead {
+  display: flex;
+  justify-content: center;
+  background-color: #f8f9f8;
 }
-.bloghead .sub-bloghead{
-    width: 95%;
+.bloghead .sub-bloghead {
+  width: 95%;
 }
-.bloghead .sub-bloghead .text{
-    position: relative;
-    z-index: 1;
-    -ms-word-break: break-all;
-    word-break: break-word;
-    padding-top: 70px;
-    padding-bottom: 70px;
-    max-width: 1230px;
-    width: 100%;
-    margin-right: auto;
-    margin-left: auto;
-    text-align: center;
+.bloghead .sub-bloghead .text .homeRedirect {
+  margin: 0;
+  font-size: 14px;
+  color: #027dff;
+}
+.bloghead .sub-bloghead .text {
+  position: relative;
+  z-index: 1;
+  -ms-word-break: break-all;
+  word-break: break-word;
+  padding-top: 35px;
+  padding-bottom: 35px;
+  max-width: 1230px;
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+  text-align: center;
 }
 .bloghead .sub-bloghead .text h1 {
-    margin-bottom: 4px;
+  margin-bottom: 4px;
 }
 .bloghead .sub-bloghead .text p {
-    margin-top: 2px;
-    font-size: 12px;
-    cursor: pointer;
+  margin-top: 2px;
+  font-size: 12px;
+  cursor: pointer;
 }
 .bloghead .sub-bloghead .text p:hover {
-    color: #007bff; 
+  color: #007bff;
 }

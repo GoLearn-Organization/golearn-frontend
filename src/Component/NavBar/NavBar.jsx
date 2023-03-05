@@ -10,19 +10,19 @@ import { GiHamburgerMenu } from "react-icons/gi";
 import { FaUser, FaTimes } from "react-icons/fa";
 import { useState } from "react";
 
-const NavBar = ({loginStatus}) => {
+const NavBar = ({ loginStatus }) => {
   // console.log(window.innerWidth);
 
   const onMobile = useResponsive();
 
-  const [dropdown, dropdownFunct] = useState(false)
+  const [dropdown, dropdownFunct] = useState(false);
 
   function dropdownOpen() {
-    dropdownFunct(!dropdown)
+    dropdownFunct(!dropdown);
   }
 
   function dropdownClose() {
-    dropdownFunct(!dropdown)
+    dropdownFunct(!dropdown);
   }
 
   return (
@@ -42,19 +42,7 @@ const NavBar = ({loginStatus}) => {
                 <Link to="/">Home</Link>
               </li>
               <li>
-                <Link to="Courses">
-                  Courses 
-                  {/* <RiArrowDownSLine fontSize="20px" /> */}
-                  {/* <i class="fa fa-caret-down" aria-hidden="true"></i> */}
-                </Link>
-                {/* <ul className="dd">
-                  <span>
-                    <Link to="DecFinance">Decentralized Finance</Link>
-                  </span>
-                  <span>
-                    <Link to="DecFinance">Personal Development Courses</Link>
-                  </span>
-                </ul> */}
+                <Link to="Courses">Courses</Link>
               </li>
               <li>
                 <Link to="Blog">
@@ -112,13 +100,17 @@ const NavBar = ({loginStatus}) => {
 
           {/* Naviagtion area */}
           <div className="navigation">
-            <ul className="main" id="list" style={{display: dropdown? "flex" : "none"}}>
+            <ul
+              className="main"
+              id="list"
+              style={{ display: dropdown ? "flex" : "none" }}
+            >
               <li>
                 <Link to="/">Home</Link>
               </li>
               <li>
                 <Link to="Courses">
-                  Courses 
+                  Courses
                   {/* <RiArrowDownSLine fontSize="20px" /> */}
                   {/* <i class="fa fa-caret-down" aria-hidden="true"></i> */}
                 </Link>
@@ -150,7 +142,11 @@ const NavBar = ({loginStatus}) => {
             </ul>
             {/* Nav icon */}
             <div id="nav">
-              {dropdown? <FaTimes fontSize={22} onClick={dropdownClose} /> : <GiHamburgerMenu fontSize={22} onClick={dropdownOpen} />  }
+              {dropdown ? (
+                <FaTimes fontSize={22} onClick={dropdownClose} />
+              ) : (
+                <GiHamburgerMenu fontSize={22} onClick={dropdownOpen} />
+              )}
             </div>
           </div>
 
@@ -185,7 +181,6 @@ const NavBar = ({loginStatus}) => {
               </>
             )}
           </div>
-          
         </div>
       )}
     </>
