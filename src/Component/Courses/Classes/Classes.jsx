@@ -2,10 +2,8 @@ import React from "react";
 import "./Classes.css";
 import { useEffect } from "react";
 import ClassCard from "./ClassCard";
-import { useNavigate } from "react-router-dom";
 
 const Classes = ({ loginStatus }) => {
-  const navigate = useNavigate();
 
   let [va, vaFunc] = React.useState(false);
   let [courses, courseFunction] = React.useState([]);

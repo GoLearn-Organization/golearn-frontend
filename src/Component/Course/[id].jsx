@@ -402,7 +402,7 @@ const Course = () => {
               <div className="free-head">
                 <span>Free</span>
                 {/* <Link to={`/class/${courseData?._id}`}> */}
-                <Link to={token ? `/course/${courseData?._id}` : "/login"}>
+                <Link to={token ? `/class/${courseData?._id}` : "/login"}> 
                   <button>Enroll Now</button>
                 </Link>
                 <p>You have free access to this course</p>
@@ -451,7 +451,7 @@ const Course = () => {
                       <>
                         {eachMaterial.startsWith("https://") ? (
                           // <Link to={eachMaterial}>
-                            <a key={index} target="_blank" href={eachMaterial}>
+                            <a key={index} target="_blank" href={eachMaterial} rel="noreferrer">
                               {eachMaterial}
                             </a>
                           // </Link>

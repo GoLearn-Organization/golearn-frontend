@@ -27,9 +27,10 @@ const RegisterTop = ({ userRegistration, setUserRegistration }) => {
               <Link to="/register"> Registration</Link>
             </a>
           </span>
-          <Link to="/">
+          {/* <Link to="/">
             <a className="homeRedirect">Back to homepage</a>
-          </Link>
+          </Link> */}
+          <a className="homeRedirect" href="/" rel="noreferrer">Back to homepage</a>
         </div>
       </div>
     </div>

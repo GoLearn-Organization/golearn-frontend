@@ -41,9 +41,9 @@ const Login = ({ setLoginStatus }) => {
       error.style.color = "green";
       // Set login status to true
       setLoginStatus(true);
-      setTimeout(() => {
-        navigate("/profile");
-      }, 3000);
+      // setTimeout(() => {
+      //   navigate("/profile");
+      // }, 3000);
       localStorage.setItem(MemoryKeys.UserToken, result.token);
 
       navigate(-1); // go back to previous page
@@ -135,9 +135,7 @@ const Login = ({ setLoginStatus }) => {
           </Link>
         </p>
         <small id="error"> </small>
-        <Link to='/'>
-          <a className="homeRedirect">Back to homepage</a>
-        </Link>
+          <a className="homeRedirect" href="/" rel="noreferrer">Back to homepage</a>
       </form>
     </div>
   );
