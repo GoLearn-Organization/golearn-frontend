@@ -179,6 +179,10 @@
     list-style: none;
     padding-inline-start: 10px;
 }
+.DecFinanceDetails .sub-DecFinanceDetails .sub-detail .course-detail .course-footer .first ul li, 
+.DecFinanceDetails .sub-DecFinanceDetails .sub-detail .course-detail .course-footer .first ul a {
+    font-size: 0.8rem;
+}
 .DecFinanceDetails .sub-DecFinanceDetails .sub-detail .course-detail .course-footer .first .tags{
     /* background-color: burlywood; */
     width: 100%;

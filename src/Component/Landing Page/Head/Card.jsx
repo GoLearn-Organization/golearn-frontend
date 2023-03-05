@@ -58,7 +58,8 @@ const Card = ({ courseData, hideBottomVisibility }) => {
         </div>
         <div className="card-content">
           <h1>
-            <Link to={token ? `/course/${courseData?._id}` : "/login"}>
+            {/* <Link to={token ? `/course/${courseData?._id}` : "/login"}> */}
+            <Link to={`/course/${courseData?._id}`}> 
               {courseData?.courseTitle}
             </Link>
           </h1>
