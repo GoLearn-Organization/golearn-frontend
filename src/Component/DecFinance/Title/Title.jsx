@@ -49,7 +49,7 @@ const Title = (props) => {
                 {/* <div className="shear-save">
                     <input type="text" id='link' value="https://infopediya.com/create-copy-link-input-field-in-javascript/" />
                     <span to="" onClick={share}><FaShareSquare fontSize={18} /></span>
-                    <Link to="/construction">Wishlist</Link>
+                    <Link to="/Page-Not-Available">Wishlist</Link>
                 </div> */}
             </div>
         </div>

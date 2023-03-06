@@ -32,7 +32,7 @@ const Details = () => {
                             <p>Enrolled Learners</p>
                         </div>
                         <div className="card">
-                            <h1>100</h1>
+                            <h1>100%</h1>
                             <p>Satisfaction Rate</p>
                         </div>
                     </div>

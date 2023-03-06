@@ -17,7 +17,7 @@ const Card = (props) => {
                 <div className="cont">
                     <div className="card-prof">
                         <img src={prof} alt=""/>
-                        <span><Link to="/profile">{data?.publisherName}</Link></span>
+                        <span>{data?.publisherName}</span>
                     </div>
                     <div className="card-content">
                         <h1><Link  to="/DecFinance" state={{ id: props.data }}>{data?.courseTitle}</Link></h1>

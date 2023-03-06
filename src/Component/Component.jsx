@@ -96,7 +96,7 @@ function Component() {
             />
             <Route path="contact-us" element={<Contact />} />
             <Route path="instructor" element={<InstructorProfile />} />
-            <Route path="construction" element={<Construction />} />
+            <Route path="Page-Not-Available" element={<Construction />} />
             <Route path="course/:id" element={<Course />} />
             <Route
               path="register"

@@ -49,7 +49,7 @@ const Card = ({ courseData, hideBottomVisibility }) => {
             />
           </div>
           <span>
-            <Link to="/instructor">{courseData?.publisherName}</Link>
+            {courseData?.publisherName}
           </span>
         </div>
         <div className="card-content">

@@ -10,7 +10,7 @@ const Card = (props) => {
             </div>
             <h3>{props.title}</h3>
             <p>{props.content}</p>
-            <Link to=""><span>Start Now!</span></Link>
+            <Link to="/courses"><span>Start Now!</span></Link>
         </div>
     )
 }

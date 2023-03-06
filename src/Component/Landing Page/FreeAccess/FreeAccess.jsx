@@ -22,7 +22,7 @@ const FreeAccess = () => {
             learning should be enjoyable and only that can make substantial
             changes to someone.
           </p>
-          <Link to="">
+          <Link to="/courses">
             <button>
               {" "}
               <BiBookReader fontSize="20px" /> Start For Free

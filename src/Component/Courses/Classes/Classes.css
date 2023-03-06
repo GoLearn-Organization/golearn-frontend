@@ -1,6 +1,7 @@
 .classes {
   display: flex;
   justify-content: center;
+  margin-top: 50px;
 }
 .classes .sub-classes {
   width: 95%;

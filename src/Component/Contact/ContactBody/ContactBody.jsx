@@ -117,21 +117,21 @@ const ContactBody = () => {
           <form onSubmit={sendEmail}>
             <input
               type="text"
-              placeholder="Your Name"
+              placeholder="Your Name *"
               name="name"
               required
               onClick={closeMessage}
             />
             <input
               type="email"
-              placeholder="Your Email Address"
+              placeholder="Your Email Address *"
               name="email"
               required
               onClick={closeMessage}
             />
             <input
               type="text"
-              placeholder="Your Subject"
+              placeholder="Your Subject *"
               name="subject"
               required
               onClick={closeMessage}
@@ -139,7 +139,7 @@ const ContactBody = () => {
             <textarea
               cols="30"
               rows="10"
-              placeholder="Write Your Message"
+              placeholder="Write Your Message *"
               name="message"
               required
               onClick={closeMessage}

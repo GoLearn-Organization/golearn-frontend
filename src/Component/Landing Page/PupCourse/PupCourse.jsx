@@ -64,7 +64,7 @@ const PupCourse = ({ landingCourses }) => {
           <p>
             Enjoy top notch learning methods and achieve next level skills. You
             are the creator of your own career and we will guide you through it.
-            <Link to="/register">Register Free Now!</Link>{" "}
+            <Link to="/register"> Register Free Now!</Link>{" "}
           </p>
           <Link to="/courses">
             <button>VIEW MORE COURSES</button>

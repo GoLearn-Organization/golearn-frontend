@@ -49,6 +49,7 @@
 .blogpost .sub-blogpost .card .content ul li{
     display: flex;
     align-items: center;
+    color: #007bff;
 }
 .blogpost .sub-blogpost .card .content ul li svg{
     margin-bottom: -3px;
