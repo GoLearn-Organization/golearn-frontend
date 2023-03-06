@@ -10,6 +10,11 @@ import { MdOutlineAccessTime } from "react-icons/md";
 import { TbPlant } from "react-icons/tb";
 
 const OnlineBlog = () => {
+
+  
+  let token = localStorage.getItem("goLearn-token");
+  let islog = token
+  
   return (
     <div className="OnlineBlog">
       <div className="sub-OnlineBlog">
@@ -58,11 +63,21 @@ const OnlineBlog = () => {
               </li>
             </ul>
           </div>
-          <Link to="/Courses">
+
+          {
+            islog === null ? 
+            <Link to="/register">
             <button>
               <BsFillJournalBookmarkFill fontSize="20px" /> View All Courses
             </button>
           </Link>
+            : 
+            <Link to="/Courses">
+            <button>
+              <BsFillJournalBookmarkFill fontSize="20px" /> View All Courses
+            </button>
+          </Link>
+          }
         </div>
       </div>
     </div>

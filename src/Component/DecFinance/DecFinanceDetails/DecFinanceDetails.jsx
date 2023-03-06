@@ -350,7 +350,7 @@ const DecFinanceDetails = (props) => {
               <div className="profile">
                 <img src={profile} alt="" />
                 <div className="content">
-                  <Link to="/construction">{data.publisherName}</Link>
+                  <span>{data.publisherName}</span>
                   <span>{data.category} instructor</span>
                 </div>
               </div>

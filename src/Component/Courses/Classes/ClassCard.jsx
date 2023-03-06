@@ -51,18 +51,18 @@ const ClassCard = (props) => {
         </div>
         <div className="author">
           <p>
-            By <Link to="/construction">{props.author}</Link> in{" "}
-            <Link to="/construction">{props.category}</Link>{" "}
+            By {props.author} in{" "}
+            {props.category}{" "}
           </p>
-          <Link to="/construction">
-            <img src={publisherImg ?? profile} alt="/construction" />
+          <Link to="/Page-Not-Available">
+            <img src={publisherImg ?? profile} alt="/Page-Not-Available" />
           </Link>
         </div>
       </div>
       <div className="enrol-div">
         {/* <Link to="/DecFinance" state={{ id: props.data }}> */}
         <Link to={`/course/${props.data._id}`}>
-          <button>View Course</button>
+          <button>Enroll Course</button>
         </Link>
       </div>
     </div>

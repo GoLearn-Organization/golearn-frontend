@@ -1,10 +1,14 @@
 import React from 'react';
-
+import './Construction.css'
+import {AiOutlineWarning} from 'react-icons/ai'
 
 const Construction = () => {
     return(
-        <div>
-            <center><h1> THIS SITE IS STILL UNDER CONSTRUCTION </h1></center>
+        <div className='construction'>
+            <div className='box'>
+                <h1>Page Not Available</h1>
+                <AiOutlineWarning fontSize={40} />
+            </div>
         </div>
     )
 }

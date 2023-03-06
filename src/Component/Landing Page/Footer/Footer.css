@@ -110,7 +110,11 @@
   display: flex;
   gap: 8px;
 }
-.footerArea__container .content .content__goLearn .socialIcons span {
+.footerArea__container .content .content__goLearn .socialIcons a{
+  z-index: 4;
+  cursor: pointer;
+}
+.footerArea__container .content .content__goLearn .socialIcons a span {
   width: 32px;
   height: 32px;
   border-radius: 4px;
@@ -119,7 +123,7 @@
   display: grid;
   place-content: center;
 }
-.footerArea__container .content .content__goLearn .socialIcons span:hover {
+.footerArea__container .content .content__goLearn .socialIcons a span:hover {
   background-color: #027dff;
 }
 

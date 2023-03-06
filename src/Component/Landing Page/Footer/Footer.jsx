@@ -20,10 +20,10 @@ const Footer = () => {
               while they learn a skill.{" "}
             </p>
             <div className="socialIcons">
-              <span>T</span>
-              <span>F</span>
-              <span>I</span>
-              <span>Y</span>
+              <a href="http://twitter.com/Golearn_online?t=rllyy72hOKYBVioXR9b1RQ&s=09"><span>T</span></a>
+              <a href="http://www.facebook.com/golearn.online?mibextid=ZbWKwL"><span>F</span></a>
+              <a href="http://instagram.com/golearn.online?igshid=NTdIMDg3MTY="><span>I</span></a>
+              <a href="http://youtube.com/@Golearnonline"><span>Y</span></a>
             </div>
           </div>
           <div className="content__explore">

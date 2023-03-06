@@ -12,7 +12,7 @@ const Subscribe = () => {
             Interested in getting up-to-date information about our offers,
             promotions or perks?
           </p>
-          <form action="/construction">
+          <form action="/Page-Not-Available">
             <input
               type="email"
               required={true}

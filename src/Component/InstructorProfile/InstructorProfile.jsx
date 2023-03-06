@@ -58,7 +58,7 @@ const InstructorProfile = () => {
         <div className="coverArea">
           <div className="coverArea__instructorImg">
             <img
-              src="https://go-learn.online/wp-content/uploads/2021/05/golearn-walter.jpg"
+              src={data.displayPicture}
               alt="instructor"
             />
           </div>

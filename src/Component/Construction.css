@@ -1,0 +1,26 @@
+.construction{
+    display: flex;
+    height: 80vh;
+    align-items: center;
+    justify-content: center;
+}
+.construction .box{
+    background-color: #5d9bde;
+    padding: 20px 30px;
+    border-radius: 5px;
+    display: flex;
+    /* flex-direction: column; */
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #bfdcfb;
+}
+.construction .box svg{
+    color: #f45656;
+}
+.construction .box h1{
+    margin-block-start: 0;
+    margin-block-end: 0;
+    color: #ffffff;
+    margin-right: 20px;
+    /* margin-top: 30px; */
+}

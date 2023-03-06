@@ -41,6 +41,7 @@ const Instructors = () => {
                 lastName={item.lastName}
                 email={item.email}
                 role={item.role}
+                img={item.displayPicture}
                 data={item}
             />
         )
