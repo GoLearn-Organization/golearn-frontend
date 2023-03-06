@@ -5,6 +5,11 @@ import img from "./img/golearn-1.jpg";
 import { Link } from "react-router-dom";
 
 const DistanceLearn = () => {
+
+  
+  let token = localStorage.getItem("goLearn-token");
+  let islog = token
+  
   return (
     <div className="OnlineBlog Online-bori">
       <div className="sub-OnlineBlog sub-Online-bori">
@@ -21,9 +26,17 @@ const DistanceLearn = () => {
             learning initiatives will help you to learn better and quicker than
             the traditional ways of learning skills.
           </p>
-          <Link to="/Courses">
-            <button>View Courses</button>
-          </Link>
+
+          {
+            islog === null ? 
+            <Link to="/register">
+              <button>Register Now</button>
+            </Link> 
+            : 
+            <Link to="/Courses">
+              <button>View Courses</button>
+            </Link>
+          }
         </div>
       </div>
     </div>

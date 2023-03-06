@@ -41,6 +41,10 @@ const PupCourse = ({ landingCourses }) => {
     console.log("COURSE DATA: ", course);
   }, [course, fetchCourses]);
 
+  
+  let token = localStorage.getItem("goLearn-token");
+  let islog = token
+
   return (
     <div className="pupcourse">
       <div className="sub-pupcourse">
@@ -66,9 +70,7 @@ const PupCourse = ({ landingCourses }) => {
             are the creator of your own career and we will guide you through it.
             <Link to="/register"> Register Free Now!</Link>{" "}
           </p>
-          <Link to="/courses">
-            <button>VIEW MORE COURSES</button>
-          </Link>
+          {islog === null ? <Link to="/register"><button>VIEW MORE COURSES</button></Link> : <Link to="/courses"><button>VIEW MORE COURSES</button></Link>}
         </div>
       </div>
     </div>

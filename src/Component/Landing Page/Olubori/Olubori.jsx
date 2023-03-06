@@ -5,6 +5,11 @@ import img from "./img/about-4.jfif";
 import { Link } from "react-router-dom";
 
 const Olubori = () => {
+
+  
+  let token = localStorage.getItem("goLearn-token");
+  let islog = token
+  
   return (
     <div className="OnlineBlog Online-bori">
       <div className="sub-OnlineBlog sub-Online-bori">
@@ -24,9 +29,17 @@ const Olubori = () => {
             management, savings, budgeting, investment opportunities, financial
             planning template, budgeting template, grants and sponsorships.
           </p>
-          <Link to="/courses">
-            <button>Start For Free</button>
-          </Link>
+
+          {
+            islog === null ? 
+            <Link to="/register">
+              <button>Register For Free</button>
+            </Link>
+            : 
+            <Link to="/courses">
+              <button>Start For Free</button>
+            </Link>
+          }
         </div>
       </div>
     </div>

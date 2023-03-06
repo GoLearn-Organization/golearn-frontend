@@ -6,6 +6,11 @@ import img from "./img/olubori-free3.jpg";
 import { BiBookReader } from "react-icons/bi";
 
 const FreeAccess = () => {
+
+  
+  let token = localStorage.getItem("goLearn-token");
+  let islog = token
+
   return (
     <div className="OnlineBlog Online">
       <div className="sub-OnlineBlog sub-Online">
@@ -22,12 +27,23 @@ const FreeAccess = () => {
             learning should be enjoyable and only that can make substantial
             changes to someone.
           </p>
-          <Link to="/courses">
-            <button>
-              {" "}
-              <BiBookReader fontSize="20px" /> Start For Free
-            </button>
-          </Link>
+
+          {
+            islog === null ? 
+            <Link to="/register">
+              <button>
+                {" "}
+                <BiBookReader fontSize="20px" /> Register For Free
+              </button>
+            </Link> 
+            : <Link to="/courses">
+                <button>
+                  {" "}
+                  <BiBookReader fontSize="20px" /> Start For Free
+                </button>
+              </Link>
+          }
+        
         </div>
       </div>
     </div>
