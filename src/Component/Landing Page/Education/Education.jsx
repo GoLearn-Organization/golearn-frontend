@@ -21,12 +21,12 @@ const Education = () => {
       content:
         "Experienced teachers can assist in learning faster with their best approaches!",
     },
-    {
-      icons: <GiReceiveMoney fontSize="80px" color="#027dff" />,
-      title: "Earn Juicy Commission",
-      content:
-        "Get familiar with digital and financial literacy skills in your journey of becoming stable",
-    },
+    // {
+    //   icons: <GiReceiveMoney fontSize="80px" color="#027dff" />,
+    //   title: "Earn Juicy Commission",
+    //   content:
+    //     "Get familiar with digital and financial literacy skills in your journey of becoming stable",
+    // },
     {
       icons: <MdGroups fontSize="80px" color="#027dff" />,
       title: "Learn the Latest Top Skills",
