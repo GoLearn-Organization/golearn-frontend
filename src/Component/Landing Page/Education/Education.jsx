@@ -5,7 +5,7 @@ import Card from "./Card";
 import { MdGroups } from "react-icons/md";
 // import { GrMoney } from 'react-icons/gr'
 import { FaGlobeAfrica } from "react-icons/fa";
-import { GiReceiveMoney } from "react-icons/gi";
+// import { GiReceiveMoney } from "react-icons/gi";
 
 const Education = () => {
   const dd = [
@@ -21,12 +21,12 @@ const Education = () => {
       content:
         "Experienced teachers can assist in learning faster with their best approaches!",
     },
-    {
-      icons: <GiReceiveMoney fontSize="80px" color="#027dff" />,
-      title: "Earn Juicy Commission",
-      content:
-        "Get familiar with digital and financial literacy skills in your journey of becoming stable",
-    },
+    // {
+    //   icons: <GiReceiveMoney fontSize="80px" color="#027dff" />,
+    //   title: "Earn Juicy Commission",
+    //   content:
+    //     "Get familiar with digital and financial literacy skills in your journey of becoming stable",
+    // },
     {
       icons: <MdGroups fontSize="80px" color="#027dff" />,
       title: "Learn the Latest Top Skills",
