@@ -15,7 +15,7 @@ const GoAlumni = () => {
             financial planning template, budgeting template, savings and lots
             more.
           </p>
-          <a href="https://t.me/+c6CH6rULbwdIZjc8" target="_blank">
+          <a href="https://t.me/+c6CH6rULbwdIZjc8" target="_blank" rel="noreferrer">
             <button>
               {" "}
               <HiOutlineChatAlt fontSize="20px" /> Join Go-Learn Community

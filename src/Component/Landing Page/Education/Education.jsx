@@ -5,7 +5,7 @@ import Card from "./Card";
 import { MdGroups } from "react-icons/md";
 // import { GrMoney } from 'react-icons/gr'
 import { FaGlobeAfrica } from "react-icons/fa";
-import { GiReceiveMoney } from "react-icons/gi";
+// import { GiReceiveMoney } from "react-icons/gi";
 
 const Education = () => {
   const dd = [

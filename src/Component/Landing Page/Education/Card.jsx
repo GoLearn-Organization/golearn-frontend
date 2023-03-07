@@ -2,8 +2,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const Card = (props) => {
-  let token = localStorage.getItem("goLearn-token");
-  let islog = token;
+//   let token = localStorage.getItem("goLearn-token");
+//   let islog = token;
   return (
     <div className="box">
       <div className="icons">{props.icons}</div>
