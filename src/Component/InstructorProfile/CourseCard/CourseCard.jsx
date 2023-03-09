@@ -16,25 +16,25 @@ const CourseCard = (props) => {
   }
   
 
-  let deleteCourse = async () => {
-    const config = {
-      headers: {        
-        "Content-Type": "application/json",
-        Authorization: "Bearer " + localStorage.getItem(MemoryKeys.UserToken),
-      },
-    };
-    let result = await fetch(
-      `${process.env.REACT_APP_SERVER_URL}/api/v1/course/${props.id}`,
-      config,
-      {
-        credentials: "include",
-        method: 'DELETE',
-      }
-    );
-    result = await result.json();
-    console.warn(result);
-    console.log(result);
-  };
+  // let deleteCourse = async () => {
+  //   const config = {
+  //     headers: {        
+  //       "Content-Type": "application/json",
+  //       Authorization: "Bearer " + localStorage.getItem(MemoryKeys.UserToken),
+  //     },
+  //   };
+  //   let result = await fetch(
+  //     `${process.env.REACT_APP_SERVER_URL}/api/v1/course/${props.id}`,
+  //     config,
+  //     {
+  //       credentials: "include",
+  //       method: 'DELETE',
+  //     }
+  //   );
+  //   result = await result.json();
+  //   console.warn(result);
+  //   console.log(result);
+  // };
  
   let deleteACourse = async () => {
     const config = {
