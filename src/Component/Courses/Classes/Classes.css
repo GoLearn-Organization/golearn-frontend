@@ -73,7 +73,7 @@
   
   word-wrap: break-word;
   overflow: hidden;
-  height: 46px; /* (Number of lines you want visible) * (line-height) */
+  max-height: 46px; /* (Number of lines you want visible) * (line-height) */
   line-height: 1.2em;
   /* text-align:justify; */
 }

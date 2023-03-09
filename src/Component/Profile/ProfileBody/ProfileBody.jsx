@@ -175,6 +175,7 @@ const ProfileBody = ({ setLoginStatus }) => {
         publisher={item.publisherName}
         duration={item.courseDuration}
         icon={<SlOptionsVertical />}
+        handleinstructorCourse={handleinstructorCourse} 
         data={item}
         del={pupF}
         key={index}
@@ -321,6 +322,7 @@ const ProfileBody = ({ setLoginStatus }) => {
     useState(true);
 
   let [courseTitle, ctfunc] = React.useState("");
+  let [publisherName, setPublisherName] = React.useState("");
   let [courseDescription, codfunc] = React.useState("");
   let [courseDuration, cdfunc] = React.useState("");
   let [category, cafunc] = React.useState("");
@@ -392,6 +394,7 @@ const ProfileBody = ({ setLoginStatus }) => {
 
     console.log("Form inputs: ", {
       courseTitle,
+      publisherName,
       courseDescription,
       courseDuration,
       category,
@@ -413,6 +416,7 @@ const ProfileBody = ({ setLoginStatus }) => {
         credencials: "include",
         body: JSON.stringify({
           courseTitle,
+          publisherName,
           courseDescription,
           courseDuration,
           category,
@@ -464,11 +468,11 @@ const ProfileBody = ({ setLoginStatus }) => {
   };
 
   const handleUploadCourseContent = async (courseId) => {
-    console.log({
-      "title: ": titleValue,
-      "courseContent: ": courseContentValues,
-      "youtube: ": youtubeValue,
-    });
+    // console.log({
+    //   "title: ": titleValue,
+    //   "courseContent: ": courseContentValues,
+    //   "youtube: ": youtubeValue,
+    // });
 
     document.getElementById("courseContentResponseMessage").style.color =
       "#007bff";
@@ -538,6 +542,7 @@ const ProfileBody = ({ setLoginStatus }) => {
               `Course content ${i + 1} uploaded!`
             );
         fetchCourses();
+        course();
       } else {
         document.getElementById("courseContentResponseMessage").style.color =
           "red";
@@ -1043,6 +1048,13 @@ const ProfileBody = ({ setLoginStatus }) => {
                   </>
                 )}
               </div>
+
+              <label>Publisher&apos;s name <span className="labelInfo">(Please input first name before surname)</span></label>
+              <input
+                type="text"
+                value={publisherName}
+                onChange={(e) => setPublisherName(e.target.value)} 
+              />
 
               <label>Course Title</label>
               <input

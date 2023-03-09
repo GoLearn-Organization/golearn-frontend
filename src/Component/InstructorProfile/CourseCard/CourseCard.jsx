@@ -35,6 +35,28 @@ const CourseCard = (props) => {
     console.warn(result);
     console.log(result);
   };
+ 
+  let deleteACourse = async () => {
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + localStorage.getItem(MemoryKeys.UserToken),
+      },
+    };
+    let result = await fetch(
+      `${process.env.REACT_APP_SERVER_URL}/api/v1/course/${props.id}`,
+      {
+        ...config,
+        method: "DELETE",
+      }
+    );
+    result = await result.json();
+    props.handleinstructorCourse();
+    pupfunc(true);
+    console.warn(result);
+    console.log(result);
+  }
+
 
   return (
     <div className="cardContainer">
@@ -49,7 +71,7 @@ const CourseCard = (props) => {
           {/* <FiBookmark /> */}
           {props.icon}
           <ul>
-            <li onClick={deleteCourse}>Delete</li>
+            <li onClick={pupF}>Delete</li>
             <li>Update</li>
           </ul>
         </div>
@@ -97,7 +119,7 @@ const CourseCard = (props) => {
             delete and CANCEL to abort.
           </h4>
           <div className="button">
-            <button onClick={deleteCourse}>Confirm</button>
+            <button onClick={deleteACourse}>Confirm</button>
             <button onClick={pupF}>Cancel</button>
           </div>
         </div>
