@@ -62,7 +62,7 @@ const ClassCard = (props) => {
       <div className="enrol-div">
         {/* <Link to="/DecFinance" state={{ id: props.data }}> */}
         <Link to={`/course/${props.data._id}`}>
-          <button>Enroll Course</button>
+          <button>View Course</button>
         </Link>
       </div>
     </div>

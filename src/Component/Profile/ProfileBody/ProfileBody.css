@@ -385,6 +385,11 @@
   font-size: 12px;
   margin-left: 2px;
 }
+.profilebody .sub-profilebody .dashboard .create-course form label .labelInfo {
+  font-size: 12px;
+  display: inline;
+  text-transform: none;
+}
 .profilebody .sub-profilebody .dashboard .create-course form input {
   height: 40px;
   width: 100%;
