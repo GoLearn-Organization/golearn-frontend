@@ -19,6 +19,7 @@ import Class from "./Class/Class";
 import Error from "./ErrorPage/Error";
 import InstructorProfile from "./InstructorProfile/InstructorProfile";
 import PublisherReg from "./PublisherReg/PublisherReg";
+import PaymentPage from "./Landing Page/Olubori/PaymentPage";
 import Course from "./Course/[id]";
 import MemoryKeys from "./models/MemoryKeys";
 
@@ -113,6 +114,8 @@ function Component() {
             <Route path="/forget" element={<Forget />} />
             <Route path="class/:id" element={<Class />} />
             <Route path="/publisher" element={<PublisherReg />} />
+            <Route path="/access-payment" element={<PaymentPage />} /> 
+            <Route path={`/access-payment/:id`} element={<PaymentPage />} />
             <Route path={`${process.env.REACT_APP_SERVER_URL}resetpassword/:token`} element={<Reset />} />
             <Route path="*" element={<Error />} />
           </Route>
