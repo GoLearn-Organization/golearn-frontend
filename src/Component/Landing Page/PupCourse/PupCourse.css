@@ -123,6 +123,14 @@
     margin-bottom: 21px;
     height: 100%;
 }
+.pupcourse .sub-pupcourse .wrapper .card-wrapper .card .cont .card-content p {
+    max-height: 160px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    /* white-space: nowrap; */
+    /* border: 1px solid; */
+}
+
 .pupcourse .sub-pupcourse .wrapper .card-wrapper .card .cont .card-content h1 a{
     display: inline-block;
     text-decoration: none;

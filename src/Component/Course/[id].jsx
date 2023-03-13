@@ -490,17 +490,4 @@ const Course = () => {
   );
 };
 
-// export default Course;
-
-// export const getServerSideProps = async ({ params }) => {
-//   const res = await axios.get(
-//     `https://golearn.up.railway.app/api/v1/course/${params.id}`
-//   );
-//   return {
-//     props: {
-//       pizza: res.data,
-//     },
-//   };
-// };
-
 export default Course;

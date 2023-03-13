@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import MemoryKeys from "../models/MemoryKeys";
 import "./Login.css";
 
@@ -12,7 +12,7 @@ const Login = ({ setLoginStatus }) => {
   let valid2 = document.getElementById("valid2");
   let error = document.getElementById("error");
 
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const handleLogin = async (e) => {
     loadfun(true);
@@ -45,8 +45,10 @@ const Login = ({ setLoginStatus }) => {
       //   navigate("/profile");
       // }, 3000);
       localStorage.setItem(MemoryKeys.UserToken, result.token);
+      
+      window.location.href = '/';
 
-      navigate(-1); // go back to previous page
+      // navigate(-1); // go back to previous page
     } else if (result.success === false) {
       loadfun(false);
       valid1.style.border = "1px solid red";
@@ -135,7 +137,9 @@ const Login = ({ setLoginStatus }) => {
           </Link>
         </p>
         <small id="error"> </small>
-          <a className="homeRedirect" href="/" rel="noreferrer">Back to homepage</a>
+        <a className="homeRedirect" href="/" rel="noreferrer">
+          Back to homepage
+        </a>
       </form>
     </div>
   );

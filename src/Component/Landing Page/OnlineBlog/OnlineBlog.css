@@ -104,7 +104,7 @@
     align-items: center;
     margin-top: 35px;
 }
-.OnlineBlog .sub-OnlineBlog .OnlineBlog-content a button{
+.OnlineBlog .sub-OnlineBlog .OnlineBlog-content a button, .OnlineBlog .sub-OnlineBlog .OnlineBlog-content button{
     border: none;
     position: relative;
     display: flex;
@@ -123,12 +123,13 @@
     padding-bottom: 15px;
     cursor: pointer;
     margin: 5px 5px 5px 5px;
+    margin: 0;
     align-items: flex-end;
 }
-.OnlineBlog .sub-OnlineBlog .OnlineBlog-content a button svg{
+.OnlineBlog .sub-OnlineBlog .OnlineBlog-content a button svg, .OnlineBlog .sub-OnlineBlog .OnlineBlog-content button svg{
     margin-bottom: -3px;
 }
-.OnlineBlog .sub-OnlineBlog .OnlineBlog-content a:hover{
+.OnlineBlog .sub-OnlineBlog .OnlineBlog-content a:hover, .OnlineBlog .sub-OnlineBlog .OnlineBlog-content button:hover{
     background-color: #027dff;
 }
 
