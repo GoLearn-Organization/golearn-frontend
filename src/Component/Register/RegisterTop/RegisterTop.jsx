@@ -12,7 +12,7 @@ const RegisterTop = ({ userRegistration, setUserRegistration }) => {
               ? "Student Registration"
               : "Publisher Registration"}
           </h1>
-          {userRegistration ? (
+          {/* {userRegistration ? (
             <p onClick={() => setUserRegistration(false)}>
               Register as a publisher
             </p>
@@ -20,17 +20,19 @@ const RegisterTop = ({ userRegistration, setUserRegistration }) => {
             <p onClick={() => setUserRegistration(true)}>
               Register as a student
             </p>
-          )}
-          <span>
+          )} */}
+          <Link to="/login">
+            <p>Login instead</p>
+          </Link>
+          {/* <span>
             <a href="/">Home</a> /
             <a href="/register">
               <Link to="/register"> Registration</Link>
             </a>
-          </span>
-          {/* <Link to="/">
-            <a className="homeRedirect">Back to homepage</a>
-          </Link> */}
-          <a className="homeRedirect" href="/" rel="noreferrer">Back to homepage</a>
+          </span> */}
+          <a className="homeRedirect" href="/" rel="noreferrer">
+            Back to homepage
+          </a>
         </div>
       </div>
     </div>

@@ -150,3 +150,17 @@
     padding: 48px 0px;
   }
 }
+
+.loadingCounts {
+  filter: blur(2.5px);
+  animation: bouncingLoader 500ms linear infinite alternate;
+}
+
+@keyframes bouncingLoader {
+  from {
+    transform: translateY(-16px);
+  }
+  /* to {
+    transform: translateY(0px);
+  } */
+}
