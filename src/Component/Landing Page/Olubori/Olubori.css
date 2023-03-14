@@ -30,6 +30,14 @@
 }
 .paymentPageBody h5 {
   font-size: 24px;
+  text-align: center;
+}
+
+@media screen and (max-width: 500px) {
+  .paymentPageBody h5 {
+    width: 90%;
+    margin: 0 auto;
+  }
 }
 
 .loader {
