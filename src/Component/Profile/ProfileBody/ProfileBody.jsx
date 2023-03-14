@@ -201,17 +201,21 @@ const ProfileBody = ({ setLoginStatus }) => {
   useEffect(() => {
     // if(det) {
     //   det.role === "user" && handlecart();
-    //   det.role === "publisher" || "admin" && handleinstructorCourse();
+    //   det.role === ("publisher" || "admin") && handleinstructorCourse();
     // }
     if (det) {
       if (det.role === "user") {
         handlecart();
         return;
       }
-      if (det.role === "publisher" || "admin") {
+      if (det.role === "publisher" || det.role === "admin") {
         handleinstructorCourse();
         return;
       }
+      // if (det.role === "admin") {
+      //   handleinstructorCourse();
+      //   return;
+      // }
     }
   }, [det, handleinstructorCourse]);
 
@@ -615,7 +619,10 @@ const ProfileBody = ({ setLoginStatus }) => {
     document.getElementById("create").style.display = "none";
     document.getElementById("cart").style.display = "flex";
 
-    det.role === "publisher" || "admin" ? handleinstructorCourse() : handlecart();
+    // det.role === ("publisher" || "admin") ? handleinstructorCourse() : handlecart();
+    (det.role === "publisher" || det.role === "admin") && handleinstructorCourse();
+    // det.role === "admin" && handleinstructorCourse();
+    det.role === "user" && handlecart();
   }
 
   /**
@@ -867,23 +874,33 @@ const ProfileBody = ({ setLoginStatus }) => {
               </li>
               <li onClick={course}>
                 <span className="span">
-                  {det.role === "publisher" || "admin"
+                  {/* {det.role === ("publisher" || "admin")
                     ? "Course Created"
-                    : "Enrolled Courses"}
+                    : "Enrolled Courses"} */}
+                  {det.role === "user" && "Enrolled Courses"}
+                  {det.role === "publisher" && "Course Created"}
+                  {det.role === "admin" && "Course Created"}
                 </span>
               </li>
               {/* <li>
                 <span className="span"> {det.role=== "publisher"? "Create Blog" : "Reviews" } </span>
               </li> */}
+              {det.role === "publisher" && 
               <li
                 onClick={create}
-                style={{ display: det.role === "publisher" || "admin" ? "block" : "none" }}
+                // style={{ display: det.role === ("publisher" || "admin") ? "block" : "none" }}
+                style={{ display: "block" }}
               >
                 <span className="span">Create Course</span>
-              </li>
-              {/* <li>
-                <span className="span">Settings</span>
-              </li> */}
+              </li>}
+              {det.role === "admin" && 
+              <li
+                onClick={create}
+                // style={{ display: det.role === ("publisher" || "admin") ? "block" : "none" }}
+                style={{ display: "block" }}
+              >
+                <span className="span">Create Course</span>
+              </li>}
               <li onClick={logout}>
                 <span className="span">Logout</span>
               </li>
@@ -932,15 +949,18 @@ const ProfileBody = ({ setLoginStatus }) => {
                 </div>
                 <div className="text-div">
                   <h1>
-                    {det.role === "publisher" || "admin"
+                    {/* {det.role === ("publisher" || "admin")
                       ? instructCourse.length
-                      : cart.length}
+                      : cart.length} */}
+                    {det.role === "publisher" && instructCourse.length}
+                    {det.role === "admin" && instructCourse.length}
+                    {det.role === "user" && cart.length}
                   </h1>
                   <p>
-                    {" "}
-                    {det.role === "publisher" || "admin"
-                      ? "Course Created "
-                      : "Enrolled Courses"}{" "}
+                    {/* {det.role === ("publisher" || "admin") ? "Course Created " : "Enrolled Courses"}{" "} */}
+                    {det.role === "publisher" && "Course Created "}
+                    {det.role === "admin" && "Course Created "}
+                    {det.role === "user" && "Enrolled Courses"}
                   </p>
                 </div>
               </div>
@@ -952,9 +972,10 @@ const ProfileBody = ({ setLoginStatus }) => {
                   <h1>{cart.length}</h1>
                   <p>
                     {" "}
-                    {det.role === "publisher" || "admin"
-                      ? "Created Blogs"
-                      : "Active Courses"}
+                    {/* {det.role === ("publisher" || "admin") ? "Created Blogs" : "Active Courses"} */}
+                    {det.role === "publisher" && "Created Blogs"}
+                    {det.role === "admin" && "Created Blogs"}
+                    {det.role === "user" && "Active Courses"}
                   </p>
                 </div>
               </div>
@@ -1400,7 +1421,9 @@ const ProfileBody = ({ setLoginStatus }) => {
               alignItems: instructorError ? "center" : "flex-start",
             }}
           >
-            {det.role === "publisher" || "admin" ? courseCreatedCard : carts}
+            {det.role === "publisher" && courseCreatedCard}
+            {det.role === "admin" && courseCreatedCard}
+            {/* {det.role === ("publisher" || "admin") ? courseCreatedCard : carts} */}
             {det.role === "user" && carts && carts.length < 1
               ? "No enrolled courses yet"
               : carts}
