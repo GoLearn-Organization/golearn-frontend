@@ -1,0 +1,44 @@
+@use './variables.scss' as var;
+
+
+button {
+    padding: var.$small-button;
+    border-radius: var.$space-4px;
+    border: none;
+    background-color: var.$primary-color;
+    color: var.$white;
+    cursor: pointer;
+    min-width: var.$space-128px;
+    font-weight: var.$bold;
+    display: flex;
+    align-items: center;
+    gap: var.$space-2px;
+    justify-content: center;
+    &:hover {
+        background-color: var.$dark-blue;
+    }
+}
+
+input {
+    background-color: var.$grey;
+    outline: none;
+    padding: var.$big-input;
+    border-radius: var.$space-12px;
+    border: none;
+    min-width: var.$space-128px + var.$space-64px;
+    color: var.$dark-blue;
+}
+
+img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.bodyNoScroll {
+    overflow: hidden;
+  }
+  .bodyScroll {
+    position: relative;
+    width: auto;
+  }

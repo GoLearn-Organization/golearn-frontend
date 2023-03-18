@@ -1,195 +1,161 @@
-import React from "react";
-import "./NavBar.css";
-import { Link } from "react-router-dom";
-import logo from "./img/GoLearnFull Color.png";
-import { RiArrowDownSLine } from "react-icons/ri";
-import { HiOutlineUserCircle } from "react-icons/hi";
-import useResponsive from "../custom-hooks/UseResponsive";
-import { BsThreeDots } from "react-icons/bs";
+import React, { useEffect, useState } from "react";
+import { FaSearch, FaUser } from "react-icons/fa";
 import { GiHamburgerMenu } from "react-icons/gi";
-import { FaUser, FaTimes } from "react-icons/fa";
-import { useState } from "react";
+import { MdClose } from "react-icons/md";
+import { RiArrowDownSLine } from "react-icons/ri";
+import { Link } from "react-router-dom";
+import style from "../../styles/Navbar.module.scss";
+import useResponsive from "../custom-hooks/UseResponsive";
+import logo from "./img/GoLearnFull Color.png";
 
-const NavBar = ({loginStatus}) => {
-  // console.log(window.innerWidth);
+const Navbar = ({ loginStatus }) => {
+  const [dropdownContainerVisisble, setdropdownContainerVisisble] =
+    useState(false);
+  const [sideBarDropdownModalVisibility, setSideBarDropdownModalVisibility] =
+    useState(false);
 
   const onMobile = useResponsive();
 
-  const [dropdown, dropdownFunct] = useState(false)
-
-  function dropdownOpen() {
-    dropdownFunct(!dropdown)
-  }
-
-  function dropdownClose() {
-    dropdownFunct(!dropdown)
-  }
+  /**
+   * useEffect to make body scrollable or not
+   */
+  useEffect(() => {
+    sideBarDropdownModalVisibility
+      ? document.body.classList.add(style.bodyNoScroll)
+      : document.body.classList.remove(style.bodyNoScroll);
+  }, [sideBarDropdownModalVisibility]);
 
   return (
-    <>
+    <div className={style.navbarContainer}>
+      {onMobile && sideBarDropdownModalVisibility && (
+        <NavbarDropdown
+          setSideBarDropdownModalVisibility={setSideBarDropdownModalVisibility}
+        />
+      )}
+
+      <div className={style.navbarContainer__left}>
+        <div className={style.logo}>
+          <Link to="/">
+            <img src={logo} alt="" />
+          </Link>
+        </div>
+        {!onMobile && <input type="text" placeholder="Search for a course" />}
+      </div>
+
       {!onMobile && (
-        <div className="navbar">
-          {/* <div className="sub-navbar"> */}
-          <div className="logo-search">
-            <div className="logo">
-              <img src={logo} alt="" />
-            </div>
-            <input type="text" placeholder="Search for anything" />
+        <div className={style.navbarContainer__navigation}>
+          <ul>
+            <Link to="/">
+              <li>Home</li>
+            </Link>
+            <li>Learn</li>
+            <li>Forum</li>
+            <Link to="Blog">
+              <li>Blog</li>
+            </Link>
+            <li
+              onMouseOver={() => setdropdownContainerVisisble(true)}
+              onMouseLeave={() => setdropdownContainerVisisble(false)}
+            >
+              More <RiArrowDownSLine fontSize="20px" />
+              {dropdownContainerVisisble && (
+                <div className={style.dropdownContainer}>
+                  <Link to="About">
+                    <span>About us</span>
+                  </Link>
+                  <Link to="Contact-Us">
+                    <span>Contact us</span>
+                  </Link>
+                </div>
+              )}
+            </li>
+          </ul>
+          <button>
+            <FaUser /> Profile
+          </button>
+        </div>
+      )}
+
+      {onMobile && (
+        <div className={style.navbarContainer__mobileNav}>
+          {/* <FaTimes fontSize={22} onClick={dropdownClose} /> */}
+          <div className={style.search}>
+            <FaSearch fontSize={18} />
           </div>
-          <div className="navigation">
-            <ul className="main" id="list">
-              <li>
-                <Link to="/">Home</Link>
-              </li>
-              <li>
-                <Link to="Courses">
-                  Courses 
-                  {/* <RiArrowDownSLine fontSize="20px" /> */}
-                  {/* <i class="fa fa-caret-down" aria-hidden="true"></i> */}
-                </Link>
-                {/* <ul className="dd">
-                  <span>
-                    <Link to="DecFinance">Decentralized Finance</Link>
-                  </span>
-                  <span>
-                    <Link to="DecFinance">Personal Development Courses</Link>
-                  </span>
-                </ul> */}
-              </li>
-              <li>
-                <Link to="Blog">
-                  Go-Learn <RiArrowDownSLine fontSize="20px" />{" "}
-                </Link>
-                <ul className="dd">
-                  <span>
-                    <Link to="About">About</Link>
-                  </span>
-                  <span>
-                    <Link to="Contact-Us">Contact Us</Link>
-                  </span>
-                </ul>
-              </li>
-              <li>
-                <Link to="Blog">Blog</Link>
-              </li>
-            </ul>
-          </div>
-          <div className="register">
-            {/* Conditional rendering using login status  */}
+          <div className={style.user}>
             {loginStatus ? (
               <Link to="/profile">
-                <button className="profileBtn">
-                  <HiOutlineUserCircle fontSize="22" color="#fff" />
-                  Profile
-                </button>
+                <FaUser fontSize={18} />
               </Link>
             ) : (
-              <div className="group">
-                <Link to="/login">
-                  <button className="loginBtn">Login</button>
-                </Link>
-                <Link to="/register">
-                  <button>Register</button>
-                </Link>
-                <input
-                  type="search"
-                  placeholder="Search for anything"
-                  className="search"
-                />
-              </div>
+              <Link to="/login">
+                <FaUser fontSize={18} />
+              </Link>
             )}
+          </div>
+          <div
+            className={style.menu}
+            onClick={() => setSideBarDropdownModalVisibility(true)}
+          >
+            <GiHamburgerMenu fontSize={20} />
           </div>
         </div>
       )}
-      {onMobile && (
-        <div className="navbar">
-          {/* Logo area */}
-          <div className="logo-search">
-            <div className="logo">
-              <img src={logo} alt="" />
-            </div>
-          </div>
-
-          {/* Naviagtion area */}
-          <div className="navigation">
-            <ul className="main" id="list" style={{display: dropdown? "flex" : "none"}}>
-              <li>
-                <Link to="/" onClick={dropdownOpen}>Home</Link>
-              </li>
-              <li>
-                <Link to="Courses" onClick={dropdownOpen}>
-                  Courses 
-                  {/* <RiArrowDownSLine fontSize="20px" /> */}
-                  {/* <i class="fa fa-caret-down" aria-hidden="true"></i> */}
-                </Link>
-                {/* <ul className="dd">
-                  <span>
-                    <Link to="DecFinance">Decentralized Finance</Link>
-                  </span>
-                  <span>
-                    <Link to="DecFinance">Personal Development Courses</Link>
-                  </span>
-                </ul> */}
-              </li>
-              <li>
-                <Link to="Blog">
-                  Go-Learn <RiArrowDownSLine fontSize="20px" />{" "}
-                </Link>
-                <ul className="dd">
-                  <span>
-                    <Link to="About" onClick={dropdownOpen}>About</Link>
-                  </span>
-                  <span>
-                    <Link to="Contact-Us" onClick={dropdownOpen}>Contact Us</Link>
-                  </span>
-                </ul>
-              </li>
-              <li>
-                <Link to="Blog" onClick={dropdownOpen}>Blog</Link>
-              </li>
-            </ul>
-            {/* Nav icon */}
-            <div id="nav">
-              {dropdown? <FaTimes fontSize={22} onClick={dropdownClose} /> : <GiHamburgerMenu fontSize={22} onClick={dropdownOpen} />  }
-            </div>
-          </div>
-
-          {/* Account area */}
-          <div className="register">
-            {/* Conditional rendering using login status  */}
-            {loginStatus ? (
-              <>
-                <Link to="/profile">
-                  <FaUser />
-                </Link>
-              </>
-            ) : (
-              <>
-                <div className="group">
-                  <Link to="/login" onClick={dropdownOpen}>
-                    <button className="loginBtn">Login</button>
-                  </Link>
-                  <Link to="/register" onClick={dropdownOpen}>
-                    <button>Register</button>
-                  </Link>
-                  {/* <input
-                type="search"
-                placeholder="Search for anything"
-                className="search"
-              /> */}
-                </div>
-                <div className="option">
-                  {/* <img src={option} alt="" /> */}
-                  <BsThreeDots fontSize={22} />
-                </div>
-              </>
-            )}
-          </div>
-          
-        </div>
-      )}
-    </>
+    </div>
   );
 };
 
-export default NavBar;
+export const NavbarDropdown = ({ setSideBarDropdownModalVisibility }) => {
+  return (
+    <div className={style.sidebarContainer}>
+      <div
+        className={style.overlay}
+        onClick={() => setSideBarDropdownModalVisibility(false)}
+      ></div>
+      <div className={style.container}>
+        <div className={style.topArea}>
+          <div className={style.topArea__logo}>
+            <Link to="/" onClick={() => setSideBarDropdownModalVisibility(false)}>
+              <img src={logo} alt="" /> 
+            </Link>
+          </div>
+          <div
+            className={style.topArea__closeIcon}
+            onClick={() => setSideBarDropdownModalVisibility(false)}
+          >
+            <MdClose />
+          </div>
+        </div>
+        <ul>
+          <Link to="/" onClick={() => setSideBarDropdownModalVisibility(false)}>
+            <li>Home</li>
+          </Link>
+          <Link to="/" onClick={() => setSideBarDropdownModalVisibility(false)}>
+            <li>Learn</li>
+          </Link>
+          <Link
+            to="Blog"
+            onClick={() => setSideBarDropdownModalVisibility(false)}
+          >
+            <li>Blog</li>
+          </Link>
+          <Link
+            to="About"
+            onClick={() => setSideBarDropdownModalVisibility(false)}
+          >
+            <li>About us</li>
+          </Link>
+          <Link
+            to="Contact-Us"
+            onClick={() => setSideBarDropdownModalVisibility(false)}
+          >
+            <li>Contact us</li>
+          </Link>
+        </ul>
+        
+      </div>
+    </div>
+  )
+};
+
+export default Navbar;

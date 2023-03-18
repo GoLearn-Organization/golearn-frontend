@@ -1,12 +1,12 @@
 import React, { useCallback, useEffect } from "react";
 import "./PupCourse.css";
 import Card from "./Card.jsx";
-// import ClassesData from '../../Courses/Data/ClassesData'
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import MemoryKeys from "../../models/MemoryKeys";
 
 const PupCourse = ({ landingCourses }) => {
+
   const [course, setCourse] = useState();
 
   const fetchCourses = useCallback(async () => {
@@ -41,7 +41,6 @@ const PupCourse = ({ landingCourses }) => {
     console.log("COURSE DATA: ", course);
   }, [course, fetchCourses]);
 
-  
   let token = localStorage.getItem("goLearn-token");
   let islog = token
 

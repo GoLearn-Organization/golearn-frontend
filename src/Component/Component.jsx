@@ -23,16 +23,15 @@ import PaymentPage from "./Landing Page/Olubori/PaymentPage";
 import Course from "./Course/[id]";
 import MemoryKeys from "./models/MemoryKeys";
 
-function Component() {
+function Component({setCourses, courses}) {
+
   // const API = "https://golearn.up.railway.app/api/v1/auth/";
   console.log('process.env.REACT_APP_SERVER_URL: ', process.env.REACT_APP_SERVER_URL);
 
   const [loginStatus, setLoginStatus] = useState(false);
 
-  let [savedCourses, setSavedCourses] = useState();
-
   const fetchCourses = useCallback(async () => {
-    if (savedCourses) {
+    if (courses) {
       return;
     }
 
@@ -46,14 +45,14 @@ function Component() {
 
     // console.log("RESULT: ", data);
 
-    setSavedCourses(data);
+    setCourses(data);
 
     localStorage.setItem(MemoryKeys.Courses, JSON.stringify(data));
 
-    // const savedCoursesArray = savedCourses;
+    // const coursesArray = courses;
 
-    // console.log("Saved courses: ", savedCoursesArray);
-  }, [savedCourses]);
+    // console.log("Saved courses: ", coursesArray);
+  }, [courses]);
 
   useEffect(() => {
     const token = window.localStorage.getItem(MemoryKeys.UserToken);
@@ -62,7 +61,7 @@ function Component() {
       console.log("Token retrieved successfully!");
 
       // Call function to fetch courses if savede courses is nto available
-      !savedCourses && fetchCourses();
+      !courses && fetchCourses();
     } else {
       console.log("Token could not be retrieved!");
       setLoginStatus(false);
@@ -71,7 +70,7 @@ function Component() {
     return () => {
       console.log("cleanup");
     };
-  }, [savedCourses, fetchCourses]);
+  }, [courses, fetchCourses]);
 
   return (
     <>

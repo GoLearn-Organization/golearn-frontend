@@ -44,7 +44,7 @@ const Olubori = () => {
         MemoryKeys.UserCredentials,
         JSON.stringify(result.data)
       );
-      isSubscribed = result.data.isSubscribed;
+      isSubscribed = result?.data?.isSubscribed;
     };
     handleLogin();
   }

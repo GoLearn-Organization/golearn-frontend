@@ -1,5 +1,8 @@
 import { useEffect, useState } from "react";
 
+/**
+ * Fnction that returns true or false based on screen size. Either mobile range or not
+ */
 export default function useResponsive() {
     function windowMatch() {
         if (typeof window !== "undefined") {

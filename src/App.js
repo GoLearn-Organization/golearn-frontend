@@ -1,12 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import './App.css'
 import Component from "./Component/Component";
 
 
 function App() {
+
+  let [courses, setCourses] = useState();
+
   return(
     <div className="app">
-      <Component />
+      <Component courses={courses} setCourses={setCourses} />
     </div>
   )
 }

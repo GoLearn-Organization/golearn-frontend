@@ -10,6 +10,8 @@ html,body{
     transition: all 300ms ease;
     user-select: none;
     font-family: 'Nunito', sans-serif;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 p{
     color: #606060;

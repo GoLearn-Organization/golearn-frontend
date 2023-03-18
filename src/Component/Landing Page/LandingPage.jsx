@@ -1,7 +1,7 @@
 import React from "react";
 import Head from "./Head/Head";
 import Details from "./Details/Details";
-import PupCourse from "./PupCourse/PupCourse";
+// import PupCourse from "./PupCourse/PupCourse";
 import Olubori from "./Olubori/Olubori";
 import Education from "./Education/Education";
 import OnlineBlog from "./OnlineBlog/OnlineBlog";
@@ -13,6 +13,7 @@ import Footer from "./Footer/Footer";
 import { useEffect } from "react";
 import { useState } from "react";
 import MemoryKeys from "../models/MemoryKeys";
+import PopularCourse from "./PupCourse/PopularCourse";
 
 function LandingPage() {
   //   const API = "https://golearn.up.railway.app/api/v1/auth/";
@@ -61,7 +62,8 @@ function LandingPage() {
     <div>
       <Head landingCourses={landingCourses} />
       <Details />
-      <PupCourse landingCourses={landingCourses} />
+      <PopularCourse />
+      {/* <PupCourse landingCourses={landingCourses} /> */}
       <Olubori />
       <Education />
       <OnlineBlog />
