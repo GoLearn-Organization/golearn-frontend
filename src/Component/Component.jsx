@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import LandingPage from "./Landing Page/LandingPage";
 import Layout from "./Layout";
 
@@ -22,46 +22,51 @@ import PublisherReg from "./PublisherReg/PublisherReg";
 import PaymentPage from "./Landing Page/Olubori/PaymentPage";
 import Course from "./Course/[id]";
 import MemoryKeys from "./models/MemoryKeys";
+import useSWR from "swr";
 
-function Component({setCourses, courses}) {
-
-  // const API = "https://golearn.up.railway.app/api/v1/auth/";
-  console.log('process.env.REACT_APP_SERVER_URL: ', process.env.REACT_APP_SERVER_URL);
+function Component({ updateCourses }) {
+  // console.log('process.env.REACT_APP_SERVER_URL: ', process.env.REACT_APP_SERVER_URL);
 
   const [loginStatus, setLoginStatus] = useState(false);
 
-  const fetchCourses = useCallback(async () => {
-    if (courses) {
-      return;
-    }
-
-    let result = await fetch(`${process.env.REACT_APP_SERVER_URL}/api/v1/course`, {
-      method: "get",
-      credencials: "include",
-    });
+  /**
+   * Fetches courses data
+   */
+  const fetchCourses = async (url) => {
+    let result = await fetch(
+      `${process.env.REACT_APP_SERVER_URL}/api/v1/course`,
+      {
+        method: "get",
+        credencials: "include",
+      }
+    );
     result = await result.json();
 
-    const data = result.data;
+    console.log("data fetched: ", result.data);
+    return result.data;
+  };
 
-    // console.log("RESULT: ", data);
+  // The result, loading state and / or error of the fetch result
+  const {
+    data: courses,
+    // error,
+    // isLoading,
+  } = useSWR(
+    `${process.env.REACT_APP_SERVER_URL}/api/v1/course`,
+    fetchCourses,
+    { refreshInterval: 10000, refreshWhenHidden: false }
+  );
 
-    setCourses(data);
-
-    localStorage.setItem(MemoryKeys.Courses, JSON.stringify(data));
-
-    // const coursesArray = courses;
-
-    // console.log("Saved courses: ", coursesArray);
-  }, [courses]);
+  // Update courses when courses is updated
+  useEffect(() => {
+    updateCourses(courses);
+  }, [courses, updateCourses]);
 
   useEffect(() => {
     const token = window.localStorage.getItem(MemoryKeys.UserToken);
     if (token) {
       setLoginStatus(true);
       console.log("Token retrieved successfully!");
-
-      // Call function to fetch courses if savede courses is nto available
-      !courses && fetchCourses();
     } else {
       console.log("Token could not be retrieved!");
       setLoginStatus(false);
@@ -70,14 +75,14 @@ function Component({setCourses, courses}) {
     return () => {
       console.log("cleanup");
     };
-  }, [courses, fetchCourses]);
+  }, [loginStatus]);
 
   return (
     <>
       <BrowserRouter>
         <Routes>
           <Route element={<Layout loginStatus={loginStatus} />}>
-            <Route index path="/" element={<LandingPage />} />
+            <Route index path="/" element={<LandingPage courses={courses} />} />
             <Route path="about" element={<About />} />
             <Route path="blog" element={<Blog />} />
             <Route
@@ -113,9 +118,12 @@ function Component({setCourses, courses}) {
             <Route path="/forget" element={<Forget />} />
             <Route path="class/:id" element={<Class />} />
             <Route path="/publisher" element={<PublisherReg />} />
-            <Route path="/access-payment" element={<PaymentPage />} /> 
+            <Route path="/access-payment" element={<PaymentPage />} />
             <Route path={`/access-payment/:id`} element={<PaymentPage />} />
-            <Route path={`${process.env.REACT_APP_SERVER_URL}resetpassword/:token`} element={<Reset />} />
+            <Route
+              path={`${process.env.REACT_APP_SERVER_URL}resetpassword/:token`}
+              element={<Reset />}
+            />
             <Route path="*" element={<Error />} />
           </Route>
         </Routes>

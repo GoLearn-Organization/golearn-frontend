@@ -45,8 +45,10 @@ const Olubori = () => {
         JSON.stringify(result.data)
       );
       isSubscribed = result?.data?.isSubscribed;
+      return;
     };
     handleLogin();
+    return;
   }
 
   // let isSubscribed = userCredentials?.isSubscribed;

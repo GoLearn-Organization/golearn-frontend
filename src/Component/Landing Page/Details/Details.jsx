@@ -16,7 +16,7 @@ const Details = () => {
   useEffect(() => {
     const onScroll = () => {
       const enrolledLearners = document.getElementById("enrolled-learners");
-      const rect = enrolledLearners.getBoundingClientRect();
+      const rect = enrolledLearners?.getBoundingClientRect();
 
       const windowHeight =
         window.innerHeight || document.documentElement.clientHeight;

@@ -7,9 +7,17 @@ function App() {
 
   let [courses, setCourses] = useState();
 
+  /**
+   * Updates the courses state
+   * @param updatedCourses The updated courses
+   */
+  function updateCourses(updatedCourses) {
+      setCourses(updatedCourses);
+  }
+
   return(
     <div className="app">
-      <Component courses={courses} setCourses={setCourses} />
+      <Component updateCourses={updateCourses} />
     </div>
   )
 }

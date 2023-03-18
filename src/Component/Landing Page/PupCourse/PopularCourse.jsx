@@ -2,8 +2,20 @@ import React, { useState } from "react";
 import style from "../../../styles/PopularCoursesSection.module.scss";
 import PopularCourseCard from "./PopularCourseCard";
 
-const PopularCourse = () => {
-  const [isFirstTabVisible, setIsFirstTabVisible] = useState(false);
+const PopularCourse = ({ landingPageCourses }) => {
+  const [isFirstTabVisible, setIsFirstTabVisible] = useState(true);
+
+  // console.log('landingPageCourses: ', landingPageCourses);
+  
+  let financeCourses = landingPageCourses?.filter(
+    (word) => word.category === "Financial Trading" || "Forex"
+  );
+  
+  let skillCourses = landingPageCourses?.filter(
+    (word) => word.category === "Personal Development" || "Design and IT"
+  );
+
+  // console.log({'financeCourses': financeCourses, "skidllCourses": skillCourses})
 
   return (
     <div className={style.popularCourseContainer}>
@@ -36,11 +48,20 @@ const PopularCourse = () => {
         ></span>
       </div>
 
-      <div className={style.popularCourseContainer__cardContainer}>
-        <PopularCourseCard />
-        <PopularCourseCard />
-        <PopularCourseCard />
-      </div>
+      {landingPageCourses && isFirstTabVisible && (
+        <div className={style.popularCourseContainer__cardContainer}>
+          <PopularCourseCard data={financeCourses && financeCourses[Math.floor(Math.random() * financeCourses.length)]} /> 
+          <PopularCourseCard data={financeCourses && financeCourses[Math.floor(Math.random() * financeCourses.length)]} />
+          <PopularCourseCard data={financeCourses && financeCourses[Math.floor(Math.random() * financeCourses.length)]} />
+        </div>
+      )}
+      {landingPageCourses && !isFirstTabVisible && (
+        <div className={style.popularCourseContainer__cardContainer}>
+          <PopularCourseCard data={skillCourses && skillCourses[Math.floor(Math.random() * skillCourses.length)]} /> 
+          <PopularCourseCard data={skillCourses && skillCourses[Math.floor(Math.random() * skillCourses.length)]} />
+          <PopularCourseCard data={skillCourses && skillCourses[Math.floor(Math.random() * skillCourses.length)]} />
+        </div>
+      )}
     </div>
   );
 };

@@ -128,7 +128,7 @@
                 }
                 .eachCard__courseArea {
                     .courseTitle {
-                        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
+                        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
                     }
                     .viewDetails {
                         background-color: var.$primary-color;
@@ -229,9 +229,9 @@
                 .courseTitle {
                     font-size: var.$space-20px;
                     // width: 240px;
-                    font-size: var.$space-20px;
+                    font-size: var.$space-16px + 2px;
                     font-weight: var.$bold;
-                    line-height: var.$space-20px + 4px;
+                    line-height: var.$space-20px;
                     color: var.$white;
                     margin: 0;
                     &:hover {
@@ -262,9 +262,17 @@
                 height: 100%;
                 top: 0;
                 left: 0;
+                opacity: 1;
                 display: flex;
                 background-color: rgba(var.$black, 0.8);
                 // padding: var.$space-12px;
+                animation: slideUp 300ms ease;
+                @keyframes slideUp {
+                    from {
+                        top: 100%;
+                        opacity: 0;
+                    }
+                }
 
                 .courseInfo {
                     padding: 0 var.$space-12px;
@@ -284,6 +292,20 @@
                     }
                     &::-webkit-scrollbar-track {
                         background: transparent;
+                    }
+                }
+            }
+
+            &__courseInfoContainerClose {
+                @extend .eachCard__courseInfoContainer;
+                animation: slideDown 300ms ease;
+                @keyframes slideDown {
+                    from {
+                        top: 0;
+                    }
+                    to {
+                        top: 100%;
+                        opacity: 0;
                     }
                 }
             }
