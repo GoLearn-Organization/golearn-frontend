@@ -17,7 +17,7 @@ function App() {
 
   return(
     <div className="app">
-      <Component updateCourses={updateCourses} />
+      <Component updateCourses={updateCourses} courses={courses} />
     </div>
   )
 }
