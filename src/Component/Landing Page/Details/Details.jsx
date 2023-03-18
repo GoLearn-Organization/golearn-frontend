@@ -16,7 +16,7 @@ const Details = () => {
   useEffect(() => {
     const onScroll = () => {
       const enrolledLearners = document.getElementById("enrolled-learners");
-      const rect = enrolledLearners.getBoundingClientRect();
+      const rect = enrolledLearners?.getBoundingClientRect();
 
       const windowHeight =
         window.innerHeight || document.documentElement.clientHeight;
@@ -147,7 +147,7 @@ const Details = () => {
           <div className="card">
             <h1
               id="enrolled-learners"
-              className={loadingNumber && "loadingCounts"}
+              className={loadingNumber ? "loadingCounts" : ""}
             >
               {enrolledLearnerscount}
             </h1>
@@ -156,7 +156,7 @@ const Details = () => {
           <div className="card">
             <h1
               id="satisfaction-rate"
-              className={secondLoadingNumber && "loadingCounts"}
+              className={secondLoadingNumber ? "loadingCounts" : ""}
             >
               {satisfactionRate}%
             </h1>
@@ -166,12 +166,12 @@ const Details = () => {
         <div className="detail-wrapper">
           <div className="card">
             <h1 id="finished-sessions"
-              className={thirdLoadingNumber && "loadingCounts"}>{finishedSessions}</h1>
+              className={thirdLoadingNumber ? "loadingCounts" : ""}>{finishedSessions}</h1>
             <p>Finished Sessions</p>
           </div>
           <div className="card">
             <h1 id="online-instructors"
-              className={fourthLoadingNumber && "loadingCounts"}>{onlineInstructors}</h1>
+              className={fourthLoadingNumber ? "loadingCounts" : ""}>{onlineInstructors}</h1>
             <p>Online Instructors</p>
           </div>
         </div>

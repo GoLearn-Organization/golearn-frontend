@@ -1,11 +1,12 @@
 import React from "react";
-import NavBar from "./NavBar/NavBar";
 import { Outlet } from "react-router-dom";
+import Navbar from "./NavBar/NavBar";
 
 const Layout = ({ loginStatus }) => {
   return (
     <>
-      <NavBar loginStatus={loginStatus} />
+      {/* <NavBar loginStatus={loginStatus} /> */}
+      <Navbar loginStatus={loginStatus}/>
       <Outlet />
     </>
   );

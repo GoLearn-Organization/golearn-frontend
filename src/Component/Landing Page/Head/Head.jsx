@@ -2,10 +2,11 @@ import React, { useCallback } from "react";
 import "./Head.css";
 import { Link } from "react-router-dom";
 import { BsPerson } from "react-icons/bs";
-import Card from "./Card";
 import { useState } from "react";
 import { useEffect } from "react";
 import MemoryKeys from "../../models/MemoryKeys";
+import style from '../../../styles/Head.module.scss';
+import image from './img/man_reading_book.jpg';
 
 const Head = ({ landingCourses }) => {
   const [tokenAvailability, setTokenAvailability] = useState(false);
@@ -115,14 +116,9 @@ const Head = ({ landingCourses }) => {
   }, []);
 
   return (
-    <div className="head">
-      <div className="head-text">
+    <div className={style.headContainer}>
+      <div className={style.headContainer__left}>
         <h1>Your journey to financial freedom starts from here!</h1>
-        {/* <p>
-          At Go-Learn we believe that flexible and easy to access learning
-          opportunities can bring a significant change in how individuals prefer
-          to learn. Therefore, we offer you the beauty of eLearning.
-        </p> */}
         <p>
           At Go-Learn, we help people learn the skills they need to improve
           their financial well-being. Whether you're looking to start a new
@@ -143,12 +139,17 @@ const Head = ({ landingCourses }) => {
           </Link>
         )}
       </div>
-      <div className="head-card">
+      {/* <div className="head-card">
         <div className="card-wrapper">
           <Card courseData={data1} hideBottomVisibility={true} />
         </div>
         <div className="card-wrapper">
           <Card courseData={data2} hideBottomVisibility={true} />
+        </div>
+      </div> */}
+      <div className={style.headContainer__right}>
+        <div className={style.img}>
+          <img src={image} alt='header-img' />
         </div>
       </div>
     </div>

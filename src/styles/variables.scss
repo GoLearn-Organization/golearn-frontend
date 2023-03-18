@@ -1,0 +1,118 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;500;600;700;800;900&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap');
+
+
+//Region start - #Colors
+$primary-color: #027DFF;
+$light-blue: #F4F6F9;
+$med-blue: #2A95FF;
+$dark-blue: #221638;
+
+$grey: #F9F9F9;
+$light-grey: #F0F0F0;
+$black: #000000;
+$white: #FFFFFF;
+//#endRegion
+
+//Region start - Space
+    $space-2px: 2px;
+    $space-4px: 4px;
+    $space-8px: 8px;
+    $space-12px: 12px;
+    $space-16px: 16px;
+    $space-20px: 20px;
+    $space-24px: 24px;
+    $space-32px: 32px;
+    $space-40px: 40px;
+    $space-48px: 48px;
+    $space-56px: 56px;
+    $space-64px: 64px;
+    $space-72px: 72px;
+    $space-80px: 80px;
+    $space-88px: 88px;
+    $space-96px: 96px;
+    $space-120px: 120px;
+    $space-128px: 128px;
+    $space-256px: 256px;
+//endRegion
+
+//Region start - #Font sizes 
+    $x-extra-small-text-8 : $space-8px;
+    $extra-small-text-12 : $space-12px;
+    $small-text-16 : $space-16px;
+    $regular-text-24 : $space-24px;
+    $header-text-32 : $space-32px;
+    $medBig-text-48 : $space-40px;
+    $button-text : $small-text-16;
+//#endRegion
+
+//Region start - #Font weight
+    $regular-weight : 400;
+    $medium-weight : 500;
+    $bold : 700;
+    $h2-bold : 800;
+//#endRegion
+
+//Region start - #Opacity
+    $opacity-3 : 0.3;
+    $opacity-5 : 0.5;
+//#endRegion
+
+//Region start - #Border
+    $bord : 1px solid #000;
+//#endRegion
+
+//Region start - #Padding
+    $small-button : $space-12px $space-16px;
+    $big-button : $space-12px $space-24px;
+    $search-area : 0px $space-8px;
+    $padding-desktop : $space-120px $space-64px;
+    $padding-mobile : 0 $space-16px;
+    $big-input : $space-12px $space-16px;
+    $mobile : 0px $space-24px;
+//#endRegion
+
+$customBoxShadow: 0px 0px 10px 0px rgb(0 0 0 / 20%);
+
+
+//Region start - #Breakpoints
+$laptop : 1300px;
+$small-laptop : 960px;
+$tablet : 768px;
+$big-mobile : 500px;
+$small-mobile : 360px;
+$x-small-mobile : 240px;
+//#endRegion
+
+
+@mixin laptop {
+    @media (max-width: #{$laptop}) {
+        @content;
+    }
+}
+@mixin small-laptop {
+    @media (max-width: #{$small-laptop}) {
+        @content;
+    }
+}
+@mixin tablet {
+    @media (max-width: #{$tablet}) {
+        @content;
+    }
+}
+@mixin big-mobile {
+    @media (max-width: #{$big-mobile}) {
+        @content;
+    }
+}
+@mixin small-mobile {
+    @media (max-width: #{$small-mobile}) {
+        @content;
+    }
+}
+@mixin x-small-mobile {
+    @media (max-width: #{$x-small-mobile}) {
+        @content;
+    }
+}

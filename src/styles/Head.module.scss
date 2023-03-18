@@ -1,0 +1,108 @@
+@use "./variables.scss" as var;
+@use "./reusables.scss";
+
+@mixin small-laptop {
+    @media (max-width: #{var.$small-laptop}) {
+        @content;
+    }
+}
+@mixin big-mobile {
+    @media (max-width: #{var.$big-mobile}) {
+        @content;
+    }
+}
+
+.headContainer {
+    padding: var.$padding-desktop;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #fff;
+    background-image: linear-gradient(140deg, #027dff14 6%, #ffffff 69%);
+
+    @include small-laptop {
+        padding: var.$padding-mobile;
+        padding-top: var.$space-64px;
+        padding-bottom: var.$space-48px;
+        flex-direction: column;
+        text-align: center;
+        gap: var.$space-48px;
+    }
+
+    &__left {
+        width: 45%;
+        min-width: 45%;
+        // border: 1px solid;
+        @include small-laptop {
+            width: 100%;
+        }
+        h1 {
+            font-size: var.$space-40px;
+            margin-bottom: var.$space-4px;
+        }
+        p {
+            margin: 0;
+            margin-bottom: var.$space-20px;
+        }
+    }
+
+    &__right {
+        // border: 1px solid;
+        width: auto;
+        @include small-laptop {
+            width: fit-content;
+        }
+        .img {
+            height: 340px;
+            width: 100%;
+            // border: 1px solid;
+            position: relative;
+            &:hover {
+                &::after, &::before {
+                    background-color: var.$dark-blue;
+                }
+                &::after {
+                    top: -5%;
+                    right: -3%;
+                }
+                &::before {
+                    top: 56%;
+                    left: -3%;
+                }
+            }
+            &::after, &::before {
+                position: absolute;
+                content: '';
+                width: 50%;
+                height: 50%;
+                width: 250px;
+                height: 170px;
+                background-color: var.$dark-blue;
+                background-color: var.$primary-color;
+                top: -4%;
+                right: -2%;
+                z-index: 1;
+                transition: all 400ms ease;
+                @include big-mobile {
+                    top: 0%;
+                    right: -2%;
+                } 
+            }
+            &::before {
+                top: 54%;
+                left: -2%;
+                @include big-mobile {
+                    top: 50%;
+                    right: -2%;
+                } 
+            }
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: contain;
+                z-index: 2;
+                position: relative;
+            }
+        }
+    }
+}
