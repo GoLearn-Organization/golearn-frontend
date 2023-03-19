@@ -39,11 +39,11 @@ const Head = ({ landingCourses }) => {
     // );
     let iTCourses = data.filter((word) => word.category === "Design and IT");
 
-    console.log("filtered courses: ", {
-      // "personal development courses": personalDevelopmentCourses,
-      "Affiliate Marketing courses": affliateMarketingCourses,
-      iTCourses: iTCourses,
-    });
+    // console.log("filtered courses: ", {
+    //   "personal development courses": personalDevelopmentCourses,
+    //   "Affiliate Marketing courses": affliateMarketingCourses,
+    //   iTCourses: iTCourses,
+    // });
 
     setData1(
       affliateMarketingCourses[

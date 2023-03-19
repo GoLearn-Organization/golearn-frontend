@@ -54,7 +54,7 @@ function Component({ updateCourses }) {
   } = useSWR(
     `${process.env.REACT_APP_SERVER_URL}/api/v1/course`,
     fetchCourses,
-    { refreshInterval: 10000, refreshWhenHidden: false }
+    { refreshInterval: 20000, refreshWhenHidden: false }
   );
 
   // Update courses when courses is updated
@@ -81,7 +81,7 @@ function Component({ updateCourses }) {
     <>
       <BrowserRouter>
         <Routes>
-          <Route element={<Layout loginStatus={loginStatus} />}>
+          <Route element={<Layout loginStatus={loginStatus} courses={courses} />}>
             <Route index path="/" element={<LandingPage courses={courses} />} />
             <Route path="about" element={<About />} />
             <Route path="blog" element={<Blog />} />

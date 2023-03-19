@@ -17,9 +17,12 @@ const Course = () => {
   const [courseReviewCount, setCourseReviewCount] = useState();
   const [coureReviewFetched, setCoureReviewFetched] = useState(false);
   const [isReviewVisible, setIsReviewVisible] = useState(false);
-  const [userData, setUserData] = useState();
+  // const [userData, setUserData] = useState();
 
   const token = localStorage.getItem(MemoryKeys.UserToken);
+
+  // let didIdChange = false;
+  // const [currentId, setCurrentId] = useState(id);
 
   /**
    * Function to get course data
@@ -29,6 +32,8 @@ const Course = () => {
       return;
     }
 
+    // setDidIdChange(true);
+
     let result = await fetch(
       `${process.env.REACT_APP_SERVER_URL}/api/v1/course/${id}`,
       {
@@ -36,8 +41,9 @@ const Course = () => {
       }
     );
     result = await result.json();
-    console.log("Course info: ", result);
+    // console.log("Course info: ", result);
     setCourseData(result.data);
+    return;
     // localStorage.setItem(MemoryKeys.SelectedCourseId, id);
   }, [courseData, id]);
 
@@ -56,7 +62,6 @@ const Course = () => {
       }
     );
     result = await result.json();
-    console.log("Course reviews: ", result);
 
     setCoureReview(result.data);
     setCourseReviewCount(result.count);
@@ -112,34 +117,33 @@ const Course = () => {
   /**
    * Function to get user info
    */
-  const handleUserInfoRetrieval = async () => {
-    const token = localStorage.getItem(MemoryKeys.UserToken);
-    console.log(token);
+  // const handleUserInfoRetrieval = async () => {
+  //   const token = localStorage.getItem(MemoryKeys.UserToken);
 
-    const config = {
-      headers: {
-        "content-Type": "application/json",
-        Authorization: "Bearer " + token,
-      },
-    };
-    let result = await fetch(
-      `${process.env.REACT_APP_SERVER_URL}/api/v1/auth`,
-      config,
-      {
-        method: "get",
-        credencials: "include",
-      }
-    );
-    result = await result.json();
-    console.log("User info: ", result);
+  //   const config = {
+  //     headers: {
+  //       "content-Type": "application/json",
+  //       Authorization: "Bearer " + token,
+  //     },
+  //   };
+  //   let result = await fetch(
+  //     `${process.env.REACT_APP_SERVER_URL}/api/v1/auth`,
+  //     config,
+  //     {
+  //       method: "get",
+  //       credencials: "include",
+  //     }
+  //   );
+  //   result = await result.json();
+  //   console.log("User info: ", result);
 
-    setUserData(result.data);
+  //   setUserData(result.data);
 
-    localStorage.setItem(
-      MemoryKeys.UserCredentials,
-      JSON.stringify(result.data)
-    );
-  };
+  //   localStorage.setItem(
+  //     MemoryKeys.UserCredentials,
+  //     JSON.stringify(result.data)
+  //   );
+  // };
 
   useEffect(() => {
     if (!courseData) {
@@ -147,17 +151,33 @@ const Course = () => {
     }
   }, [courseData, handleGetCourseInfo]);
 
+  
+  useEffect(() => {
+    // Fetch course info whenever the URL changes
+    
+    let result = fetch(
+      `${process.env.REACT_APP_SERVER_URL}/api/v1/course/${id}`,
+      {
+        method: "get",
+      }
+    );
+    // result = result.json();
+    // console.log("Course info: ", result);
+    setCourseData(result.data);
+  }, [id]);
+
+
   useEffect(() => {
     if (courseReview.length < 1 && !coureReviewFetched) {
       handleCourseReview();
     }
   }, [courseReview, coureReviewFetched, handleCourseReview]);
 
-  useEffect(() => {
-    if (!userData) {
-      handleUserInfoRetrieval();
-    }
-  }, [userData]);
+  // useEffect(() => {
+  //   if (!userData) {
+  //     handleUserInfoRetrieval();
+  //   }
+  // }, [userData]);
 
   return (
     <>

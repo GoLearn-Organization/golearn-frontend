@@ -1,14 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { FaSearch, FaUser } from "react-icons/fa";
 import { GiHamburgerMenu } from "react-icons/gi";
-import { MdClose } from "react-icons/md";
+import { MdClose, MdStarRate } from "react-icons/md";
 import { RiArrowDownSLine } from "react-icons/ri";
 import { Link } from "react-router-dom";
 import style from "../../styles/Navbar.module.scss";
 import useResponsive from "../custom-hooks/UseResponsive";
 import logo from "./img/GoLearnFull Color.png";
 
-const Navbar = ({ loginStatus }) => {
+const Navbar = ({ loginStatus, courses }) => {
   const [dropdownContainerVisisble, setdropdownContainerVisisble] =
     useState(false);
   const [sideBarDropdownModalVisibility, setSideBarDropdownModalVisibility] =
@@ -25,6 +25,75 @@ const Navbar = ({ loginStatus }) => {
       : document.body.classList.remove(style.bodyNoScroll);
   }, [sideBarDropdownModalVisibility]);
 
+  const [searchInputValue, setSearchInputValue] = useState();
+
+  const [searchResultVisibility, setSearchResultVisibility] = useState(false);
+  const [mobileInputVisibility, setMobileInputVisibility] = useState(false);
+
+  // let searchedCourses = [];
+  const [searchedCourses, setSearchedCourses] = useState([]);
+
+  function filterCourse() {
+    // setSearchInputValue(word);
+
+    setSearchResultVisibility(true);
+
+    console.log("input value: ", searchInputValue);
+
+    // searchedCourses = courses?.filter((keyword) =>
+    //   keyword?.courseTitle.toLowerCase().includes(searchInputValue)
+    // );
+
+    setSearchedCourses(
+      courses?.filter((course) =>
+        course?.courseTitle
+          .toLowerCase()
+          .includes(searchInputValue.toLowerCase())
+      )
+    );
+  }
+
+  const searchAreaRef = useRef();
+
+  // useEffect hook to close search dropdown when mouse is clicked outside search area
+  useEffect(() => {
+    const handleOutsideClick = (event) => {
+      if (
+        searchAreaRef.current &&
+        !searchAreaRef.current.contains(event.target)
+      ) {
+        setSearchResultVisibility(false);
+        setMobileInputVisibility(false);
+        setSearchInputValue("");
+      }
+    };
+
+    document.addEventListener("mousedown", handleOutsideClick);
+    document.addEventListener("touchstart", handleOutsideClick);
+
+    return () => {
+      document.removeEventListener("mousedown", handleOutsideClick);
+      document.removeEventListener("touchstart", handleOutsideClick);
+    };
+  }, [searchAreaRef]);
+
+  // Another way to go about this
+  // function filterCoursesContainingKeyword(courses, searchInputValue) {
+  //   // Create an empty array to store the filtered courses
+  //   const filteredCourses = [];
+
+  //   // Loop through each course in the courses array
+  //   courses.forEach((course) => {
+  //     // If the course contains the search string, add it to the filteredCourses array
+  //     if (course.includes(searchInputValue)) {
+  //       filteredCourses.push(course);
+  //     }
+  //   });
+
+  //   // Return the filtered courses array
+  //   return filteredCourses;
+  // }
+
   return (
     <div className={style.navbarContainer}>
       {onMobile && sideBarDropdownModalVisibility && (
@@ -39,7 +108,46 @@ const Navbar = ({ loginStatus }) => {
             <img src={logo} alt="" />
           </Link>
         </div>
-        {!onMobile && <input type="text" placeholder="Search for a course" />}
+        {!onMobile && (
+          <div className={style.searchDiv} ref={searchAreaRef}>
+            <input
+              type="text"
+              value={searchInputValue}
+              onChange={async (e) => {
+                // Set the value
+                let value = e.target.value;
+
+                setSearchInputValue(value);
+
+                filterCourse();
+              }}
+              placeholder="Search for a course"
+            />
+            {searchResultVisibility && searchInputValue && (
+              <div className={style.searchResultsContainer}>
+                {searchedCourses && searchedCourses.length > 0 ? (
+                  <>
+                    {searchedCourses.map((eachCourse, index) => (
+                      <NavbarSearchResults
+                        course={eachCourse}
+                        setSearchResultVisibility={setSearchResultVisibility}
+                        setSearchInputValue={setSearchInputValue}
+                        key={index}
+                      />
+                    ))}
+                  </>
+                ) : (
+                  <div className={style.searchErrorMsg}>
+                    <span>
+                      <MdClose fontSize={24} />
+                    </span>
+                    <p>We couldn't find results based on your search keyword</p>
+                  </div>
+                )}
+              </div>
+            )}
+          </div>
+        )}
       </div>
 
       {!onMobile && (
@@ -79,8 +187,64 @@ const Navbar = ({ loginStatus }) => {
       {onMobile && (
         <div className={style.navbarContainer__mobileNav}>
           {/* <FaTimes fontSize={22} onClick={dropdownClose} /> */}
-          <div className={style.search}>
-            <FaSearch fontSize={18} />
+          <div className={style.search} ref={searchAreaRef}>
+            <FaSearch
+              fontSize={18}
+              onClick={() => setMobileInputVisibility(true)}
+            />
+
+            {onMobile && (
+              <>
+                {mobileInputVisibility && (
+                  <div className={style.mobileSearchDiv} ref={searchAreaRef}>
+                    <input
+                      type="text"
+                      value={searchInputValue}
+                      onChange={async (e) => {
+                        // Set the value
+                        let value = e.target.value;
+
+                        setSearchInputValue(value);
+
+                        filterCourse();
+                      }}
+                      placeholder="Search for a course"
+                    />
+
+                    {searchResultVisibility && searchInputValue && (
+                      <div
+                        className={style.searchResultsContainer}
+                      >
+                        {searchedCourses && searchedCourses.length > 0 ? (
+                          <>
+                            {searchedCourses.map((eachCourse, index) => (
+                              <NavbarSearchResults
+                                course={eachCourse}
+                                setSearchResultVisibility={
+                                  mobileInputVisibility
+                                }
+                                setSearchInputValue={setSearchInputValue}
+                                key={index}
+                              />
+                            ))}
+                          </>
+                        ) : (
+                          <div className={style.searchErrorMsg}>
+                            <span>
+                              <MdClose fontSize={24} />
+                            </span>
+                            <p>
+                              We couldn't find results based on your search
+                              keyword
+                            </p>
+                          </div>
+                        )}
+                      </div>
+                    )}
+                  </div>
+                )}
+              </>
+            )}
           </div>
           <div className={style.user}>
             {loginStatus ? (
@@ -115,8 +279,11 @@ export const NavbarDropdown = ({ setSideBarDropdownModalVisibility }) => {
       <div className={style.container}>
         <div className={style.topArea}>
           <div className={style.topArea__logo}>
-            <Link to="/" onClick={() => setSideBarDropdownModalVisibility(false)}>
-              <img src={logo} alt="" /> 
+            <Link
+              to="/"
+              onClick={() => setSideBarDropdownModalVisibility(false)}
+            >
+              <img src={logo} alt="" />
             </Link>
           </div>
           <div
@@ -152,10 +319,91 @@ export const NavbarDropdown = ({ setSideBarDropdownModalVisibility }) => {
             <li>Contact us</li>
           </Link>
         </ul>
-        
       </div>
     </div>
-  )
+  );
 };
 
 export default Navbar;
+
+const NavbarSearchResults = ({
+  course,
+  setSearchResultVisibility,
+  setSearchInputValue,
+}) => {
+  const rating = course?.courserating ?? 0;
+
+  return (
+    <>
+      <Link
+        to={`/course/${course?._id}`}
+        onClick={() => {
+          setSearchInputValue("");
+          setSearchResultVisibility(false);
+        }}
+      >
+        <div className={style.eachResult}>
+          <div className={style.eachResult__image}>
+            <img src={course?.courseImage ?? "/logo.png"} alt="course cover" />
+          </div>
+          <div className={style.eachResult__courseDetails}>
+            <div className={style.topAreaDetails}>
+              <div className={style.details}>
+                <h1 className={style.courseTitle}>{course?.courseTitle}</h1>
+                <p className={style.publisherName}>{course?.publisherName}</p>
+                <div className={style.category}>
+                  <span>Category:</span>
+                  <p>{course?.category}</p>
+                </div>
+              </div>
+              {course?.courseType === 0 && (
+                <span className={style.courseTypeFree}>Free</span>
+              )}
+              {course?.courseType === 1 && (
+                <span className={style.courseTypePaid}>Paid</span>
+              )}
+            </div>
+            <div className={style.bottomAreaDetails}>
+              <div className={style.tagsArea}>
+                <span>TAGS:</span>
+                <div className={style.tagsArea__tags}>
+                  {[...course?.tags].map((eachTag, index) => (
+                    <p key={index}>{eachTag}</p>
+                  ))}
+                </div>
+              </div>
+              <div className={style.ratingArea}>
+                <span className={style.rating}>
+                  {[...Array(rating)].map((each, index) => {
+                    return (
+                      <span>
+                        <MdStarRate fontSize={11} color="#F7A921" />
+                      </span>
+                    );
+                  })}
+                  {rating < 5 && (
+                    <>
+                      {[...Array(5 - rating)].map((each, index) => {
+                        return (
+                          <span>
+                            <MdStarRate fontSize={11} color="#D9D9D9" />
+                          </span>
+                        );
+                      })}
+                    </>
+                  )}
+                </span>
+                <p>
+                  <span className={style.actualRating}>{rating}</span>/5{" "}
+                  <span className={style.text}>
+                    {rating < 2 ? "Rating" : "Ratings"}
+                  </span>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </Link>
+    </>
+  );
+};
