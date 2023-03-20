@@ -21,9 +21,6 @@ const Course = () => {
 
   const token = localStorage.getItem(MemoryKeys.UserToken);
 
-  // let didIdChange = false;
-  // const [currentId, setCurrentId] = useState(id);
-
   /**
    * Function to get course data
    */
@@ -145,29 +142,33 @@ const Course = () => {
   //   );
   // };
 
+  // useEffect hook to get course info if course data is unavailable 
   useEffect(() => {
+    // If course data is unavailable 
     if (!courseData) {
       handleGetCourseInfo();
     }
   }, [courseData, handleGetCourseInfo]);
 
   
+  // useEffect to fetch course data when id changes 
   useEffect(() => {
-    // Fetch course info whenever the URL changes
-    
+
+    // Fetch course info whenever the URL changes    
     let result = fetch(
       `${process.env.REACT_APP_SERVER_URL}/api/v1/course/${id}`,
       {
         method: "get",
       }
     );
-    // result = result.json();
-    // console.log("Course info: ", result);
+
+    // Update state 
     setCourseData(result.data);
   }, [id]);
 
 
   useEffect(() => {
+    // If course review length is less than 1 and we don't have any course review fetched 
     if (courseReview.length < 1 && !coureReviewFetched) {
       handleCourseReview();
     }

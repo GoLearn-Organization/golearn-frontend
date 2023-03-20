@@ -34,13 +34,14 @@ const PopularCourse = ({ landingPageCourses }) => {
           className={`${isFirstTabVisible ? style.active : ""}`}
           onClick={() => setIsFirstTabVisible(true)}
         >
-          Financial literacy
+          Financial education
         </span>
         <span
           className={`${isFirstTabVisible ? "" : style.active}`}
           onClick={() => setIsFirstTabVisible(false)}
         >
-          Skill Acquisition courses
+          {/* Skill Acquisition courses */}
+          Skill Acquisition
         </span>
         <span
           className={style.indicator}

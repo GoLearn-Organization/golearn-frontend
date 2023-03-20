@@ -137,6 +137,15 @@
 
 /* Media queries ----------------------------- */
 
+@media screen and (max-width: 760px) {
+    .footerArea {
+      padding-top: 52px;
+    }
+    .footerArea__container {
+      padding: 0 16px;
+    }
+  }
+
 @media screen and (max-width: 800px) {
     .footerArea__container .content {
       display: grid;

@@ -297,6 +297,7 @@
         display: flex;
         align-items: center;
         animation: barDisplay 400ms ease;
+        z-index: 3;
         @keyframes barDisplay {
             from {
                 right: -100%;
