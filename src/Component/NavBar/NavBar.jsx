@@ -25,7 +25,7 @@ const Navbar = ({ loginStatus, courses }) => {
       : document.body.classList.remove(style.bodyNoScroll);
   }, [sideBarDropdownModalVisibility]);
 
-  const [searchInputValue, setSearchInputValue] = useState();
+  const [searchInputValue, setSearchInputValue] = useState('');
 
   const [searchResultVisibility, setSearchResultVisibility] = useState(false);
   const [mobileInputVisibility, setMobileInputVisibility] = useState(false);
@@ -33,8 +33,14 @@ const Navbar = ({ loginStatus, courses }) => {
   // let searchedCourses = [];
   const [searchedCourses, setSearchedCourses] = useState([]);
 
-  function filterCourse() {
-    // setSearchInputValue(word);
+  function filterCourse(e) {
+    // Set the value
+    let value = e.target.value;
+
+    console.log("VALUE: ", value);
+
+    // return;
+    setSearchInputValue(value);
 
     setSearchResultVisibility(true);
 
@@ -113,14 +119,7 @@ const Navbar = ({ loginStatus, courses }) => {
             <input
               type="text"
               value={searchInputValue}
-              onChange={async (e) => {
-                // Set the value
-                let value = e.target.value;
-
-                setSearchInputValue(value);
-
-                filterCourse();
-              }}
+              onChange={filterCourse}
               placeholder="Search for a course"
             />
             {searchResultVisibility && searchInputValue && (
@@ -156,7 +155,9 @@ const Navbar = ({ loginStatus, courses }) => {
             <Link to="/">
               <li>Home</li>
             </Link>
-            <li>Learn</li>
+            <Link to="/learn">
+              <li>Learn</li>
+            </Link>
             <li>Forum</li>
             <Link to="Blog">
               <li>Blog</li>
@@ -212,9 +213,7 @@ const Navbar = ({ loginStatus, courses }) => {
                     />
 
                     {searchResultVisibility && searchInputValue && (
-                      <div
-                        className={style.searchResultsContainer}
-                      >
+                      <div className={style.searchResultsContainer}>
                         {searchedCourses && searchedCourses.length > 0 ? (
                           <>
                             {searchedCourses.map((eachCourse, index) => (
@@ -297,7 +296,10 @@ export const NavbarDropdown = ({ setSideBarDropdownModalVisibility }) => {
           <Link to="/" onClick={() => setSideBarDropdownModalVisibility(false)}>
             <li>Home</li>
           </Link>
-          <Link to="/" onClick={() => setSideBarDropdownModalVisibility(false)}>
+          <Link
+            to="/learn"
+            onClick={() => setSideBarDropdownModalVisibility(false)}
+          >
             <li>Learn</li>
           </Link>
           <Link

@@ -23,8 +23,9 @@ import PaymentPage from "./Landing Page/Olubori/PaymentPage";
 import Course from "./Course/[id]";
 import MemoryKeys from "./models/MemoryKeys";
 import useSWR from "swr";
+import Learn from "./Learn";
 
-function Component({ updateCourses }) {
+function Component({ updateCourses, courses }) {
   // console.log('process.env.REACT_APP_SERVER_URL: ', process.env.REACT_APP_SERVER_URL);
 
   const [loginStatus, setLoginStatus] = useState(false);
@@ -48,7 +49,7 @@ function Component({ updateCourses }) {
 
   // The result, loading state and / or error of the fetch result
   const {
-    data: courses,
+    data: fetchedCourses,
     // error,
     // isLoading,
   } = useSWR(
@@ -59,8 +60,8 @@ function Component({ updateCourses }) {
 
   // Update courses when courses is updated
   useEffect(() => {
-    updateCourses(courses);
-  }, [courses, updateCourses]);
+    updateCourses(fetchedCourses);
+  }, [fetchedCourses, updateCourses]); 
 
   useEffect(() => {
     const token = window.localStorage.getItem(MemoryKeys.UserToken);
@@ -103,6 +104,7 @@ function Component({ updateCourses }) {
             <Route path="instructor" element={<InstructorProfile />} />
             <Route path="Page-Not-Available" element={<Construction />} />
             <Route path="course/:id" element={<Course />} />
+            <Route path="learn" element={<Learn courses={courses} />} />
             <Route
               path="register"
               element={<Register setLoginStatus={setLoginStatus} />}
