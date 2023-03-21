@@ -99,6 +99,11 @@ button[type="submit"] {
     margin-block-end: 0;
     margin-block-start: 0;
 }
+.login form .detail .signin input[type='checkbox']{
+    width: fit-content;
+    min-width: fit-content;
+    display: flex;
+}
 .login form .detail .signin input{
     display: inline-block;
     vertical-align: top;

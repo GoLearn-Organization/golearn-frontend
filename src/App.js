@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import './App.css'
 import Component from "./Component/Component";
+// import { NextProgressbarSpinner } from 'nextjs-progressbar-spinner';
 
 
 function App() {
@@ -12,13 +13,19 @@ function App() {
    * @param updatedCourses The updated courses
    */
   function updateCourses(updatedCourses) {
-      setCourses(updatedCourses);
+    setCourses(updatedCourses);
   }
 
-  return(
-    <div className="app">
-      <Component updateCourses={updateCourses} courses={courses} />
-    </div>
+  return (
+    <>
+      {/* <NextProgressbarSpinner
+        NextNProgressProps={{
+          color: "#F26528",
+        }} /> */}
+      <div className="app">
+        <Component updateCourses={updateCourses} courses={courses} />
+      </div>
+    </>
   )
 }
 

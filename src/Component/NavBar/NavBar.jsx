@@ -6,6 +6,7 @@ import { RiArrowDownSLine } from "react-icons/ri";
 import { Link } from "react-router-dom";
 import style from "../../styles/Navbar.module.scss";
 import useResponsive from "../custom-hooks/UseResponsive";
+import ForumModal from "../ForumModal";
 import logo from "./img/GoLearnFull Color.png";
 
 const Navbar = ({ loginStatus, courses }) => {
@@ -25,10 +26,12 @@ const Navbar = ({ loginStatus, courses }) => {
       : document.body.classList.remove(style.bodyNoScroll);
   }, [sideBarDropdownModalVisibility]);
 
-  const [searchInputValue, setSearchInputValue] = useState('');
+  const [searchInputValue, setSearchInputValue] = useState("");
 
   const [searchResultVisibility, setSearchResultVisibility] = useState(false);
   const [mobileInputVisibility, setMobileInputVisibility] = useState(false);
+
+  const [forumModalVisibility, setForumModalVisibility] = useState(false);
 
   // let searchedCourses = [];
   const [searchedCourses, setSearchedCourses] = useState([]);
@@ -101,174 +104,185 @@ const Navbar = ({ loginStatus, courses }) => {
   // }
 
   return (
-    <div className={style.navbarContainer}>
-      {onMobile && sideBarDropdownModalVisibility && (
-        <NavbarDropdown
-          setSideBarDropdownModalVisibility={setSideBarDropdownModalVisibility}
-        />
-      )}
+    <>
+      <div className={style.navbarContainer}>
+        {forumModalVisibility && <ForumModal setForumModalVisibility={setForumModalVisibility} />}
+        {onMobile && sideBarDropdownModalVisibility && (
+          <NavbarDropdown
+            setSideBarDropdownModalVisibility={
+              setSideBarDropdownModalVisibility
+            }
+            setForumModalVisibility={setForumModalVisibility}
+          />
+        )}
 
-      <div className={style.navbarContainer__left}>
-        <div className={style.logo}>
-          <Link to="/">
-            <img src={logo} alt="" />
-          </Link>
+        <div className={style.navbarContainer__left}>
+          <div className={style.logo}>
+            <Link to="/">
+              <img src={logo} alt="" />
+            </Link>
+          </div>
+          {!onMobile && (
+            <div className={style.searchDiv} ref={searchAreaRef}>
+              <input
+                type="text"
+                value={searchInputValue}
+                onChange={filterCourse}
+                placeholder="Search for a course"
+              />
+              {searchResultVisibility && searchInputValue && (
+                <div className={style.searchResultsContainer}>
+                  {searchedCourses && searchedCourses.length > 0 ? (
+                    <>
+                      {searchedCourses.map((eachCourse, index) => (
+                        <NavbarSearchResults
+                          course={eachCourse}
+                          setSearchResultVisibility={setSearchResultVisibility}
+                          setSearchInputValue={setSearchInputValue}
+                          key={index}
+                        />
+                      ))}
+                    </>
+                  ) : (
+                    <div className={style.searchErrorMsg}>
+                      <span>
+                        <MdClose fontSize={24} />
+                      </span>
+                      <p>
+                        We couldn't find results based on your search keyword
+                      </p>
+                    </div>
+                  )}
+                </div>
+              )}
+            </div>
+          )}
         </div>
+
         {!onMobile && (
-          <div className={style.searchDiv} ref={searchAreaRef}>
-            <input
-              type="text"
-              value={searchInputValue}
-              onChange={filterCourse}
-              placeholder="Search for a course"
-            />
-            {searchResultVisibility && searchInputValue && (
-              <div className={style.searchResultsContainer}>
-                {searchedCourses && searchedCourses.length > 0 ? (
-                  <>
-                    {searchedCourses.map((eachCourse, index) => (
-                      <NavbarSearchResults
-                        course={eachCourse}
-                        setSearchResultVisibility={setSearchResultVisibility}
-                        setSearchInputValue={setSearchInputValue}
-                        key={index}
-                      />
-                    ))}
-                  </>
-                ) : (
-                  <div className={style.searchErrorMsg}>
-                    <span>
-                      <MdClose fontSize={24} />
-                    </span>
-                    <p>We couldn't find results based on your search keyword</p>
+          <div className={style.navbarContainer__navigation}>
+            <ul>
+              <Link to="/">
+                <li>Home</li>
+              </Link>
+              <Link to="/learn">
+                <li>Learn</li>
+              </Link>
+              <li onClick={() => setForumModalVisibility(true)}>Forum</li>
+              <Link to="Blog">
+                <li>Blog</li>
+              </Link>
+              <li
+                onMouseOver={() => setdropdownContainerVisisble(true)}
+                onMouseLeave={() => setdropdownContainerVisisble(false)}
+              >
+                More <RiArrowDownSLine fontSize="20px" />
+                {dropdownContainerVisisble && (
+                  <div className={style.dropdownContainer}>
+                    <Link to="About">
+                      <span>About us</span>
+                    </Link>
+                    <Link to="Contact-Us">
+                      <span>Contact us</span>
+                    </Link>
                   </div>
                 )}
-              </div>
-            )}
+              </li>
+            </ul>
+            <button>
+              <FaUser /> Profile
+            </button>
+          </div>
+        )}
+
+        {onMobile && (
+          <div className={style.navbarContainer__mobileNav}>
+            {/* <FaTimes fontSize={22} onClick={dropdownClose} /> */}
+            <div className={style.search} ref={searchAreaRef}>
+              <FaSearch
+                fontSize={18}
+                onClick={() => setMobileInputVisibility(true)}
+              />
+
+              {onMobile && (
+                <>
+                  {mobileInputVisibility && (
+                    <div className={style.mobileSearchDiv} ref={searchAreaRef}>
+                      <input
+                        type="text"
+                        value={searchInputValue}
+                        onChange={async (e) => {
+                          // Set the value
+                          let value = e.target.value;
+
+                          setSearchInputValue(value);
+
+                          filterCourse();
+                        }}
+                        placeholder="Search for a course"
+                      />
+
+                      {searchResultVisibility && searchInputValue && (
+                        <div className={style.searchResultsContainer}>
+                          {searchedCourses && searchedCourses.length > 0 ? (
+                            <>
+                              {searchedCourses.map((eachCourse, index) => (
+                                <NavbarSearchResults
+                                  course={eachCourse}
+                                  setSearchResultVisibility={
+                                    mobileInputVisibility
+                                  }
+                                  setSearchInputValue={setSearchInputValue}
+                                  key={index}
+                                />
+                              ))}
+                            </>
+                          ) : (
+                            <div className={style.searchErrorMsg}>
+                              <span>
+                                <MdClose fontSize={24} />
+                              </span>
+                              <p>
+                                We couldn't find results based on your search
+                                keyword
+                              </p>
+                            </div>
+                          )}
+                        </div>
+                      )}
+                    </div>
+                  )}
+                </>
+              )}
+            </div>
+            <div className={style.user}>
+              {loginStatus ? (
+                <Link to="/profile">
+                  <FaUser fontSize={18} />
+                </Link>
+              ) : (
+                <Link to="/login">
+                  <FaUser fontSize={18} />
+                </Link>
+              )}
+            </div>
+            <div
+              className={style.menu}
+              onClick={() => setSideBarDropdownModalVisibility(true)}
+            >
+              <GiHamburgerMenu fontSize={20} />
+            </div>
           </div>
         )}
       </div>
-
-      {!onMobile && (
-        <div className={style.navbarContainer__navigation}>
-          <ul>
-            <Link to="/">
-              <li>Home</li>
-            </Link>
-            <Link to="/learn">
-              <li>Learn</li>
-            </Link>
-            <li>Forum</li>
-            <Link to="Blog">
-              <li>Blog</li>
-            </Link>
-            <li
-              onMouseOver={() => setdropdownContainerVisisble(true)}
-              onMouseLeave={() => setdropdownContainerVisisble(false)}
-            >
-              More <RiArrowDownSLine fontSize="20px" />
-              {dropdownContainerVisisble && (
-                <div className={style.dropdownContainer}>
-                  <Link to="About">
-                    <span>About us</span>
-                  </Link>
-                  <Link to="Contact-Us">
-                    <span>Contact us</span>
-                  </Link>
-                </div>
-              )}
-            </li>
-          </ul>
-          <button>
-            <FaUser /> Profile
-          </button>
-        </div>
-      )}
-
-      {onMobile && (
-        <div className={style.navbarContainer__mobileNav}>
-          {/* <FaTimes fontSize={22} onClick={dropdownClose} /> */}
-          <div className={style.search} ref={searchAreaRef}>
-            <FaSearch
-              fontSize={18}
-              onClick={() => setMobileInputVisibility(true)}
-            />
-
-            {onMobile && (
-              <>
-                {mobileInputVisibility && (
-                  <div className={style.mobileSearchDiv} ref={searchAreaRef}>
-                    <input
-                      type="text"
-                      value={searchInputValue}
-                      onChange={async (e) => {
-                        // Set the value
-                        let value = e.target.value;
-
-                        setSearchInputValue(value);
-
-                        filterCourse();
-                      }}
-                      placeholder="Search for a course"
-                    />
-
-                    {searchResultVisibility && searchInputValue && (
-                      <div className={style.searchResultsContainer}>
-                        {searchedCourses && searchedCourses.length > 0 ? (
-                          <>
-                            {searchedCourses.map((eachCourse, index) => (
-                              <NavbarSearchResults
-                                course={eachCourse}
-                                setSearchResultVisibility={
-                                  mobileInputVisibility
-                                }
-                                setSearchInputValue={setSearchInputValue}
-                                key={index}
-                              />
-                            ))}
-                          </>
-                        ) : (
-                          <div className={style.searchErrorMsg}>
-                            <span>
-                              <MdClose fontSize={24} />
-                            </span>
-                            <p>
-                              We couldn't find results based on your search
-                              keyword
-                            </p>
-                          </div>
-                        )}
-                      </div>
-                    )}
-                  </div>
-                )}
-              </>
-            )}
-          </div>
-          <div className={style.user}>
-            {loginStatus ? (
-              <Link to="/profile">
-                <FaUser fontSize={18} />
-              </Link>
-            ) : (
-              <Link to="/login">
-                <FaUser fontSize={18} />
-              </Link>
-            )}
-          </div>
-          <div
-            className={style.menu}
-            onClick={() => setSideBarDropdownModalVisibility(true)}
-          >
-            <GiHamburgerMenu fontSize={20} />
-          </div>
-        </div>
-      )}
-    </div>
+    </>
   );
 };
 
-export const NavbarDropdown = ({ setSideBarDropdownModalVisibility }) => {
+export const NavbarDropdown = ({
+  setSideBarDropdownModalVisibility,
+  setForumModalVisibility,
+}) => {
   return (
     <div className={style.sidebarContainer}>
       <div
@@ -302,6 +316,14 @@ export const NavbarDropdown = ({ setSideBarDropdownModalVisibility }) => {
           >
             <li>Learn</li>
           </Link>
+          <li
+            onClick={() => {
+              setSideBarDropdownModalVisibility(false);
+              setForumModalVisibility(true);
+            }}
+          >
+            Forum
+          </li>
           <Link
             to="Blog"
             onClick={() => setSideBarDropdownModalVisibility(false)}
