@@ -1,0 +1,95 @@
+@use "./variables.scss" as var;
+@use "./reusables.scss";
+
+@mixin big-mobile {
+    @media (max-width: #{var.$big-mobile}) {
+        @content;
+    }
+}
+
+.modalParent {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    z-index: 10;
+    top: 0;
+    left: 0;
+    display: grid;
+    place-items: center;
+
+    .overlay {
+        background-color: rgba($color: var.$dark-blue, $alpha: 0.4);
+        backdrop-filter: blur(10px);
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+
+    .modalContainer {
+        width: 450px;
+        min-height: var.$space-256px;
+        background-color: var.$white;
+        position: absolute;
+        z-index: 20;
+        padding: var.$space-16px;
+        border-radius: var.$space-16px;
+        animation: animateIn 300ms ease;
+        @keyframes animateIn {
+            from {
+                transform: translateY(-16px);
+            }
+        }
+        @include big-mobile {
+            width: 85%;
+        }
+
+        &__topArea {
+            display: flex;
+            justify-content: space-between;
+            align-content: center;
+            h3 {
+                font-size: var.$space-24px;
+            }
+            .closeIcon {
+                height: fit-content;
+                width: var.$space-20px;
+                height: var.$space-20px;
+                display: grid;
+                place-items: center;
+                border-radius: var.$space-4px;
+                cursor: pointer;
+                &:hover {
+                    background-color: var.$primary-color;
+                    color: var.$white;
+                }
+            }
+        }
+        &__content {
+            .join {
+                p {
+                    margin-bottom: var.$space-2px;
+                }
+                button {
+                    width: 100%;
+                }
+                &:last-child {
+                    button {
+                        background-color: var.$paid;
+                        &:hover {
+                            background-color: var.$dark-blue;
+                        }
+                    }
+                }
+            }
+        }
+        &__cta {
+            margin-top: var.$space-16px;
+            display: flex;
+            button {
+                margin: 0 auto;
+            }
+        }
+    }
+}
