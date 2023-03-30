@@ -9,8 +9,8 @@ const Card = (props) => {
       <div className="icons">{props.icons}</div>
       <h3>{props.title}</h3>
       <p>{props.content}</p>
-      {/* {islog === null ? <Link to="/register"><span>Start Now!</span></Link> : <Link to="/courses"><span>Start Learning!</span></Link>}             */}
-      <Link to="/courses">
+      {/* {islog === null ? <Link to="/register"><span>Start Now!</span></Link> : <Link to="/learn"><span>Start Learning!</span></Link>}             */}
+      <Link to="/learn">
         <span>Start Now!</span>
       </Link>
     </div>

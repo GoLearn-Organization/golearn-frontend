@@ -4,14 +4,18 @@ import './Forget.css'
 
 const Forget = () => {
 
-    let [email, efunc] = React.useState('')
+    let [email, efunc] = React.useState('');
+
+    const url = process.env.REACT_APP_FRONTEND_URL;
+
 
     const handleForget = async (e) =>{
         e.preventDefault()
+        console.log('url: ', url);
         let result = await fetch(`${process.env.REACT_APP_SERVER_URL}/api/v1/auth/generatetoken`,{
             method:'post',
             credencials: 'include',
-            body:JSON.stringify({email}),
+            body:JSON.stringify({email, url}),  
             headers: {
                 'content-Type': 'application/json'
             }

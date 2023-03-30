@@ -36,7 +36,7 @@ const FreeAccess = () => {
                 <BiBookReader fontSize="20px" /> Register For Free
               </button>
             </Link> 
-            : <Link to="/courses">
+            : <Link to="/learn">
                 <button>
                   {" "}
                   <BiBookReader fontSize="20px" /> Start For Free

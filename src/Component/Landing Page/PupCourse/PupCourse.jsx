@@ -69,7 +69,7 @@ const PupCourse = ({ landingCourses }) => {
             are the creator of your own career and we will guide you through it.
             <Link to="/register"> Register Free Now!</Link>{" "}
           </p>
-          {islog === null ? <Link to="/register"><button>VIEW MORE COURSES</button></Link> : <Link to="/courses"><button>VIEW MORE COURSES</button></Link>}
+          {islog === null ? <Link to="/register"><button>VIEW MORE COURSES</button></Link> : <Link to="/learn"><button>VIEW MORE COURSES</button></Link>}
         </div>
       </div>
     </div>

@@ -313,5 +313,23 @@
                 }
             }
         }
+
+        .noResults {
+            width: 100%;
+            display: grid;
+            place-items: center;
+            margin: 0 auto;
+            svg {
+                animation: loader infinite linear 800ms;
+            }
+            @keyframes loader {
+                from {
+                    transform: rotateZ(0deg);
+                }
+                to {
+                    transform: rotateZ(360deg);
+                }
+            }
+        }
     }
 }

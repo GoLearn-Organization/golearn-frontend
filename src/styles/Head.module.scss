@@ -44,6 +44,10 @@
             margin: 0;
             margin-bottom: var.$space-20px;
         }
+        a {
+            display: flex;
+            width: fit-content;
+        }
     }
 
     &__right {

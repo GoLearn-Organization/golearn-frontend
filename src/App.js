@@ -16,6 +16,27 @@ function App() {
     setCourses(updatedCourses);
   }
 
+  // function isTokenExpired(token) {
+  //   const decodedToken = JSON.parse(atob(token.split('.')[1]));
+  //   const expirationTime = decodedToken.exp;
+  //   const currentTime = Math.floor(Date.now() / 1000);
+  //   return expirationTime < currentTime;
+  // }
+
+  // const tokenExpirationMiddleware = useCallback(() => {
+  //   const token = localStorage.getItem(MemoryKeys.UserToken);
+  //   console.log('Token checked');
+  //   if (token && isTokenExpired(token)) {
+  //     localStorage.removeItem(MemoryKeys.UserToken);
+  //   }
+  //   // next();
+  // }, []);
+
+  // useEffect(() => {
+  //   tokenExpirationMiddleware();
+  // }, []);
+
+
   return (
     <>
       {/* <NextProgressbarSpinner

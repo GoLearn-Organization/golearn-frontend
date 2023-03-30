@@ -19,7 +19,7 @@ const Course = () => {
   const [isReviewVisible, setIsReviewVisible] = useState(false);
   // const [userData, setUserData] = useState();
 
-  const token = localStorage.getItem(MemoryKeys.UserToken);
+  // const token = localStorage.getItem(MemoryKeys.UserToken);
 
   /**
    * Function to get course data
@@ -111,6 +111,31 @@ const Course = () => {
     (count1 / (count5 + count4 + count3 + count2 + count1)) * 100
   }%`;
 
+  async function enrollCourse() {
+    // Get course id
+    // Get user's enrolled courses array
+    // Check if course id is among any id in the user's enrolled courses array
+    // Send error alert
+
+    let result = await fetch(
+      `${process.env.REACT_APP_SERVER_URL}api/v1/course/${id}/enroll`,
+      {
+        method: "PATCH",
+        headers: {
+          "content-Type": "application/json",
+          Authorization: "Bearer " + localStorage.getItem(MemoryKeys.UserToken),
+        },
+      }
+    );
+    result = await result.json();
+    console.log("result: ", result);
+
+    if (result.success) {
+      window.location.href = `${process.env.REACT_APP_FRONTEND_URL}/class/${courseData?._id}`;
+    }
+    return;
+  }
+
   /**
    * Function to get user info
    */
@@ -142,19 +167,17 @@ const Course = () => {
   //   );
   // };
 
-  // useEffect hook to get course info if course data is unavailable 
+  // useEffect hook to get course info if course data is unavailable
   useEffect(() => {
-    // If course data is unavailable 
+    // If course data is unavailable
     if (!courseData) {
       handleGetCourseInfo();
     }
   }, [courseData, handleGetCourseInfo]);
 
-  
-  // useEffect to fetch course data when id changes 
+  // useEffect to fetch course data when id changes
   useEffect(() => {
-
-    // Fetch course info whenever the URL changes    
+    // Fetch course info whenever the URL changes
     let result = fetch(
       `${process.env.REACT_APP_SERVER_URL}/api/v1/course/${id}`,
       {
@@ -162,13 +185,12 @@ const Course = () => {
       }
     );
 
-    // Update state 
+    // Update state
     setCourseData(result.data);
   }, [id]);
 
-
   useEffect(() => {
-    // If course review length is less than 1 and we don't have any course review fetched 
+    // If course review length is less than 1 and we don't have any course review fetched
     if (courseReview.length < 1 && !coureReviewFetched) {
       handleCourseReview();
     }
@@ -422,12 +444,14 @@ const Course = () => {
             <div className="free">
               <div className="free-head">
                 <span>Free</span>
-                {/* <Link to="/class" state={{ id: data }}> */}
-                {/* <Link to="/class"> */}
+
                 {/* <Link to={`/class/${courseData?._id}`}> */}
-                <Link to={token ? `/class/${courseData?._id}` : "/login"}>
+
+                <button onClick={enrollCourse}>Enroll Now</button>
+
+                {/* <Link to={token ? `/class/${courseData?._id}` : "/login"}>
                   <button>Enroll Now</button>
-                </Link>
+                </Link> */}
                 <p>You have free access to this course</p>
               </div>
               <div className="free-footer">

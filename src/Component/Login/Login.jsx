@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import MemoryKeys from "../models/MemoryKeys";
 import "./Login.css";
@@ -8,6 +8,7 @@ const Login = ({ setLoginStatus }) => {
   // const [email, efunc] = React.useState('')
   const [userName, efunc] = React.useState("");
   const [password, pfunc] = React.useState("");
+  const [keepLoggedIn, setKeepLoggedIn] = useState(false);
   let valid1 = document.getElementById("valid1");
   let valid2 = document.getElementById("valid2");
   let error = document.getElementById("error");
@@ -15,14 +16,19 @@ const Login = ({ setLoginStatus }) => {
   // const navigate = useNavigate();
 
   const handleLogin = async (e) => {
+    error.innerHTML = '';
+    valid1.style.border = "1px solid #cdcfd5";
+    valid2.style.border = "1px solid #cdcfd5";
+
     loadfun(true);
     e.preventDefault();
+    
     let result = await fetch(
       `${process.env.REACT_APP_SERVER_URL}/api/v1/auth/login`,
       {
         method: "post",
         credencials: "include",
-        body: JSON.stringify({ userName, password }),
+        body: JSON.stringify({ userName, password, keepLoggedIn }),
         mode: "cors",
         headers: {
           "content-Type": "application/json",
@@ -80,7 +86,7 @@ const Login = ({ setLoginStatus }) => {
 
         <div className="detail">
           <div className="signin">
-            <input type="checkbox" />
+            <input type="checkbox" onChange={(e) => setKeepLoggedIn(e.target.value)} /> 
             <p>Keep me signed in</p>
           </div>
           <Link to="/forget">

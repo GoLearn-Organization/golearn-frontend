@@ -165,6 +165,7 @@
                         .publisherName {
                             white-space: nowrap;
                             text-overflow: ellipsis;
+                            width: fit-content;
                             max-width: 80%;
                             overflow: hidden;
                             font-size: var.$space-12px + 2px;
@@ -200,6 +201,11 @@
                                 &__stars {
                                     display: flex;
                                     align-items: center;
+                                    .ratingNumber {
+                                        font-size: 10px;
+                                        color: var.$dark-blue;
+                                        margin-left: 2px; 
+                                    }
                                 }
                                 &__reviewsNumber {
                                     font-size: var.$space-12px;
