@@ -620,7 +620,7 @@ const ProfileBody = ({ setLoginStatus }) => {
     document.getElementById("cart").style.display = "flex";
 
     // det.role === ("publisher" || "admin") ? handleinstructorCourse() : handlecart();
-    (det.role === "publisher" || det.role === "admin") && handleinstructorCourse();
+    (det?.role === "publisher" || det.role === "admin") && handleinstructorCourse();
     // det.role === "admin" && handleinstructorCourse();
     det.role === "user" && handlecart();
   }
@@ -692,10 +692,22 @@ const ProfileBody = ({ setLoginStatus }) => {
 
   const navigate = useNavigate();
 
-  /**
-   * Function to logout of application
-   */
-  function logout() {
+  const handleLogout = async () => {
+    
+    let result = await fetch(
+      `${process.env.REACT_APP_SERVER_URL}api/v1/auth/logout`,
+      {
+        method: "post",
+        headers: {
+          "content-Type": "application/json",
+          Authorization: "Bearer " + localStorage.getItem(MemoryKeys.UserToken),
+        },
+      }
+    ); 
+    result = await result.json();
+    
+    console.log(result);
+
     // Clear localStorage
     localStorage.clear();
 
@@ -704,6 +716,22 @@ const ProfileBody = ({ setLoginStatus }) => {
 
     // Navigate to homepage
     navigate("/login");
+  };
+
+  /**
+   * Function to logout of application
+   */
+  function logout() {
+    handleLogout();
+
+    // Clear localStorage
+    // localStorage.clear();
+
+    // Set login status to true
+    // setLoginStatus(false);
+
+    // Navigate to homepage
+    // navigate("/login");
 
     // window.location.reload(true);
   }
@@ -837,6 +865,15 @@ const ProfileBody = ({ setLoginStatus }) => {
   //     // setLoadingImage(false)
   // };
 
+  let token = localStorage.getItem(MemoryKeys.UserToken);
+
+  useEffect(() => {
+    if(token) {
+      return;
+    }
+    window.location.href = '/login';
+  }, [token]); 
+
   return (
     <div className="profilebody">
       <div className="sub-profilebody">
@@ -846,7 +883,7 @@ const ProfileBody = ({ setLoginStatus }) => {
           </div>
           <div className="profileDetails">
             <div className="img-div">
-              <img src={det.displayPicture ?? img} alt="" />
+              <img src={det?.displayPicture ?? img} alt="" />
               <span
                 style={{ color: "#fff" }}
                 onClick={() => setEditProfilePicture(true)}
@@ -857,7 +894,7 @@ const ProfileBody = ({ setLoginStatus }) => {
             <div className="text-div">
               <h5>Hello,</h5>
               <h3>
-                {det.firstName} {det.lastName}
+                {det?.firstName} {det?.lastName}
               </h3>
             </div>
           </div>
@@ -874,18 +911,18 @@ const ProfileBody = ({ setLoginStatus }) => {
               </li>
               <li onClick={course}>
                 <span className="span">
-                  {/* {det.role === ("publisher" || "admin")
+                  {/* {det?.role === ("publisher" || "admin")
                     ? "Course Created"
                     : "Enrolled Courses"} */}
-                  {det.role === "user" && "Enrolled Courses"}
-                  {det.role === "publisher" && "Course Created"}
-                  {det.role === "admin" && "Course Created"}
+                  {det?.role === "user" && "Enrolled Courses"}
+                  {det?.role === "publisher" && "Course Created"}
+                  {det?.role === "admin" && "Course Created"}
                 </span>
               </li>
               {/* <li>
-                <span className="span"> {det.role=== "publisher"? "Create Blog" : "Reviews" } </span>
+                <span className="span"> {det?.role=== "publisher"? "Create Blog" : "Reviews" } </span>
               </li> */}
-              {det.role === "publisher" && 
+              {det?.role === "publisher" && 
               <li
                 onClick={create}
                 // style={{ display: det.role === ("publisher" || "admin") ? "block" : "none" }}
@@ -893,7 +930,7 @@ const ProfileBody = ({ setLoginStatus }) => {
               >
                 <span className="span">Create Course</span>
               </li>}
-              {det.role === "admin" && 
+              {det?.role === "admin" && 
               <li
                 onClick={create}
                 // style={{ display: det.role === ("publisher" || "admin") ? "block" : "none" }}
@@ -907,7 +944,7 @@ const ProfileBody = ({ setLoginStatus }) => {
             </ul>
           </div>
           <div className="dashboard-main" id="dashboard">
-            {(!det.displayPicture || editProfilePicture) && (
+            {(!det?.displayPicture || editProfilePicture) && (
               <div className="upload">
                 {!displaypicture ? (
                   <div className="alert">
@@ -949,18 +986,18 @@ const ProfileBody = ({ setLoginStatus }) => {
                 </div>
                 <div className="text-div">
                   <h1>
-                    {/* {det.role === ("publisher" || "admin")
+                    {/* {det?.role === ("publisher" || "admin")
                       ? instructCourse.length
                       : cart.length} */}
-                    {det.role === "publisher" && instructCourse.length}
-                    {det.role === "admin" && instructCourse.length}
-                    {det.role === "user" && cart.length}
+                    {det?.role === "publisher" && instructCourse.length}
+                    {det?.role === "admin" && instructCourse.length}
+                    {det?.role === "user" && cart.length}
                   </h1>
                   <p>
-                    {/* {det.role === ("publisher" || "admin") ? "Course Created " : "Enrolled Courses"}{" "} */}
-                    {det.role === "publisher" && "Course Created "}
-                    {det.role === "admin" && "Course Created "}
-                    {det.role === "user" && "Enrolled Courses"}
+                    {/* {det?.role === ("publisher" || "admin") ? "Course Created " : "Enrolled Courses"}{" "} */}
+                    {det?.role === "publisher" && "Course Created "}
+                    {det?.role === "admin" && "Course Created "}
+                    {det?.role === "user" && "Enrolled Courses"}
                   </p>
                 </div>
               </div>
@@ -972,10 +1009,10 @@ const ProfileBody = ({ setLoginStatus }) => {
                   <h1>{cart.length}</h1>
                   <p>
                     {" "}
-                    {/* {det.role === ("publisher" || "admin") ? "Created Blogs" : "Active Courses"} */}
-                    {det.role === "publisher" && "Created Blogs"}
-                    {det.role === "admin" && "Created Blogs"}
-                    {det.role === "user" && "Active Courses"}
+                    {/* {det?.role === ("publisher" || "admin") ? "Created Blogs" : "Active Courses"} */}
+                    {det?.role === "publisher" && "Created Blogs"}
+                    {det?.role === "admin" && "Created Blogs"}
+                    {det?.role === "user" && "Active Courses"}
                   </p>
                 </div>
               </div>
@@ -989,7 +1026,7 @@ const ProfileBody = ({ setLoginStatus }) => {
                 </div>
               </div>
             </div>
-            {det.role === "user" && (
+            {det?.role === "user" && (
               <>
                 <h4>In Progress Courses</h4>
                 <div className="course-progress">
@@ -1005,23 +1042,23 @@ const ProfileBody = ({ setLoginStatus }) => {
               <h2>Profile</h2>
               <ul>
                 <li>Registered Date</li>
-                <li>{moment(det.createdAt).format("DD MMM YYYY, h:mm A")}</li>
+                <li>{moment(det?.createdAt).format("DD MMM YYYY, h:mm A")}</li>
               </ul>
               <ul>
                 <li>First Name</li>
-                <li>{det.firstName}</li>
+                <li>{det?.firstName}</li>
               </ul>
               <ul>
                 <li>LastName</li>
-                <li>{det.lastName}</li>
+                <li>{det?.lastName}</li>
               </ul>
               <ul>
                 <li>UserName</li>
-                <li>{det.userName}</li>
+                <li>{det?.userName}</li>
               </ul>
               <ul>
                 <li>Email</li>
-                <li>{det.email}</li>
+                <li>{det?.email}</li>
               </ul>
               {/* <ul>
                 <li>Phone Number</li>
@@ -1029,11 +1066,11 @@ const ProfileBody = ({ setLoginStatus }) => {
               </ul>
               <ul>
                 <li>id</li>
-                <li>{det._id}</li>
+                <li>{det?._id}</li>
               </ul> */}
               <ul>
                 <li>Role</li>
-                <li>{det.role}</li>
+                <li>{det?.role}</li>
               </ul>
             </div>
           </div>
@@ -1421,10 +1458,10 @@ const ProfileBody = ({ setLoginStatus }) => {
               alignItems: instructorError ? "center" : "flex-start",
             }}
           >
-            {det.role === "publisher" && courseCreatedCard}
-            {det.role === "admin" && courseCreatedCard}
-            {/* {det.role === ("publisher" || "admin") ? courseCreatedCard : carts} */}
-            {det.role === "user" && carts && carts.length < 1
+            {det?.role === "publisher" && courseCreatedCard}
+            {det?.role === "admin" && courseCreatedCard}
+            {/* {det?.role === ("publisher" || "admin") ? courseCreatedCard : carts} */}
+            {det?.role === "user" && carts && carts.length < 1
               ? "No enrolled courses yet"
               : carts}
             <h4

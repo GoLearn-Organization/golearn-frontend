@@ -106,7 +106,9 @@ const Navbar = ({ loginStatus, courses }) => {
   return (
     <>
       <div className={style.navbarContainer}>
-        {forumModalVisibility && <ForumModal setForumModalVisibility={setForumModalVisibility} />}
+        {forumModalVisibility && (
+          <ForumModal setForumModalVisibility={setForumModalVisibility} />
+        )}
         {onMobile && sideBarDropdownModalVisibility && (
           <NavbarDropdown
             setSideBarDropdownModalVisibility={
@@ -189,9 +191,19 @@ const Navbar = ({ loginStatus, courses }) => {
                 )}
               </li>
             </ul>
-            <button>
-              <FaUser /> Profile
-            </button>
+            {loginStatus ? (
+              <Link to="profile">
+                <button>
+                  <FaUser /> Profile
+                </button>
+              </Link>
+            ) : (
+              <Link to="Login">
+                <button>
+                  <FaUser /> Login
+                </button>
+              </Link>
+            )}
           </div>
         )}
 

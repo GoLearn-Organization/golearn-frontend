@@ -24,7 +24,7 @@ const Executive = () => {
                             <li> Self Development</li>
                         </ul>
                     </div>
-                    <Link to="/courses"><button>View All Courses</button></Link>
+                    <Link to="/learn"><button>View All Courses</button></Link>
                 </div>
             </div>
         </div>

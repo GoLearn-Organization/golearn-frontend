@@ -1,4 +1,4 @@
-import React, { useCallback } from "react";
+import React from "react";
 import "./Head.css";
 import { Link } from "react-router-dom";
 import { BsPerson } from "react-icons/bs";
@@ -13,101 +13,101 @@ const Head = ({ landingCourses }) => {
   // const [firstDataIsAvailable, setFirstDataIsAvailable] = useState(false);
   // const [secondDataIsAvailable, setSecondDataIsAvailable] = useState(false);
 
-  let course = JSON.parse(localStorage.getItem(MemoryKeys.Courses));
+  // let course = JSON.parse(localStorage.getItem(MemoryKeys.Courses));
 
-  const [data1, setData1] = useState();
-  const [data2, setData2] = useState();
+  // const [data1, setData1] = useState();
+  // const [data2, setData2] = useState();
 
-  const fetchCourses = useCallback(async () => {
-    let result = await fetch(`${process.env.REACT_APP_SERVER_URL}/api/v1/course`, {
-      method: "get",
-      credencials: "include",
-    });
-    result = await result.json();
+  // const fetchCourses = useCallback(async () => {
+  //   let result = await fetch(`${process.env.REACT_APP_SERVER_URL}/api/v1/course`, {
+  //     method: "get",
+  //     credencials: "include",
+  //   });
+  //   result = await result.json();
 
-    const data = result.data;
+  //   const data = result.data;
 
-    // console.log("RESULT: ", data);
+  //   // console.log("RESULT: ", data);
 
-    localStorage.setItem(MemoryKeys.Courses, JSON.stringify(data));
+  //   localStorage.setItem(MemoryKeys.Courses, JSON.stringify(data));
 
-    let affliateMarketingCourses = data.filter(
-      (word) => word.category === "Affiliate Marketing"
-    );
-    // let personalDevelopmentCourses = data.filter(
-    //   (word) => word.category === "Personal Development"
-    // );
-    let iTCourses = data.filter((word) => word.category === "Design and IT");
+  //   let affliateMarketingCourses = data.filter(
+  //     (word) => word.category === "Affiliate Marketing"
+  //   );
+  //   // let personalDevelopmentCourses = data.filter(
+  //   //   (word) => word.category === "Personal Development"
+  //   // );
+  //   let iTCourses = data.filter((word) => word.category === "Design and IT");
 
-    // console.log("filtered courses: ", {
-    //   "personal development courses": personalDevelopmentCourses,
-    //   "Affiliate Marketing courses": affliateMarketingCourses,
-    //   iTCourses: iTCourses,
-    // });
+  //   // console.log("filtered courses: ", {
+  //   //   "personal development courses": personalDevelopmentCourses,
+  //   //   "Affiliate Marketing courses": affliateMarketingCourses,
+  //   //   iTCourses: iTCourses,
+  //   // });
 
-    setData1(
-      affliateMarketingCourses[
-        Math.floor(Math.random() * affliateMarketingCourses.length)
-      ]
-    );
-    setData2(iTCourses[Math.floor(Math.random() * iTCourses.length)]);
-  }, []);
+  //   setData1(
+  //     affliateMarketingCourses[
+  //       Math.floor(Math.random() * affliateMarketingCourses.length)
+  //     ]
+  //   );
+  //   setData2(iTCourses[Math.floor(Math.random() * iTCourses.length)]);
+  // }, []);
 
-  useEffect(() => {
-    if (course) {
-      // const marketingCourses = course.filter(word => word.category === "Marketing");
-      // let personalDevelopmentCourses = course.filter(
-      //   (word) => word.category === "Personal Development"
-      // );
-      let affliateMarketingCourses = course.filter(
-        (word) => word.category === "Affiliate Marketing"
-      );
-      let iTCourses = course.filter(
-        (word) => word.category === "Design and IT"
-      );
+  // useEffect(() => {
+  //   if (course) {
+  //     // const marketingCourses = course.filter(word => word.category === "Marketing");
+  //     // let personalDevelopmentCourses = course.filter(
+  //     //   (word) => word.category === "Personal Development"
+  //     // );
+  //     let affliateMarketingCourses = course.filter(
+  //       (word) => word.category === "Affiliate Marketing"
+  //     );
+  //     let iTCourses = course.filter(
+  //       (word) => word.category === "Design and IT"
+  //     );
 
-      console.log("filtered courses: ", {
-        "Affiliate Marketing courses": affliateMarketingCourses,
-        iTCourses: iTCourses,
-      });
+  //     console.log("filtered courses: ", {
+  //       "Affiliate Marketing courses": affliateMarketingCourses,
+  //       iTCourses: iTCourses,
+  //     });
 
-      if (!data1 && !data2) {
-        setData1(
-          affliateMarketingCourses[
-            Math.floor(Math.random() * affliateMarketingCourses.length)
-          ]
-        );
+  //     if (!data1 && !data2) {
+  //       setData1(
+  //         affliateMarketingCourses[
+  //           Math.floor(Math.random() * affliateMarketingCourses.length)
+  //         ]
+  //       );
 
-        setData2(iTCourses[Math.floor(Math.random() * iTCourses.length)]);
-        // console.log("data: ", { "Data 1": data1, "Data 2 ": data2 });
-        return;
-      }
+  //       setData2(iTCourses[Math.floor(Math.random() * iTCourses.length)]);
+  //       // console.log("data: ", { "Data 1": data1, "Data 2 ": data2 });
+  //       return;
+  //     }
 
-      if (!data1) {
-        setData1(
-          affliateMarketingCourses[
-            Math.floor(Math.random() * affliateMarketingCourses.length)
-          ]
-        );
+  //     if (!data1) {
+  //       setData1(
+  //         affliateMarketingCourses[
+  //           Math.floor(Math.random() * affliateMarketingCourses.length)
+  //         ]
+  //       );
 
-        // console.log("Data 1 set: ", { "Data": data1,});
-        return;
-      }
+  //       // console.log("Data 1 set: ", { "Data": data1,});
+  //       return;
+  //     }
 
-      if (!data2) {
-        setData2(iTCourses[Math.floor(Math.random() * iTCourses.length)]);
+  //     if (!data2) {
+  //       setData2(iTCourses[Math.floor(Math.random() * iTCourses.length)]);
 
-        // console.log("Data 2 set: ", { "Data": data1,});
-        return;
-      }
-    }
-  }, [course, data1, data2]);
+  //       // console.log("Data 2 set: ", { "Data": data1,});
+  //       return;
+  //     }
+  //   }
+  // }, [course, data1, data2]);
 
-  useEffect(() => {
-    if (!course) {
-      fetchCourses();
-    }
-  }, [course, fetchCourses]);
+  // useEffect(() => {
+  //   if (!course) {
+  //     fetchCourses();
+  //   }
+  // }, [course, fetchCourses]);
 
   // useeffect hook to get token from localStorage and set token availability
   useEffect(() => {
@@ -126,7 +126,7 @@ const Head = ({ landingCourses }) => {
           have everything you need to succeed.
         </p>
         {tokenAvailability ? (
-          <Link to="/courses">
+          <Link to="/learn">
             <button>
               <BsPerson fontSize="20px" /> View Courses
             </button>

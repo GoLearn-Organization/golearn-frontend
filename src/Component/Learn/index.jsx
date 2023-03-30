@@ -31,7 +31,7 @@ const Learn = ({ courses }) => {
           {firstPage ? (
             <div className={style.courses}>
               {firstPage?.map((each, index) => {
-                const rating = each?.courserating ?? 0;
+                const rating = each?.averageRating ?? 0;
                 return (
                   <div className={style.eachCourse} key={index}>
                     <div className={style.imageArea}>
@@ -86,6 +86,7 @@ const Learn = ({ courses }) => {
                                   })}
                                 </>
                               )}
+                              <p className={style.ratingNumber}>{rating}/5</p>
                             </div>
                             {/* <span className={style.reviews__reviewsNumber}>
                           (0)
@@ -93,7 +94,7 @@ const Learn = ({ courses }) => {
                           </div>
                           <div className={style.studentsCountArea}>
                             <FaUserCircle />
-                            {each?.studentsCount ?? 0}
+                            {each?.numberOfStudents ?? 0}
                           </div>
                         </div>
                       </div>

@@ -33,7 +33,7 @@ const DistanceLearn = () => {
               <button>Register Now</button>
             </Link> 
             : 
-            <Link to="/Courses">
+            <Link to="/learn">
               <button>View Courses</button>
             </Link>
           }

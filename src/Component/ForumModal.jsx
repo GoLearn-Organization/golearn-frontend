@@ -30,10 +30,10 @@ const ForumModal = ({ setForumModalVisibility }) => {
               <button>Join now</button>
             </a>
           </div>
-          <div className={style.join}>
+          {/* <div className={style.join}>
             <p>Join paid community: </p>
             <button>Join now</button>
-          </div>
+          </div> */}
         </div>
         <div
           className={style.modalContainer__cta}

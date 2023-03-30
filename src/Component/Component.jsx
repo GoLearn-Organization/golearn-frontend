@@ -24,6 +24,7 @@ import Course from "./Course/[id]";
 import MemoryKeys from "./models/MemoryKeys";
 import useSWR from "swr";
 import Learn from "./Learn";
+import ResetPassword from "./ForgetPassword/ResetPassword";
 
 function Component({ updateCourses, courses }) {
   // console.log('process.env.REACT_APP_SERVER_URL: ', process.env.REACT_APP_SERVER_URL);
@@ -122,6 +123,7 @@ function Component({ updateCourses, courses }) {
             <Route path="/publisher" element={<PublisherReg />} />
             <Route path="/access-payment" element={<PaymentPage />} />
             <Route path={`/access-payment/:id`} element={<PaymentPage />} />
+            <Route path={`/resetpassword`} element={<ResetPassword />} />
             <Route
               path={`${process.env.REACT_APP_SERVER_URL}resetpassword/:token`}
               element={<Reset />}

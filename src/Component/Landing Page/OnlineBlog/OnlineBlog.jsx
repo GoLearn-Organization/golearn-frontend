@@ -72,7 +72,7 @@ const OnlineBlog = () => {
             </button>
           </Link>
             : 
-            <Link to="/Courses">
+            <Link to="/learn">
             <button>
               <BsFillJournalBookmarkFill fontSize="20px" /> View All Courses
             </button>

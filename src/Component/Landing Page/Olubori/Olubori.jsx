@@ -150,7 +150,7 @@ const Olubori = () => {
             // So we check if user subscription status is true to run our condition
             <>
               {isSubscribed ? (
-                <Link to="/courses">
+                <Link to="/learn">
                   <button>View courses</button>
                 </Link>
               ) : (
