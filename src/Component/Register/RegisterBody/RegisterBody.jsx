@@ -46,7 +46,6 @@ const RegisterBody = ({ userRegistration, setUserRegistration }) => {
           lastName,
           userName,
           email,
-          role: 'admin',
           password,
         }),
         headers: {
