@@ -62,10 +62,29 @@ function Component({ updateCourses, courses }) {
   // Update courses when courses is updated
   useEffect(() => {
     updateCourses(fetchedCourses);
-  }, [fetchedCourses, updateCourses]); 
+  }, [fetchedCourses, updateCourses]);
+
+  // function isTokenExpired(token) {
+  //   const decodedToken = JSON.parse(atob(token.split(".")[1]));
+  //   const expirationTime = decodedToken.exp;
+  //   const currentTime = Math.floor(Date.now() / 1000);
+  //   return expirationTime < currentTime;
+  // }
 
   useEffect(() => {
     const token = window.localStorage.getItem(MemoryKeys.UserToken);
+
+    const decodedToken = JSON.parse(atob(token.split(".")[1]));
+    const expirationTime = decodedToken.exp;
+    const currentTime = Math.floor(Date.now() / 1000);
+    
+    // console.log({'expirationTime': expirationTime,'currentTime': currentTime })
+    if(expirationTime < currentTime) {
+      console.log('Token expired');
+      // window.location.href = '/login' ;
+      return;
+    }
+
     if (token) {
       setLoginStatus(true);
       console.log("Token retrieved successfully!");
@@ -83,7 +102,9 @@ function Component({ updateCourses, courses }) {
     <>
       <BrowserRouter>
         <Routes>
-          <Route element={<Layout loginStatus={loginStatus} courses={courses} />}>
+          <Route
+            element={<Layout loginStatus={loginStatus} courses={courses} />}
+          >
             <Route index path="/" element={<LandingPage courses={courses} />} />
             <Route path="about" element={<About />} />
             <Route path="blog" element={<Blog />} />
