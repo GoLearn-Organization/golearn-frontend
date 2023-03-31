@@ -97,7 +97,7 @@ const Olubori = () => {
     metadata: {
       name: `${userCredentials?.firstName} ${userCredentials?.lastName}`,
     },
-    publicKey: `pk_test_0a8ca3b20df9603c66b667419295ee21d6c4dc38`,
+    publicKey: `pk_live_c52c91149fb87f80cb2b2536e8441f9f7f2842ae`,
     text: "Get Access",
     // onSuccess: () => verifyPayment(generated_ref),
     onSuccess: () =>
