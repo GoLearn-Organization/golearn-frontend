@@ -71,11 +71,17 @@ function Component({ updateCourses, courses }) {
   //   return expirationTime < currentTime;
   // }
 
+  
   useEffect(() => {
     const token = window.localStorage.getItem(MemoryKeys.UserToken);
 
-    const decodedToken = JSON.parse(atob(token.split(".")[1]));
-    const expirationTime = decodedToken.exp;
+    let decodedToken;
+
+    if(token) {
+      decodedToken = JSON.parse(atob(token?.split(".")[1]));
+    }
+    // const decodedToken = JSON.parse(atob(token?.split(".")[1]));
+    const expirationTime = decodedToken?.exp;
     const currentTime = Math.floor(Date.now() / 1000);
     
     // console.log({'expirationTime': expirationTime,'currentTime': currentTime })
@@ -97,6 +103,7 @@ function Component({ updateCourses, courses }) {
       console.log("cleanup");
     };
   }, [loginStatus]);
+
 
   return (
     <>
