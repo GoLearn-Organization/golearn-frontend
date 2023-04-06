@@ -3,8 +3,8 @@ const nextConfig = {
 	env: {
 		// REACT_APP_SERVER_URL: 'https://golearnapi-test.azurewebsites.net', 
 		REACT_APP_SERVER_URL: 'https://golearn-live.azurewebsites.net', 
-		REACT_APP_FRONTEND_URL: 'http://localhost:3000', 
-		// REACT_APP_FRONTEND_URL: 'https://go-learn.online', 
+		// REACT_APP_FRONTEND_URL: 'http://localhost:3000', 
+		REACT_APP_FRONTEND_URL: 'https://go-learn.online', 
 	}
 }
 
