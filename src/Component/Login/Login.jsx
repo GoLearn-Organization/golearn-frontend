@@ -52,7 +52,8 @@ const Login = ({ setLoginStatus }) => {
       // }, 3000);
       localStorage.setItem(MemoryKeys.UserToken, result.token);
       
-      window.location.href = '/';
+      // window.location.href = '/';
+      window.history.back();
 
       // navigate(-1); // go back to previous page
     } else if (result.success === false) {
