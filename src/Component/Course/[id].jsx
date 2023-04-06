@@ -10,16 +10,16 @@ import StudentRev from "../Review/StudentRev";
 // import Title from "../DecFinance/Title/Title";
 import styles from "./course.module.scss";
 
-const Course = () => {
+const Course = ({ loginStatus }) => {
   const { id } = useParams();
   const [courseData, setCourseData] = useState();
   const [courseReview, setCoureReview] = useState([]);
   const [courseReviewCount, setCourseReviewCount] = useState();
   const [coureReviewFetched, setCoureReviewFetched] = useState(false);
   const [isReviewVisible, setIsReviewVisible] = useState(false);
-  // const [userData, setUserData] = useState();
-
-  // const token = localStorage.getItem(MemoryKeys.UserToken);
+  const [userData, setUserData] = useState();
+  const [userEnrolledCourses, setUserEnrolledCourses] = useState([]);
+  const [courseIsEnrolled, setCourseIsEnrolled] = useState(false);
 
   /**
    * Function to get course data
@@ -112,10 +112,9 @@ const Course = () => {
   }%`;
 
   async function enrollCourse() {
-    // Get course id
-    // Get user's enrolled courses array
-    // Check if course id is among any id in the user's enrolled courses array
-    // Send error alert
+    if (!loginStatus) {
+      window.location.href = "/login";
+    }
 
     let result = await fetch(
       `${process.env.REACT_APP_SERVER_URL}api/v1/course/${id}/enroll`,
@@ -139,33 +138,30 @@ const Course = () => {
   /**
    * Function to get user info
    */
-  // const handleUserInfoRetrieval = async () => {
-  //   const token = localStorage.getItem(MemoryKeys.UserToken);
+  const handleUserInfoRetrieval = async () => {
+    const token = localStorage.getItem(MemoryKeys.UserToken);
 
-  //   const config = {
-  //     headers: {
-  //       "content-Type": "application/json",
-  //       Authorization: "Bearer " + token,
-  //     },
-  //   };
-  //   let result = await fetch(
-  //     `${process.env.REACT_APP_SERVER_URL}/api/v1/auth`,
-  //     config,
-  //     {
-  //       method: "get",
-  //       credencials: "include",
-  //     }
-  //   );
-  //   result = await result.json();
-  //   console.log("User info: ", result);
+    const config = {
+      headers: {
+        "content-Type": "application/json",
+        Authorization: "Bearer " + token,
+      },
+    };
+    let result = await fetch(
+      `${process.env.REACT_APP_SERVER_URL}/api/v1/auth`,
+      config,
+      {
+        method: "get",
+        credencials: "include",
+      }
+    );
+    result = await result.json();
+    console.log("User info: ", result);
 
-  //   setUserData(result.data);
+    setUserData(result.data);
 
-  //   localStorage.setItem(
-  //     MemoryKeys.UserCredentials,
-  //     JSON.stringify(result.data)
-  //   );
-  // };
+    // localStorage.setItem(MemoryKeys.UserCredentials, JSON.stringify(result.data));
+  };
 
   // useEffect hook to get course info if course data is unavailable
   useEffect(() => {
@@ -196,11 +192,27 @@ const Course = () => {
     }
   }, [courseReview, coureReviewFetched, handleCourseReview]);
 
-  // useEffect(() => {
-  //   if (!userData) {
-  //     handleUserInfoRetrieval();
-  //   }
-  // }, [userData]);
+  useEffect(() => {
+    if (!userData && loginStatus) {
+      handleUserInfoRetrieval();
+    }
+  }, [userData, loginStatus]);
+
+  useEffect(() => {
+    if ((userData, courseData)) {
+      // Get course id
+      // console.log("course id: ", courseData?._id);
+
+      // Get user's enrolled courses array
+      // console.log("user info: ", userData.enrolledCourses);
+      setUserEnrolledCourses(userData?.enrolledCourses);
+
+      // Check if course id is among any id in the user's enrolled courses array
+      if (userEnrolledCourses?.includes(courseData?._id)) {
+        setCourseIsEnrolled(true);
+      }
+    }
+  }, [userData, courseData, userEnrolledCourses]);
 
   return (
     <>
@@ -447,7 +459,13 @@ const Course = () => {
 
                 {/* <Link to={`/class/${courseData?._id}`}> */}
 
-                <button onClick={enrollCourse}>Enroll Now</button>
+                {courseIsEnrolled ? (
+                  <Link to={`/class/${courseData?._id}`}>
+                    <button>View course</button>
+                  </Link>
+                ) : (
+                  <button onClick={enrollCourse}>Enroll Now</button>
+                )}
 
                 {/* <Link to={token ? `/class/${courseData?._id}` : "/login"}>
                   <button>Enroll Now</button>

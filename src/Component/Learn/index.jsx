@@ -67,7 +67,7 @@ const Learn = ({ courses }) => {
                           })} */}
                               {[...Array(rating)].map((each, index) => {
                                 return (
-                                  <span>
+                                  <span key={index}>
                                     <MdStarRate fontSize={11} color="#F7A921" />
                                   </span>
                                 );
@@ -76,7 +76,7 @@ const Learn = ({ courses }) => {
                                 <>
                                   {[...Array(5 - rating)].map((each, index) => {
                                     return (
-                                      <span>
+                                      <span key={index}>
                                         <MdStarRate
                                           fontSize={11}
                                           color="#D9D9D9"

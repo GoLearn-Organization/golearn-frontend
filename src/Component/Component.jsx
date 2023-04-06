@@ -87,6 +87,7 @@ function Component({ updateCourses, courses }) {
     // console.log({'expirationTime': expirationTime,'currentTime': currentTime })
     if(expirationTime < currentTime) {
       console.log('Token expired');
+      setLoginStatus(false);
       // window.location.href = '/login' ;
       return;
     }
@@ -132,7 +133,7 @@ function Component({ updateCourses, courses }) {
             <Route path="contact-us" element={<Contact />} />
             <Route path="instructor" element={<InstructorProfile />} />
             <Route path="Page-Not-Available" element={<Construction />} />
-            <Route path="course/:id" element={<Course />} />
+            <Route path="course/:id" element={<Course loginStatus={loginStatus} />} />
             <Route path="learn" element={<Learn courses={courses} />} />
             <Route
               path="register"
